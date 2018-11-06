@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 17:45:47 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/06 18:32:46 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/06 19:12:45 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/06 19:12:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c);
 
-void	ft_putstr(char *str)
+int     ft_strlen(char *str)
 {
-    while (*str)
-        ft_putchar(*(str++);
+    int i;
+
+    i = 0;
+    while (str[i])
+        i++;
+    return (i);
 }
