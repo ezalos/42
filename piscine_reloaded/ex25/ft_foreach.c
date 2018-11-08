@@ -1,37 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 16:08:32 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 16:38:09 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/08 16:43:34 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/08 16:44:23 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int     ft_strlen(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
-}
-
-char *ft_strdup(char *src)
-{
-    char    *dest;
-    int     i;
-
-    if(!(dest = (char*)malloc(sizeof(char) * (ft_strlen(src) + 1))))
-        return (NULL);
-    i = -1;
-    while (str[++i])
-        dest[i] = src[i];
-    dest[i] = '\n';
-    return (dest);
-}
+void ft_foreach(int *tab, int length, void(*f)(int));

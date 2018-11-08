@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 16:08:32 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 16:38:09 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/08 16:41:37 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/08 16:42:21 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "ft_point.h"
 
-int     ft_strlen(char *str)
+void    set_point(t_point *point)
 {
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+    point->x = 42;
+    point->y = 21;
 }
 
-char *ft_strdup(char *src)
+int     main(void)
 {
-    char    *dest;
-    int     i;
-
-    if(!(dest = (char*)malloc(sizeof(char) * (ft_strlen(src) + 1))))
-        return (NULL);
-    i = -1;
-    while (str[++i])
-        dest[i] = src[i];
-    dest[i] = '\n';
-    return (dest);
+    t_point point;
+    set_point(&point);
+    return (0);
 }
