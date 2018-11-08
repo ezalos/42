@@ -6,21 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:41:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 16:42:21 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/08 17:54:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_point.h"
+#ifndefine FT_POINT_H
+# define FT_POINT_H
 
-void    set_point(t_point *point)
-{
-    point->x = 42;
-    point->y = 21;
-}
+typedef struct  s_point {
+    int         x;
+    int         y;
+}               t_point;
 
-int     main(void)
-{
-    t_point point;
-    set_point(&point);
-    return (0);
-}
+#endif
