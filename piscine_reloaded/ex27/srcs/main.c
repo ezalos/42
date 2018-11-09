@@ -6,16 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 14:37:14 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/09 17:11:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/09 17:53:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
-    char    reader[1000];
-    int     file_descriptor;
+	char	eader[1000];
+	int		file_descriptor;
 
     if (ac < 2)
         ft_error("File name missing.\n");
