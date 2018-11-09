@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 17:01:00 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/08 17:41:59 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/09 16:53:41 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ FLAG = 	-Wall\
 all: $(NAME)
 
 objs:
-		gcc -c $(FLAG) $(SRCS)
+		gcc -c $(FLAG) $(SRCS) -I $(HEAD)
 
 $(NAME): objs
 		ar rcs $(NAME) $(OBJS)
