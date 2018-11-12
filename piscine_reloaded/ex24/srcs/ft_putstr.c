@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:12:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 15:27:26 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/06 17:45:47 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/08 17:42:32 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
+void	ft_putchar(char c);
+
+void	ft_putstr(char *str)
 {
-    while (*s1 == *s2 && (*s1 || *s2))
-    {
-        s1++;
-        s2++;
-    }
-    return (*s1 - *s2);
+    while (*str)
+        ft_putchar(*(str++));
 }

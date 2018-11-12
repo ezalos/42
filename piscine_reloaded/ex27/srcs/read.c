@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:12:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 15:27:26 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/09 14:37:13 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/09 17:12:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
+#include "../includes/header.h"
+
+int    ft_read(int file_descriptor, char reader[1000])
 {
-    while (*s1 == *s2 && (*s1 || *s2))
-    {
-        s1++;
-        s2++;
-    }
-    return (*s1 - *s2);
+    int     buffer;
+
+    buffer = 1000 * sizeof(char);
+    if  (!(0 < read(file_descriptor, reader, buffer)))
+        return (ft_error("Error during reading process\n"));
+    return (1);
 }

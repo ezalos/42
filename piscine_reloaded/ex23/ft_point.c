@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_point.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:14:52 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/09 17:55:13 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/08 17:41:09 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/08 17:41:11 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_putchar(char c);
+#include "ft_point.h"
 
-void ft_print_params(int ac, char **av)
+void    set_point(t_point *point)
 {
-    int i;
-
-    i = 0;
-    if (ac >= 2)
-        {
-            while (++i < ac)
-            {
-                while (*(av[i]))
-                    ft_putchar(*(av[i]++));
-                ft_putchar('\n');
-            }
-        }
+    point->x = 42;
+    point->y = 21;
 }
 
-int     main(int ac, char **av)
+int     main(void)
 {
-    int i;
-
-    i = 1;
-    if (ac >= 2)
-        ft_print_params(ac, av);
-    ft_putchar('\n')
+    t_point point;
+    set_point(&point);
     return (0);
 }

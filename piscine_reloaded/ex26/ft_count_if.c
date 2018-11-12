@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:12:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 15:27:26 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/08 16:44:55 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/09 11:59:01 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
+int     ft_count_if(char **tab, int(*f)(char*))
 {
-    while (*s1 == *s2 && (*s1 || *s2))
-    {
-        s1++;
-        s2++;
-    }
-    return (*s1 - *s2);
+    int count;
+
+    count = 0;
+    while(**(++(tab - 1)))
+            count = f(*(tab - 1));
+    return (count);
 }

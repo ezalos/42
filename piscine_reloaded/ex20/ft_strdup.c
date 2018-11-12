@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:14:52 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/09 17:55:13 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/08 16:08:32 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/08 16:38:09 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_putchar(char c);
+#include <stdlib.h>
 
-void ft_print_params(int ac, char **av)
+int     ft_strlen(char *str)
 {
     int i;
 
     i = 0;
-    if (ac >= 2)
-        {
-            while (++i < ac)
-            {
-                while (*(av[i]))
-                    ft_putchar(*(av[i]++));
-                ft_putchar('\n');
-            }
-        }
+    while (str[i])
+        i++;
+    return (i);
 }
 
-int     main(int ac, char **av)
+char *ft_strdup(char *src)
 {
-    int i;
+    char    *dest;
+    int     i;
 
-    i = 1;
-    if (ac >= 2)
-        ft_print_params(ac, av);
-    ft_putchar('\n')
-    return (0);
+    if(!(dest = (char*)malloc(sizeof(char) * (ft_strlen(src) + 1))))
+        return (NULL);
+    i = -1;
+    while (str[++i])
+        dest[i] = src[i];
+    dest[i] = '\n';
+    return (dest);
 }

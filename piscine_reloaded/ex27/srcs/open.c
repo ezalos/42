@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   open.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/06 19:12:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 15:27:26 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/09 14:37:15 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/09 17:38:18 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
+#include "../includes/header.h"
+
+int     ft_open(const char *av)
 {
-    while (*s1 == *s2 && (*s1 || *s2))
-    {
-        s1++;
-        s2++;
-    }
-    return (*s1 - *s2);
+    int file;
+
+    if (-1 == (file = open(av, O_RDONLY)))
+        return (ft_error("File can't be opened.\n"));
+    return (file);
 }
