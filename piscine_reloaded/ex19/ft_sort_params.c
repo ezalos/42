@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:33:30 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 17:46:12 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 20:00:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 void	ft_putchar(char c);
 
@@ -44,7 +42,6 @@ char	**ft_sort_params(int ac, char **av)
 {
 	char	*tmp;
 	int		i;
-	int		j;
 
 	i = -1;
 	while (++i < ac - 1)
@@ -65,6 +62,5 @@ int		main(int argc, char **argv)
 		argv = ft_sort_params(argc, argv);
 		ft_print_params(argc, argv);
 	}
-	ft_putchar('\n');
 	return (0);
 }

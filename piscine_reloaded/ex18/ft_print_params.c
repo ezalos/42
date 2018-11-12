@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:14:52 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 17:42:07 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 20:00:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ int		main(int ac, char **av)
 	i = 1;
 	if (ac >= 2)
 		ft_print_params(ac, av);
-	ft_putchar('\n');
 	return (0);
 }
