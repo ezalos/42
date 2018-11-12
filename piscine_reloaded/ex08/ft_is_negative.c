@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:30:05 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/05 17:34:27 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 17:32:56 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putchar(char c);
+void	ft_putchar(char c);
 
-void ft_is_negative(int n)
+void	ft_is_negative(int n)
 {
 	if (n < 0)
 		ft_putchar('N');

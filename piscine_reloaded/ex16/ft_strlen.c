@@ -6,17 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:12:45 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/06 19:12:55 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 17:39:01 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-int     ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/12 17:00:37 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/12 17:59:46 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,3 +63,20 @@ fclean: clean
 	@echo "Done"
 
 re: fclean all
+
+
+
+
+	all: $(NAME)
+
+	objs:
+			gcc -c $(FLAG) $(SRCS) -I $(HEAD)
+
+	$(NAME): objs
+			ar rcs $(NAME) $(OBJS)
+
+	clean:
+			rm -rf $(OBJS)
+
+	fclean:	clean
+			rm -rf $(NAME)

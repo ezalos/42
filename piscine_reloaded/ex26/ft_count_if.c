@@ -6,16 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:44:55 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/09 11:59:01 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 18:10:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int     ft_count_if(char **tab, int(*f)(char*))
+int		ft_count_if(char **tab, int (*f)(char*))
 {
-    int count;
+	int		count;
 
-    count = 0;
-    while(**(++(tab - 1)))
-            count = f(*(tab - 1));
-    return (count);
+	count = 0;
+	while (**(++(tab - 1)))
+		count = f(*(tab - 1));
+	return (count);
 }

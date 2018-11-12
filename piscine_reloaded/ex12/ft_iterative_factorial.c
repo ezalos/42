@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:50:39 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/05 18:27:47 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 17:36:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-
-int ft_iterative_factorial(int nb)
+int		ft_iterative_factorial(int nb)
 {
 	int result;
 
@@ -25,11 +22,4 @@ int ft_iterative_factorial(int nb)
 	while (--nb >= 1)
 		result *= nb + 1;
 	return (result);
-}
-
-int main(int ac, char **av)
-{
-	if (ac == 2)
-		printf("%d\n", ft_iterative_factorial(atoi(av[1])));
-	return (0);
 }

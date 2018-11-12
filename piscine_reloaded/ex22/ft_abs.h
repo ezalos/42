@@ -6,8 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:41:00 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/08 16:57:38 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 17:58:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
+#ifndef FT_ABS_H
+# define FT_ABS_H
+
+# define ABS(x) ((x) < 0 ? -(x) : (x))
+
+#endif

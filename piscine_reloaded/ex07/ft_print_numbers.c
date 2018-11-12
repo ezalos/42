@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldevelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:27:52 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/05 17:29:38 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/12 17:31:56 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_putchar(char c);
+void	ft_putchar(char c);
 
-void ft_print_numbers(void)
+void	ft_print_numbers(void)
 {
 	char a;
 
