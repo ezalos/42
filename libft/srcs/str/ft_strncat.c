@@ -1,13 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:11:27 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 17:11:29 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:36 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/13 17:51:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #inclde "../../includes/libft.h"
+
+char	*ft_strncat(char *dest, const char *src, size_t n)
+{
+	int	size;
+	int	i;
+
+	i = -1;
+	size = ft_strlen(dest);
+	while (++i < n && src[i] != '\0')
+		dest[size + i] = src[i];
+	dest[size + i] = '\0';
+	return (dest);
+}
