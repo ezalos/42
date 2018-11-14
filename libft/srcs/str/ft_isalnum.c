@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:43 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 14:52:01 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/14 11:27:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int		ft_isalnum(int c)
 {
-	if (ft_isalpha || ft_isdigit)
-		return (1);
-	return (0);
+	return (ft_isdigit(c) || ft_isalpha(c));
 }

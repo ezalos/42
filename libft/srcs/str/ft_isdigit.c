@@ -6,15 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:30 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 14:53:13 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/14 11:26:00 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #inclde "../../includes/libft.h"
 
-int		ft_digit(int c);
+int		ft_isdigit(int c);
 {
-	if (c >= '0' && c <= '9')
-		return (c);
-	return (0);
+	return (c >= '0' && c <= '9');
 }

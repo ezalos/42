@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:56:49 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 14:57:12 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/14 11:27:59 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int		ft_islower(int c);
 {
-	if (c >= 'a' && c <= 'z')
-		return (c);
-	return (0);
+	return (c >= 'a' && c <= 'z');
 }
