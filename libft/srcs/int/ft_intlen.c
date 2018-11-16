@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:53:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:20:38 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:55:11 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #inclde "../../includes/libft.h"
 
-int		ft_intlen(n)
+int		ft_intlen(int n)
 {
 	int size;
 

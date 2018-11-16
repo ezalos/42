@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 14:37:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 18:09:35 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 18:04:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		ft_open(const char *av);
 
-int		ft_read(int file_descriptor, char reader[1000]);
+int		ft_read(int file_descriptor);
 
 void	ft_puterror(char c);
 int		ft_error(char *str);
