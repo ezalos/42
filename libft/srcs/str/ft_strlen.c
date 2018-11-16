@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:30:13 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:19:08 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:10:11 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
-int		ft_strlen(char *s)
+int		ft_strlen(const char *s)
 {
 	int i;
 

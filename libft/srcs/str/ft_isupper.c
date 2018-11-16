@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:57:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/14 11:28:25 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 21:43:33 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
-int		ft_isupper(int c);
+int		ft_isupper(int c)
 {
 	return (c >= 'A' && c <= 'Z');
 }

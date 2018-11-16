@@ -6,20 +6,20 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:53:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 18:55:11 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 21:48:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 int		ft_intlen(int n)
 {
 	int size;
 
 	size = 0;
-	while (now != 0)
+	while (n != 0)
 	{
-		now / 10;
+		n /= 10;
 		size++;
 	}
 	return (size);

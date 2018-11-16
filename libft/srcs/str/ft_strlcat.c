@@ -6,11 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 18:29:41 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:13:26 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 static	int	ft_strlen_n(size_t size, char *str, int size_str)
 {
@@ -39,7 +39,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		return (size_dst + size_src - 1);
 	i = -1;
 	while (++i < size_src)
-		dest[size_dst + i] = src[i];
-	dest[size + i] = '\0';
+		dst[size_dst + i] = src[i];
+	dst[size + i] = '\0';
 	return (size + i);
 }

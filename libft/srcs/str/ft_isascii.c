@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/14 11:27:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 21:44:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
-int		ft_isascii(int c);
+int		ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }

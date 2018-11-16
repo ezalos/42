@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 int		ft_toupper(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:53 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 14:42:18 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:17:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 int		ft_atoi(char *str)
 {
@@ -21,7 +21,7 @@ int		ft_atoi(char *str)
 
 	neg = 1;
 	num = 0;
-	dlt = "\t\n\r\v\f \0";
+	dlt = ft_strcpy(dlt, "\t\n\r\v\f \0");
 	while (ft_char_srch(*str, dlt))
 		str++;
 	if (*str == '-')

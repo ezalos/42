@@ -6,11 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 12:54:32 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:18:11 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:16:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 char		*ft_strtrim(char const *s)
 {
@@ -19,7 +19,7 @@ char		*ft_strtrim(char const *s)
 	char	dlt[4];
 	char	*new;
 
-	dlt = " \n\t\0";
+	dlt = ft_strcpy(dlt, " \n\t\0");
 	while (ft_char_srch(*s, dlt))
 		s++;
 	end = 0;

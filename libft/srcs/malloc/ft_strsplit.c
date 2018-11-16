@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:36:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:20:16 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:01:44 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
-int	static	count_words(*s, c)
+int	static	count_words(char const *s, char c)
 {
 	int i;
 
@@ -31,7 +31,7 @@ int	static	count_words(*s, c)
 	return (i);
 }
 
-int	static	count_letters(*s, c)
+int	static	count_letters(char const *s, char c)
 {
 	int i;
 
@@ -55,7 +55,7 @@ char	**ft_strsplit(char const *s, char c)
 
 	i = -1;
 	word = count_words(s, c);
-	if (world < 1)
+	if (word < 1)
 		return (NULL);
 	if (!(words = (char**)malloc(sizeof(char*) * word)))
 		return (NULL);
@@ -64,7 +64,7 @@ char	**ft_strsplit(char const *s, char c)
 		while (*s == c)
 			s++;
 		letter = count_letters(s, c);
-		if (!(words[i] = ft_strsub(s, 0, letter))
+		if (!(words[i] = ft_strsub(s, 0, letter)))
 			return (NULL);
 	}
 	return (words);

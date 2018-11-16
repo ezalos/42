@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:24 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/14 11:28:11 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 21:45:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
-int		ft_isprint(int c);
+int		ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);
 }

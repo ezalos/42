@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/16 17:58:23 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/16 22:41:59 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,10 +54,18 @@ OBJS = 	$($(SRCS), %=ft_%.o)
 
 #D_OBJS = $(addprefix $(OBJ_PATH), $(OBJS))
 
-#OBJ_PATH = $(SRCS:srcs/=objs/)
+OBJ_PATH = $(SRCS:srcs/=objs/)
+
+#ls -lR ./srcs/ | grep ft_ | wc -l
+#cat -e ./includes/libft.h | grep ft_ | wc -l
+#cat *.c | sed-n 15p >> libft.h
+#cat */* | grep -e int -e char -e void -e size_t -e t_list | grep ft_ | grep -v -e ":+:" -e static -e while -e if -e ";"
+
+
+#ar -rcs libft.a *.o   FONCTIONNE
 
 all:
-	$(CC) -c -I$(HEAD) $(A_SRC)
+	$(CC) $(CFLAGS) -c -I$(HEAD) $(A_SRC)
 
 #$(NAME):	$(OBJS)
 #			ar -rcs $(NAME) $(OBJS)
@@ -68,8 +76,8 @@ $(OBJS):	$(A_SRC) $(HEAD)
 #	@$(CC) $(CFLAGS) -o $(NAME) $(D_OBJS)
 #	ar -rcs $(D_OBJS)
 #
-#$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-#	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INC)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INC)
 
 
 
@@ -82,6 +90,8 @@ fclean: clean
 	@echo "Done"
 
 re: fclean all
+
+count :
 
 .PHONY: clean fclean re all
 #

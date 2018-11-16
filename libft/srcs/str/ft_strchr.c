@@ -6,11 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:12:04 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/14 12:36:43 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/16 22:14:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclde "../../includes/libft.h"
+#include "../../includes/libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
