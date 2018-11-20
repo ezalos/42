@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:36:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 22:01:44 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/20 15:23:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int	static	count_words(char const *s, char c)
+int	static	count_words(char *s, char c)
 {
 	int i;
 
@@ -31,12 +31,12 @@ int	static	count_words(char const *s, char c)
 	return (i);
 }
 
-int	static	count_letters(char const *s, char c)
+int	static	count_letters(char *s, char c)
 {
 	int i;
 
 	i = 0;
-	while (*s)
+	while (*(char*)s)
 	{
 		while (*s == c)
 			s++;
@@ -46,7 +46,7 @@ int	static	count_letters(char const *s, char c)
 	return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char *s, char c)
 {
 	char	**words;
 	int		word;
@@ -54,17 +54,17 @@ char	**ft_strsplit(char const *s, char c)
 	int		i;
 
 	i = -1;
-	word = count_words(s, c);
+	word = count_words(((char*)s), c);
 	if (word < 1)
 		return (NULL);
 	if (!(words = (char**)malloc(sizeof(char*) * word)))
 		return (NULL);
 	while (++i < word)
 	{
-		while (*s == c)
-			s++;
-		letter = count_letters(s, c);
-		if (!(words[i] = ft_strsub(s, 0, letter)))
+		while (*((char*)s) == c)
+			((char*)s)++;
+		letter = count_letters(((char*)s), c);
+		if (!(words[i] = ft_strsub(((char*)s), 0, letter)))
 			return (NULL);
 	}
 	return (words);
