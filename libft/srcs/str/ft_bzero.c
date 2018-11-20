@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:04:08 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 22:06:17 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/20 19:47:38 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (--n >= 0)
-		(char)s[n] = 0;
+	((char*)s)[0] = 0;
+	while (--n)
+		((char*)s)[n] = 0;
 }

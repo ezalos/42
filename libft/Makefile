@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/20 19:03:16 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/20 19:49:05 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,9 +51,7 @@ A_SRC =	$(addsuffix .c, $(addprefix $(SRC_PATH1)ft_, $(SRCS1))\
 						$(addprefix $(SRC_PATH5)ft_, $(SRCS5))\
 						$(addprefix $(SRC_PATH6)ft_, $(SRCS6)))
 
-OBJS = 	$($(SRCS), %=ft_%.o)
-		#$(A_SRC:.c=.o)
-		#$(patsubst %,ft_%.o,$(SRCS))
+OBJS = $(patsubst %,ft_%.o,$(SRCS))
 
 #D_OBJS = $(addprefix $(OBJ_PATH), $(OBJS))
 
@@ -68,7 +66,7 @@ all :	$(NAME)
 $(NAME):	$(OBJS)
 			ar -rcs $(NAME) $(OBJS)
 
-OBJS:
+$(OBJS):
 			$(CC) -c $(CFLAGS) $(patsubst %,ft_%.c,$(SRCS)) $(FT_H)
 
 #$(NAME): $(D_OBJS)
@@ -105,17 +103,16 @@ update :
 		sed 's/$$/;/' >> $(HEAD)$(FT_H)
 
 bhead :
-perl -i -p -e 's/old/new/g;' *.config
-		sed -i '' 's/#include "../$/../$/includes/$/libft.h"/#include "libft.h"/g' $(patsubst %,ft_%.c,$(SRCS))
+		@sed -i '' "s~../../includes/libft.h~libft.h~g" $(A_SRC)
 
 ahead :
-		sed -i '' 's/#include "libft.h"/#include "../../includes/libft.h"/g' $(A_SRC)
+		@sed -i '' "s~libft.h~../../includes/libft.h~g" $(patsubst %,ft_%.c,$(SRCS))
 
-before :	#bhead
+before :	bhead
 			@mv -f $(A_SRC) $(HEAD)$(FT_H) ./
 			@rm -rf $(SRC_PATH) ./objs/ $(HEAD)
 
-after :	#ahead
+after :	ahead
 		@mkdir	$(SRC_PATH) $(SRC_PATH1) $(SRC_PATH2) $(SRC_PATH3)\
 				$(SRC_PATH4) $(SRC_PATH5) $(SRC_PATH6) $(HEAD)
 		@mv -f $(FT_H) $(HEAD)

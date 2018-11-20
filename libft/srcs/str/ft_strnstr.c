@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:08 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 22:15:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/20 19:38:49 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ char	*ft_strnstr(const char *meule, const char *aiguille, size_t len)
 
 	limite = 0;
 	if (*aiguille == '\0')
-		return (meule);
-	if (len < ft_strlen(aiguille))
+		return ((char*)meule);
+	if (len < (size_t)ft_strlen(aiguille))
 		return (NULL);
+	walker = 0;
 	while (meule[limite + walker] != '\0' && limite <= len)
 	{
 		walker = 0;
 		while (aiguille[walker] == meule[limite + walker])
 			if (aiguille[++walker] == '\0')
-				return (&(meule[limite]));
+				return ((char*)meule + limite);
 		limite++;
 	}
 	return (NULL);
