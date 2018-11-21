@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/20 19:49:05 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/21 16:33:15 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,10 +64,12 @@ NONL = | tr -d '\n' | tr -d '\t' | tr -d ' '
 all :	$(NAME)
 
 $(NAME):	$(OBJS)
-			ar -rcs $(NAME) $(OBJS)
+			@echo "Creating $(NAME)"
+			@ar -rcs $(NAME) $(OBJS)
 
 $(OBJS):
-			$(CC) -c $(CFLAGS) $(patsubst %,ft_%.c,$(SRCS)) $(FT_H)
+			@echo "Creating objects"
+			@$(CC) -c $(CFLAGS) $(patsubst %,ft_%.c,$(SRCS))
 
 #$(NAME): $(D_OBJS)
 #	@$(CC) $(CFLAGS) -o $(NAME) $(D_OBJS)
@@ -79,22 +81,22 @@ $(OBJS):
 
 
 clean :
-	@rm -f $(OBJS)
+	@echo "Cleaning objects"
+	@rm -f $(OBJS) libft.h.gch
 
 fclean : clean
 	@echo "Cleaning project"
 	@rm -f $(NAME)
-	@echo "Done"
 
 re : fclean all
 
 count :
 		@echo "\tThere is this many potential prototypes : \t\c"
 		@ls -lR $(SRC_PATH) | grep ft_ | wc -l $(NONL)
-		@echo " OR \c"
+		@echo "(number of ft_ files) OR \c"
 		@cat  $(SRC_PATH)*/* | grep -e int -e char -e void -e size_t -e t_list |\
 		grep ft_ | grep -v -e ":+:" -e static -e while -e if -e ";" | wc -l $(NONL)
-		@echo "\n\tYour libft.h has this many prototypes : \t\c"
+		@echo "(conditional search)\n\tYour libft.h has this many prototypes : \t\c"
 		@cat -e $(HEAD)$(FT_H) | grep ft_ | wc -l $(NONL) | sed 's/$$//'
 
 update :
