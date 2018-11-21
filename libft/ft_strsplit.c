@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:36:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 16:50:31 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/21 18:27:26 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	static	count_letters(char *s, char c)
 	return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**words;
 	int		word;
