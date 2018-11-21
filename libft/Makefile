@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/21 16:33:15 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/21 17:47:28 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,4 +131,7 @@ git :
 		@git commit -m "Makefile automated push"
 		@git push
 
-.PHONY : clean fclean re all count update bhead ahead before after git
+check :
+		bash ../42FileChecker/42FileChecker.sh --project "libft" --path "/Users/ldevelle/42/libft/"
+
+.PHONY : clean fclean re all count update bhead ahead before after git check

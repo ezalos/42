@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:09:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 21:49:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/21 16:47:38 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void ft_putnbr_str(int i, int n, char *nb)
+static void	ft_putnbr_str(int i, int n, char *nb)
 {
 	while (n != 0)
 	{
@@ -21,7 +21,7 @@ static	void ft_putnbr_str(int i, int n, char *nb)
 	}
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	char	*nb;
 	int		size;
