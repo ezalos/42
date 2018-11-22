@@ -6,15 +6,15 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:41:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 18:27:22 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/22 18:58:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	static	count_words(char *s, char *split)
+static int	count_words(char *s, char *split)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (*s)
@@ -31,9 +31,9 @@ int	static	count_words(char *s, char *split)
 	return (i);
 }
 
-int	static	count_letters(char *s, char *split)
+static int	count_letters(char *s, char *split)
 {
-	int 	i;
+	int		i;
 
 	i = 0;
 	while (*s)

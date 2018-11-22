@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/22 14:15:02 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/22 19:00:27 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,17 @@ NAME = libft.a
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
+
+DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
+-ansi -O2 -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int\
+-Werror-implicit-function-declaration -Wmain -Wparentheses -Wsequence-point\
+-Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas\
+-Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wbad-function-cast\
+-Wwrite-strings -Wconversion -Wsign-compare -Waggregate-return\
+-Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations\
+-Wmissing-noreturn -Wformat -Wmissing-format-attribute\
+-Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs\
+-Winline -Wlong-long -Wunreachable-code
 
 HEAD = ./includes/
 
@@ -78,7 +89,9 @@ $(OBJS):
 #$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 #	@$(CC) $(CFLAGS) -o $@ -c $< -I$(INC)
 
-
+d :
+			@$(CC) -c $(DFLAGS) $(patsubst %,ft_%.c,$(SRCS))
+			@ar -rcs $(NAME) $(OBJS)
 
 clean :
 	@echo "Cleaning objects"
@@ -128,7 +141,7 @@ after :	ahead
 git :
 		@git add *
 		@git status
-		@git commit -m "Makefile automated push"
+		@git commit -am "Makefile automated push"
 		@git push
 
 check1 :
