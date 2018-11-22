@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:10:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 15:00:04 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/22 14:53:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_tolower(int c)
 {
-	if (ft_islower(c))
-		c = c + 'A' - 'a';
+	if (ft_isupper(c))
+		c = c - 'A' + 'a';
 	return (c);
 }

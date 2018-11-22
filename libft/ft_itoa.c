@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:09:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 16:47:38 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/22 15:10:33 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 static void	ft_putnbr_str(int i, int n, char *nb)
 {
-	while (n != 0)
+	while (i >= 0 && nb[i] != '-')
 	{
-		nb[i--] = (n % 10) + '0';
+		nb[i] = (n % 10) + '0';
 		n /= 10;
+		i--;
 	}
 }
 
@@ -29,14 +30,19 @@ char		*ft_itoa(int n)
 	int		i;
 
 	neg = 1;
-	if (n > 0)
+	if (n >= 0)
 		neg = 0;
 	size = ft_intlen(n);
-	if (!(nb = ft_strnew(size + neg)))
+	if (!(nb = ft_strnew(size + 1)))
 		return (NULL);
 	if (neg == 1)
+	{
+		if (n == -2147483648)
+			return (ft_strcpy(nb, "-2147483648"));
 		nb[0] = '-';
-	i = size + neg;
-	ft_putnbr_str(i, n, nb);
+		n = -n;
+	}
+	i = size;
+	ft_putnbr_str(i - 1, n, nb);
 	return (nb);
 }

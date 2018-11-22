@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:12:31 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 13:40:58 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/11/22 17:26:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,22 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*tmp;
 	size_t	i;
 
+	i = 0;
 	if (n == 0)
-		return (NULL);
+		return (dest);
 	if (!(tmp = (char*)malloc(sizeof(char) * n)))
 		return (NULL);
-	i = -1;
-	while (++i < n)
+	while (i < n)
+	{
 		tmp[i] = ((char*)src)[i];
-	while (--n > 0)
-		((char*)dest)[n] = tmp[n];
+		i++;
+	}
+	i = 0;
+	while (i < n)
+	{
+		((char*)dest)[i] = tmp[i];
+		i++;
+	}
 	((char*)dest)[0] = tmp[0];
 	free(tmp);
 	return (dest);

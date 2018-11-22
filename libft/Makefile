@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/11/21 18:37:24 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/11/22 14:15:02 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,6 +135,6 @@ check1 :
 		bash /Users/ldevelle/42/42FileChecker/42FileChecker.sh
 
 check2 :
-		bash /Users/ldevelle/42/Libftest/grademe.sh
+		yes n | bash /Users/ldevelle/42/Libftest/grademe.sh
 
 .PHONY : clean fclean re all count update bhead ahead before after git check
