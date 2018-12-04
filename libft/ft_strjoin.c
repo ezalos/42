@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 12:44:53 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:19:13 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/04 13:48:35 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = -1;
 	while (++i < size2)
 		str[i + size1] = s2[i];
+	str[size1 + size2] = '\0';
 	return (str);
 }

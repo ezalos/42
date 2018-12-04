@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:10:47 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:21:31 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/04 10:27:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_memdel(void **ap)
 {
 	free(*ap);
-	ap = NULL;
+	*ap = NULL;
 }

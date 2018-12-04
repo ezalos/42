@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:29:00 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 13:57:42 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/04 11:50:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ static void	recur(int n, int fd)
 
 void		ft_putnbr_fd(int n, int fd)
 {
-	int	size;
+	int		neg;
 
-	size = ft_intlen(n);
-	if (n < 0)
+	neg = 1;
+	if (n >= 0)
+		neg = 0;
+	if (n == 0)
+		return (ft_putchar_fd('0', fd));
+	if (neg == 1)
 	{
+		if (n == -2147483648)
+			return (ft_putstr_fd("-2147483648", fd));
 		ft_putchar_fd('-', fd);
+		n = -n;
 	}
 	recur(n, fd);
 }

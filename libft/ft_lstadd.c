@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:23:04 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/21 15:59:44 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/04 17:28:09 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	ft_lstadd(t_list **alst, t_list *new)
 {
-	(*new).next = *alst;
+	new->next = *alst;
+	*alst = new;
 }
