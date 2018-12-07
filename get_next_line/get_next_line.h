@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/05 18:09:40 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/07 17:27:15 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <stdio.h>
 
 int		get_next_line(const int fd, char **line);
 
