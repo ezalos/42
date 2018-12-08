@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/07 17:27:15 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/09 00:22:34 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <stdio.h>
+
+typedef	struct		s_gnl
+{
+	char			*save;
+	int				fd;
+	size_t			line;
+	struct s_gnl	*next;
+}					t_gnl;
 
 int		get_next_line(const int fd, char **line);
 
