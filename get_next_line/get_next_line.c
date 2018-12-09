@@ -6,11 +6,12 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/09 00:24:28 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/09 15:36:49 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 int		last_line(char **line, t_list *gnl, int end)
 {
@@ -37,7 +38,7 @@ int		save_file(t_list *gnl, char *buf)
 
 	size_save = ft_strlen((char*)gnl->content);
 	old_line = (char*)gnl->content;
-	if (NULL == ((char*)gnl->content = (char*)ft_memalloc(sizeof(char) * (size_save + BUFF_SIZE + 1))))
+	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) * (size_save + BUFF_SIZE + 1))))
 		return (-2);
 	ft_strlcat(ft_strcpy((char*)gnl->content, old_line), buf, size_save + BUFF_SIZE + 1);
 	free(old_line);
@@ -70,20 +71,20 @@ int		get_line(t_list *gnl, char **line)
 int		get_next_line(const int fd, char **line)
 {
 	static	t_list	*gnl;
-	t_list			*tmp;
+	t_list			**tmp;
 
 	if (gnl->content_size == 0)
 	{
 		gnl = ft_lstnew(0, fd);
 		return (get_line(gnl, line));
 	}
-	tmp = gnl;
-	while (tmp->next != NULL)
+	(*tmp) = gnl;
+	while ((*tmp)->next != NULL)
 	{
-		if ((const int)tmp->content_size == fd)
-			return (get_line(tmp, line));
-		tmp = tmp->next;
+		if ((const int)(*tmp)->content_size == fd)
+			return (get_line((*tmp), line));
+		(*tmp) = (*tmp)->next;
 	}
-	ft_lstadd(&tmp, ft_lstnew(0, fd));
-	return (get_line(tmp->next, line));
+	ft_lstadd(tmp, ft_lstnew(0, fd));
+	return (get_line((*tmp)->next, line));
 }
