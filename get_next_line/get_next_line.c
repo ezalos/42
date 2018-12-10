@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 17:20:06 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 22:10:33 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int		send_line(char **line, t_list *gnl)
 	{
 		printf("\tlast_line\n");
 		*line = ft_strsub((char*)gnl->content, 0, ft_strlen((char*)gnl->content));
-		free(gnl);
 		return (0);
 	}
 	size_line = (int)(ft_strchr((char*)gnl->content, '\n') - (char*)gnl->content);
@@ -42,7 +41,7 @@ int		save_file(t_list *gnl, char *buf, int read)
 	size_t	i;
 	printf("\n\nsave_file\n");
 	write(1, "\tBUF : ", 7);
-	write(1, buf, 32);
+	write(1, buf, read);
 	printf("\n\tsave :%s\n", (char*)gnl->content);
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
@@ -82,13 +81,13 @@ int		get_line(t_list *gnl, char **line)
 
 	while (BUFF_SIZE == (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
 	{
-		printf("READ LOOOOOOOOOP : %d\n", v_read);
+		printf("---------------READ LOOP : %d\n", v_read);
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
 			return (0);
 		if (v_save >= 0)
 			return (send_line(line, gnl));
 	}
-	printf("LAAAAAAAAAAST READ : %d\n", v_read);
+	printf("---------------LAST READ : %d\n", v_read);
 	if (v_read > 0)
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
 			return (0);
@@ -97,40 +96,76 @@ int		get_line(t_list *gnl, char **line)
 	return (-1);
 }
 
-int		get_next_line(const int fd, char **line)//right now the struct is destroyed when finished and it breaks the linked list
+int		get_next_line(const int fd, char **line)
 {
 	static	t_list	*gnl;
 	t_list			**tmp;
+	int				r_val;
 
-	printf("\n******************\n\nget_next_line\n");
-	printf("\tOUR FILE DESCRIPTOR IS : %d OR %zu\n", fd, (size_t)fd);
+	printf("\n*********************************************\nget_next_line\n");
+	printf("\tOUR FILE DESCRIPTOR IS : %d\n", fd);
 	if (gnl == (t_list*)NULL)
 	{
-		printf("\t\t1st if\n");
+		printf("\t\tTHERE IS NO STRUCT EXISTING\n");
 		gnl = ft_lstnew(0, fd);
 		gnl->content_size = (size_t)fd;
 		gnl->next = NULL;
 		printf("\t\tfd = %zu\n", gnl->content_size);
-		return (get_line(gnl, line));
+		if (0 == (r_val = get_line(gnl, line)))
+		{
+			printf("DELETION OF THE 1st STRUCT THAT HAS JUST BEEN CREATED\n");
+			free(&((gnl)->content));
+			free(gnl);
+			gnl = NULL;
+		}
+		printf("QUIT0\n");
+		return (r_val);
 	}
 	printf("\tgnl != NULL\n");
 	tmp = &gnl;
-	printf("\tDoes the first struct is the good one ? (%zu)\n", (*tmp)->content_size);
+	printf("WE SEARCH %d\t|\t%zu WE HAVE\n", fd, (*tmp)->content_size);
 	if ((*tmp)->content_size == (size_t)fd)
 	{
 		printf("\t\tYES\n");
-		return (get_line((*tmp), line));
+		if (0 == (r_val = get_line((*tmp), line)))
+		{
+			gnl = (*tmp)->next;
+			printf("DELETE 1st STRUCT, %d\n", r_val);
+			free(&((*tmp)->content));
+			printf("Content done\n");
+			free(*tmp);
+			//ft_lstdelone(tmp, &ft_del);
+			printf("Done !\n");
+		}
+		printf("QUIT1\n");
+		return (r_val);
 	}
 	printf("\t\tno.\n");
 	while ((*tmp)->next != NULL)
 	{
 		printf("\t\tsearch of the right struct\n");
-		if ((*tmp)->content_size == (size_t)fd)
-			return (get_line((*tmp), line));
+		printf("WE SEARCH %d\t|\t%zu WE HAVE\n", fd, (*tmp)->next->content_size);
+		if ((*tmp)->next->content_size == (size_t)fd)
+		{
+		printf("\t\tFOUND!");
+			if (0 == (r_val = get_line((*tmp)->next, line)))
+			{
+				printf("DELETE STRUCT IN WHILE\n");
+				ft_lstcutone(tmp, &ft_del);
+			}
+			printf("QUIT2\n");
+			return (r_val);
+		}
 		(*tmp) = (*tmp)->next;
 	}
-	printf("\tWe are at the last link of the list\n");
-	ft_lstadd(tmp, ft_lstnew(0, fd));
-	(*tmp)->next->content_size = fd;
-	return (get_line((*tmp)->next, line));
+	printf("\tWe are at the last link of the list\n\tLet's create a new one !\n");
+	(*tmp)->next = ft_lstnew(0, fd);
+	(*tmp)->next->content_size = (size_t)fd;
+	if (0 == (r_val = get_line((*tmp)->next, line)))
+	{
+		printf("DELETE THE LAST STRUCT\n");
+		ft_lstdelone(&((*tmp)->next), &ft_del);
+	}
+	printf("QUIT3\n");
+	return (r_val);
 }

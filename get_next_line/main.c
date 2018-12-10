@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:04:12 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 17:12:36 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 22:02:06 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,34 @@ int		main(int ac, char **av)
 {
 	char	*my_line = NULL;
 	int		loop;
-	int		fd;
+	int		fd[10];
 	int		v_return;
+	int		turn;
 
-	if (ac != 2)
+	if (ac >= 9)
 		return (0);
-	loop = -1;
-	fd = open_file((const char *)av[1]);
-	while (1 == (v_return = get_next_line(fd, &my_line)) && ++loop < 10) //La valeur de retour peut être 1, 0 ou -1 selon qu’une ligne a été lue, que la lecture est terminée ou bien qu’une erreur est survenue respectivement.
+	loop = 0;
+	while (++loop < ac)
+		fd[loop - 1] = open_file((const char *)av[loop]);
+	loop = 0;
+	while (0 <= (v_return = get_next_line(fd[loop], &my_line)))
 	{
-		printf("INSIDE\tmy_line:%s\n\t\treturn value %d", my_line, v_return);
-		printf("\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||");
+		printf("%d line\t|\tr_val:%d\n%s\n\n\n", loop, v_return, my_line);
+		if (v_return == 0)
+			fd[loop] = 0;
+		loop++;
+		turn = 0;
+		while (fd[loop] == 0)
+		{
+			loop++;
+			if (loop >= ac - 2)
+			{
+				if (turn == 1)
+					return (0);
+				loop = 0;
+				turn = 1;
+			}
+		}
 	}
-	printf("\nEND\tmy_line:%s\n", my_line);
 	return (0);
 }

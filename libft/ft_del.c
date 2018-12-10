@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcutone.c                                     :+:      :+:    :+:   */
+/*   ft_del.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/07 01:53:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 20:06:10 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/12/10 19:43:23 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/10 19:43:45 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstcutone(t_list **alst, void (*del)(void *, size_t))
+void	ft_del(void *content, size_t size)
 {
-	t_list	*ptr;
-
-	ptr = (*alst)->next->next;
-	del((*alst)->next->content, (*alst)->next->content_size);
-	free((*alst)->next);
-	(*alst)->next = ptr;
+	(void)size;
+	free(content);
 }

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 17:40:36 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 20:03:47 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
+void				ft_lstcutone(t_list **alst, void (*del)(void *, size_t));
+void				ft_del(void *content, size_t size);
 
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
