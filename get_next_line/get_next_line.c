@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 22:16:25 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 22:29:04 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		send_line(char **line, t_list *gnl)
 	printf("\tsize_line = %d\n", size_line);
 	*line = ft_strsub((char*)gnl->content, 0, size_line);
 	ft_memmove((char*)gnl->content, (char*)gnl->content + size_line + 1, ft_strlen((char*)gnl->content));
-	printf("\tmy line :%s\n\tsav :%s\n", *line, (char*)gnl->content);
+	printf("\tmy line :%s|\n\tsav :%s|\n", *line, (char*)gnl->content);
 	return (1);
 }
 
@@ -43,7 +43,7 @@ int		save_file(t_list *gnl, char *buf, int read)
 	write(1, "\tBUF : ", 7);
 	write(1, buf, read);
 	printf("\n\tsave :%s\n", (char*)gnl->content);
-	if (read == 0)
+	if (read <= BUFF_SIZE)//for empty file (\c), not working yet
 		buf[read] = '\0';
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
@@ -67,7 +67,7 @@ int		save_file(t_list *gnl, char *buf, int read)
 	i = 0;
 	while (i < read && buf[i] != '\n')
 		i++;
-	printf("\tsave :%s\n", (char*)gnl->content);
+	printf("\tsave :%s|\n", (char*)gnl->content);
 	if (buf[i] == '\n')
 		return (i);
 	return (-1);
@@ -120,7 +120,7 @@ int		get_next_line(const int fd, char **line)
 			free(gnl);
 			gnl = NULL;
 		}
-		printf("QUIT0\n");
+		printf("QUIT0%d\n",r_val);
 		return (r_val);
 	}
 	printf("\tgnl != NULL\n");
@@ -139,7 +139,7 @@ int		get_next_line(const int fd, char **line)
 			//ft_lstdelone(tmp, &ft_del);
 			printf("Done !\n");
 		}
-		printf("QUIT1\n");
+		printf("QUIT1%d\n",r_val);
 		return (r_val);
 	}
 	printf("\t\tno.\n");
@@ -155,7 +155,7 @@ int		get_next_line(const int fd, char **line)
 				printf("DELETE STRUCT IN WHILE\n");
 				ft_lstcutone(tmp, &ft_del);
 			}
-			printf("QUIT2\n");
+			printf("QUIT2%d\n",r_val);
 			return (r_val);
 		}
 		(*tmp) = (*tmp)->next;
@@ -168,6 +168,6 @@ int		get_next_line(const int fd, char **line)
 		printf("DELETE THE LAST STRUCT\n");
 		ft_lstdelone(&((*tmp)->next), &ft_del);
 	}
-	printf("QUIT3\n");
+	printf("QUIT3%d\n",r_val);
 	return (r_val);
 }

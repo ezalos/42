@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:04:12 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 22:02:06 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 22:19:14 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ int		main(int ac, char **av)
 		printf("%d line\t|\tr_val:%d\n%s\n\n\n", loop, v_return, my_line);
 		if (v_return == 0)
 			fd[loop] = 0;
-		loop++;
 		turn = 0;
-		while (fd[loop] == 0)
+		while (fd[++loop] == 0)
 		{
-			loop++;
 			if (loop >= ac - 2)
 			{
 				if (turn == 1)
