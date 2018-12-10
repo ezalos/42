@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 22:10:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 22:16:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ int		save_file(t_list *gnl, char *buf, int read)
 	write(1, "\tBUF : ", 7);
 	write(1, buf, read);
 	printf("\n\tsave :%s\n", (char*)gnl->content);
+	if (read == 0)
+		buf[read] = '\0';
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
 	else
 		size_save = 0;
 	printf("\tft_strlen done & is equal to %d\n", size_save);
 	old_line = (char*)gnl->content;
-	printf("Malloc will be of size : %d (%d + %d)\n", size_save + read, size_save, read);
+	printf("Malloc will be of size : %d (%d + %d + 1)\n", size_save + read + 1, size_save, read);
 	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) * (size_save + read + 1))))
 	{
 		printf("memalloc didnt worked\n");
@@ -88,7 +90,7 @@ int		get_line(t_list *gnl, char **line)
 			return (send_line(line, gnl));
 	}
 	printf("---------------LAST READ : %d\n", v_read);
-	if (v_read > 0)
+	if (v_read >= 0)
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
 			return (0);
 	if (v_save >= 0)
