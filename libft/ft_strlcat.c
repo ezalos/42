@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 16:53:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/10 15:16:38 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t		ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	size_src;
 
 	size_dst = ft_strlen_n(size, (const char*)dst);
-	size_src = ft_strlen(src);
+	size_src = ft_strlen_n(size - size_dst, (const char*)src);
 	if (size - size_dst > 1)
 	{
 		ft_strncpy(dst + size_dst, src, size - size_dst);

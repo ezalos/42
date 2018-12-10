@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/12/04 17:39:58 by ldevelle         ###   ########.fr        #
+#    Updated: 2018/12/10 15:21:38 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -150,4 +150,10 @@ check1 :
 check2 :
 		yes n | bash /Users/ldevelle/42/Libftest/grademe.sh
 
-.PHONY : clean fclean re all count update bhead ahead before after git check
+new :
+		rm -rf ../get_next_line/libft.a
+		rm -rf ../get_next_line/libft.h
+		cp libft.a ../get_next_line/libft.a
+		cp libft.h ../get_next_line/libft.h
+
+.PHONY : clean fclean re all count update bhead ahead before after git check new
