@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:44 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/09 15:49:12 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/12 10:56:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 32
+
+#define _RED     "\x1b[31m"
+#define _GREEN   "\x1b[32m"
+#define _YELLOW  "\x1b[33m"
+#define _BLUE    "\x1b[34m"
+#define _MAGENTA "\x1b[35m"
+#define _CYAN    "\x1b[36m"
+#define _RESET   "\x1b[0m"
 
 # include <stdlib.h>
 # include <unistd.h>
