@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   .get_next_line00.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/12 14:54:13 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/12 18:34:29 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int		send_line(char **line, t_list *gnl)
 			*line = ft_memalloc(1);
 		else
 			*line = ft_strsub((char*)gnl->content, 0, ft_strlen((char*)gnl->content));
-		//free(gnl->content);
+		ft_bzero(gnl->content, ft_strlen((char*)gnl->content));
 		printf(_GREEN "\tmy line :%s|\n\tsav :%s|\n" _RESET, *line, (char*)gnl->content);
-		return (0);
+		return (1);
 	}
 	size_line = (int)(ft_strchr((char*)gnl->content, '\n') - (char*)gnl->content);
 	printf(_GREEN "\tsize_line = %d\n" _RESET, size_line);
@@ -68,8 +68,8 @@ int		save_file(t_list *gnl, char *buf, int read)
 	write(1, "\tBUF : ", 7);
 	write(1, buf, read);
 	printf(_CYAN "\n\tsave :%s\n" _RESET, (char*)gnl->content);
-	if (read <= BUFF_SIZE)//for empty file (\c), not working yet
-		buf[read] = '\0';
+	//if (read <= BUFF_SIZE)//for empty file (\c), not working yet
+	//	buf[read] = '\0';
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
 	else
@@ -90,10 +90,10 @@ int		save_file(t_list *gnl, char *buf, int read)
 	printf(_CYAN "\tstrncat done\n" _RESET);
 	free(old_line);
 	i = 0;
-	while (i < read && buf[i] != '\n')
+	while (i < (size_t)read && buf[i] != '\n')
 		i++;
 	printf(_CYAN "\tsave :%s|\n" _RESET, (char*)gnl->content);
-	if (buf[i] == '\n')
+	if (buf[i] == '\n' || read != BUFF_SIZE)
 		return (i);
 	return (-1);
 }
@@ -125,6 +125,8 @@ int		get_line(t_list *gnl, char **line)
 		write(1, "\tBUF : ", 7);
 		write(1, buf, BUFF_SIZE);
 	}
+	if (v_read == 0 && 0 == ft_strlen(gnl->content))
+		return (0);
 	if (v_read > 0)
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
 			return (0);

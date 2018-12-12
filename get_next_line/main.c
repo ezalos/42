@@ -6,11 +6,12 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:04:12 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/12 12:08:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:56:45 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 int		open_file(const char *pathname)
 {
@@ -40,7 +41,9 @@ int		main(int ac, char **av)
 	{
 		fd[loop][1]++;
 		printf(_RED "%s->line %d\t|\tr_val:%d\n|-->%s|\n\n" _RESET, av[loop + 1], fd[loop][1], v_return, my_line);
+		printf("strcmp : %d\n", ft_strcmp(my_line, "1234567"));
 		printf("############################################################\n\n");
+		ft_bzero(my_line, ft_strlen(my_line));
 		if (v_return == 0)
 			fd[loop][0] = 0;
 		turn = 0;
