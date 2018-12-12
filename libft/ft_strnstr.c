@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:08 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 17:22:54 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 13:46:02 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *meul, const char *aig, size_t len)
 	if (len < ft_strlen(aig))
 		return (NULL);
 	walker = 0;
-	while (meul[ascent + walker] != '\0' && ascent + walker <= len)
+	while (ascent + walker < len && meul[ascent + walker] != '\0')
 	{
 		walker = 0;
 		while (aig[walker] == meul[ascent + walker] && ascent + walker <= len)

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 22:29:04 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 18:38:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ int		get_line(t_list *gnl, char **line)
 
 	printf("\n\nget_line\n");
 
+/*	if (NULL != gnl->content)
+		if (NULL != ft_strchr((char*)gnl->content, '\n')
+			return (send_line(line, gnl));*/
 	while (BUFF_SIZE == (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
 	{
 		printf("---------------READ LOOP : %d\n", v_read);

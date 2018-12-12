@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:36:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 20:04:51 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:08:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char		**ft_strsplit(char const *s, char c)
 	int		letter;
 	int		i;
 
+	if (s == NULL)
+		return (NULL);
 	i = -1;
 	word = count_words(s, c);
 	if (!(words = (char**)malloc(sizeof(char*) * (word + 1))))

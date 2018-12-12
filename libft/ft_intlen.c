@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:53:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 14:57:53 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:44:05 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int		ft_intlen(int n)
 {
 	int size;
 
+	if (n == 0)
+		return (1);
 	size = 0;
-	if (n <= 0)
+	if (n < 0)
 		size++;
 	while (n != 0)
 	{

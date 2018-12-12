@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:23:42 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/12 16:19:22 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:29:13 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	while (*s)
-		f(s++);
+	if (f != NULL)
+		if (s != NULL)
+			while (*s)
+				f(s++);
 }

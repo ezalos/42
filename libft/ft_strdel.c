@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:18:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 10:59:18 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:21:12 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_strdel(char **as)
 {
-	free(*as);
-	*as = NULL;
+	if (as != NULL)
+		if (*as != NULL)
+		{
+			free(*as);
+			*as = NULL;
+		}
 }

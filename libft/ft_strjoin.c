@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 12:44:53 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 13:48:35 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 14:07:57 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	char	*str;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	size1 = ft_strlen(s1);
 	size2 = ft_strlen(s2);
 	if (!(str = (char*)ft_strnew(size1 + size2)))

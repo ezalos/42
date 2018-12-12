@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:09:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 15:10:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/11 17:46:45 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char		*ft_itoa(int n)
 	if (n >= 0)
 		neg = 0;
 	size = ft_intlen(n);
-	if (!(nb = ft_strnew(size + 1)))
+	if (!(nb = ft_strnew(size)))
 		return (NULL);
 	if (neg == 1)
 	{
