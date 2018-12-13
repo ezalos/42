@@ -6,12 +6,12 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/13 18:47:53 by ldevelle         ###   ########.fr       */
+/*   Updated: 2018/12/13 19:15:31 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
+#include "./libft/libft.h"
 
 int		send_line(char **line, t_list *gnl)
 {
@@ -27,13 +27,16 @@ int		send_line(char **line, t_list *gnl)
 		if (!(*(char*)gnl->content))
 			*line = ft_memalloc(1);
 		else
-			*line = ft_strsub((char*)gnl->content, 0, ft_strlen((char*)gnl->content));
+			*line = ft_strsub((char*)gnl->content, 0,
+			ft_strlen((char*)gnl->content));
 		ft_bzero(gnl->content, ft_strlen((char*)gnl->content));
 		return (1);
 	}
-	size_line = (int)(ft_strchr((char*)gnl->content, '\n') - (char*)gnl->content);
+	size_line = (int)(ft_strchr((char*)gnl->content, '\n')
+	- (char*)gnl->content);
 	*line = ft_strsub((char*)gnl->content, 0, size_line);
-	ft_memmove((char*)gnl->content, (char*)gnl->content + size_line + 1, ft_strlen((char*)gnl->content));
+	ft_memmove((char*)gnl->content, (char*)gnl->content + size_line + 1,
+	ft_strlen((char*)gnl->content));
 	return (1);
 }
 
@@ -48,10 +51,9 @@ int		save_file(t_list *gnl, char *buf, int read)
 	else
 		size_save = 0;
 	old_line = (char*)gnl->content;
-	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) * (size_save + read + 1))))
-	{
+	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) *
+	(size_save + read + 1))))
 		return (-2);
-	}
 	if (size_save != 0)
 		ft_strncpy((char*)gnl->content, old_line, size_save);
 	ft_strncat((char*)gnl->content, buf, read);
@@ -70,7 +72,6 @@ int		get_line(t_list *gnl, char **line)
 	int				v_read;
 	int				v_save;
 
-//	printf("test\n");
 	while (BUFF_SIZE == (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
 	{
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
@@ -101,23 +102,18 @@ int		get_next_line(const int fd, char **line)
 	{
 		gnl = ft_lstnew(0, fd);
 		gnl->content_size = (size_t)fd;
-//																				printf(_YELLOW "CREATE 1st list\n\t\tSTRUCT \n\t\t{\n\t\t\tcontent:\t|%s|\n\t\t\tcontent_size:\t%zu\n\t\t\tnext:\t\t%p\n\t\t}\n\n" _RESET, gnl->content, gnl->content_size, (void*)gnl->next);
 		return (get_line(gnl, line));
 	}
 	tmp = gnl;
-//																				printf(_YELLOW "Check 1st list\n\t\tSTRUCT \n\t\t{\n\t\t\tcontent:\t|%s|\n\t\t\tcontent_size:\t%zu\n\t\t\tnext:\t\t%p\n\t\t}\n\n" _RESET, tmp->content, tmp->content_size, (void*)tmp->next);
 	if (tmp->content_size == (size_t)fd)
 		return (get_line(tmp, line));
 	while (tmp->next != NULL)
 	{
-//																				printf(_YELLOW "Check while\n\t\tSTRUCT \n\t\t{\n\t\t\tcontent:\t|%s|\n\t\t\tcontent_size:\t%zu\n\t\t\tnext:\t\t%p\n\t\t}\n\n" _RESET, tmp->next->content, tmp->next->content_size, (void*)tmp->next->next);
 		if (tmp->next->content_size == (size_t)fd)
 			return (get_line(tmp->next, line));
 		tmp = tmp->next;
 	}
-
 	tmp->next = ft_lstnew(0, fd);
 	tmp->next->content_size = (size_t)fd;
-//																				printf(_YELLOW "Create list at the end\n\t\tSTRUCT \n\t\t{\n\t\t\tcontent:\t|%s|\n\t\t\tcontent_size:\t%zu\n\t\t\tnext:\t\t%p\n\t\t}\n\n" _RESET, tmp->next->content, tmp->next->content_size, (void*)tmp->next->next);
 	return (get_line(tmp->next, line));
 }
