@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 13:39:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 22:07:34 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:22:34 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_char_srch(char src, char *dlt)
 {

@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:57:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 21:43:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:45:46 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_isupper(int c)
 {

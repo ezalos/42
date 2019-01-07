@@ -1,16 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_puttab_nb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:13:30 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/07 15:45:32 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 15:03:37 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 15:56:11 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+#include "libft.h"
+
+void	ft_puttab_nb(int length, int separation)
 {
-	return (c >= '0' && c <= '9');
+	int n;
+	int tab;
+	char space;
+
+	n = 4;
+	tab = 0;
+	space = ' ';
+	while (tab + length < separation * n)
+	{
+		write(1, &space, 1);
+		tab++;
+	}
 }

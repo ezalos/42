@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:53 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/13 17:28:51 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:47:59 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 char	*ft_strcpy(char *dest, const char *src)
 {

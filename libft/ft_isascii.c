@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 21:44:43 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:45:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_isascii(int c)
 {

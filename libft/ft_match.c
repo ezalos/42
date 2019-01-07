@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_match.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:13:30 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/07 15:45:32 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 15:28:34 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 15:55:07 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int		ft_match(char *s1, char *s2)
 {
-	return (c >= '0' && c <= '9');
+	if (*s1 == '\0' && *s2 == '\0')
+		return (1);
+	if (*s1 == '\0' && *s2 == '*')
+		return (ft_match(s1, s2 + 1));
+	if (*s1 == *s2 && *s1 == '*')
+		return (ft_match(s1 + 1, s2));
+	if (*s1 == *s2)
+		return (ft_match(s1 + 1, s2 + 1));
+	if (*s2 == '*' && *s1 != *s2)
+		return (ft_match(s1 + 1, s2) || ft_match(s1, s2 + 1));
+	return (0);
 }

@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:56:49 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 14:41:01 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:45:37 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_islower(int c)
 {

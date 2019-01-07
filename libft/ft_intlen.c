@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 14:53:18 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/11 17:44:05 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:21:13 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_intlen(int n)
 {

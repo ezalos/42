@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:11:59 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/22 19:51:48 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:47:35 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_strcmp(const char *s1, const char *s2)
 {

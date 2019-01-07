@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2018/12/10 20:05:41 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/07 15:53:03 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ HEAD = ./includes/
 FT_H = libft.h
 
 A_SRC_P	=	$(SRC_PATH1), $(SRC_PATH2), $(SRC_PATH3),\
- 			$(SRC_PATH4), $(SRC_PATH5), $(SRC_PATH6)
+ 			$(SRC_PATH4), $(SRC_PATH5), $(SRC_PATH6), $(SRC_PATH7)
+
 SRC_PATH = srcs/
 SRC_PATH1 = srcs/file/
 SRC_PATH2 = srcs/int/
@@ -40,28 +41,31 @@ SRC_PATH3 = srcs/list/
 SRC_PATH4 = srcs/malloc/
 SRC_PATH5 = srcs/str/
 SRC_PATH6 = srcs/write/
+SRC_PATH7 = srcs/mine/
 
-SRCS =	$(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4) $(SRCS5) $(SRCS6)
+SRCS =	$(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4) $(SRCS5) $(SRCS6) $(SRCS7)
 
 SRCS1 = putchar_fd putendl_fd putnbr_fd putstr_fd
-SRCS2 = atoi intlen itoa
-SRCS3 =	lstadd lstdel lstdelone lstiter lstmap lstnew lstcutone find_lsth del\
-		count_lst
+SRCS2 = atoi itoa
+SRCS3 =	lstadd lstdel lstdelone lstiter lstmap lstnew
 SRCS4 = memalloc memccpy memchr memcmp memcpy memdel memmove memset\
-		strdel strdup strnew strsplit strsplitstr
-SRCS5 = bzero char_srch isalnum isalpha isascii isdigit islower\
+		strdel strdup strnew strsplit
+SRCS5 = bzero isalnum isalpha isascii isdigit islower\
 		isprint isupper strcat strchr strclr strcmp strcpy strequ\
 		striter striteri strjoin strlcat strlen strmap strmapi strncat\
 		strncmp strncpy strnequ strnstr strrchr strstr strsub strtrim tolower\
 		toupper
 SRCS6 = putchar putendl putnbr putstr
+SRCS7 = char_srch count_lst del factorial fibonacci find_lsth fsqrt intlen\
+		lstcutone nprime power puttab_nb round_upper round nmatch match
 
 A_SRC =	$(addsuffix .c, $(addprefix $(SRC_PATH1)ft_, $(SRCS1))\
 						$(addprefix $(SRC_PATH2)ft_, $(SRCS2))\
 						$(addprefix $(SRC_PATH3)ft_, $(SRCS3))\
 						$(addprefix $(SRC_PATH4)ft_, $(SRCS4))\
 						$(addprefix $(SRC_PATH5)ft_, $(SRCS5))\
-						$(addprefix $(SRC_PATH6)ft_, $(SRCS6)))
+						$(addprefix $(SRC_PATH6)ft_, $(SRCS6))\
+						$(addprefix $(SRC_PATH7)ft_, $(SRCS7)))
 
 OBJS = $(patsubst %,ft_%.o,$(SRCS))
 

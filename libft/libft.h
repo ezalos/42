@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/10 20:03:47 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:56:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 
 int					ft_atoi(char *str);
-int					ft_intlen(int n);
 char				*ft_itoa(int n);
 
 void				ft_lstadd(t_list **alst, t_list *new);
@@ -39,8 +38,6 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
-void				ft_lstcutone(t_list **alst, void (*del)(void *, size_t));
-void				ft_del(void *content, size_t size);
 
 void				*ft_memalloc(size_t size);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
@@ -57,7 +54,6 @@ char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplitstr(char const *s, char *split);
 
 void				ft_bzero(void *s, size_t n);
-int					ft_char_srch(char src, char *dlt);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -94,5 +90,23 @@ void				ft_putchar(char c);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putstr(char const *s);
+
+int					ft_char_srch(char src, char *dlt);
+size_t				ft_count_lst(t_list *lst, size_t i);
+void				ft_del(void *content, size_t size);
+int					ft_factorial(int nb);
+int					ft_fibonacci(int index);
+t_list				*ft_find_lsth(t_list *lst, size_t umpteenth);
+float				ft_fsqrt(int nb, int limite);
+int					ft_intlen(int n);
+void				ft_lstcutone(t_list **alst, void (*del)(void *, size_t));
+int					ft_match(char *s1, char *s2);
+int					ft_nb_char_to_int(char	c);
+int					ft_nmatch(char *s1, char *s2);
+int					*ft_nprime(int limite);
+int					ft_power(int nb, int power);
+void				ft_puttab_nb(int length, int separation);
+int					ft_round_upper(float i);
+int					ft_round(float i);
 
 #endif

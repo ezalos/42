@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/12 17:13:30 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/07 15:45:32 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 14:30:59 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 14:31:01 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int		ft_factorial(int nb)
 {
-	return (c >= '0' && c <= '9');
+	int i;
+	int n;
+
+	i = 1;
+	n = 1;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+		return (0);
+	if (nb > 12)
+		return (0);
+	while (nb >= i)
+	{
+		n = n * i;
+		i++;
+	}
+	return (n);
 }

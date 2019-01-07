@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:24 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/11/16 21:45:19 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/07 15:45:41 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_isprint(int c)
 {
