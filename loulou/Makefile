@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/11 15:56:58 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/11 15:59:54 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ OBJ_PATH = $(SRCS:srcs/=objs/)
 
 NONL = | tr -d '\n' | tr -d '\t' | tr -d ' '
 
-IFORDER = $(shell ls | grep main.c)
+IFORDER = $(shell ls | grep ft_putchar.c)
 IFPUSH = $(shell ls | grep includes)
 
 all :	$(NAME)
@@ -116,7 +116,7 @@ update :
 		sed 's/$$/;/' >> $(HEAD)$(FT_H)
 order :
 ifeq ($(IFORDER), )
-	@echo “Non present”
+	@echo “Already in order mode”
 else
 	@sed -i '' "s~libft.h~../../includes/libft.h~g" $(patsubst %,ft_%.c,$(SRCS))
 	@mkdir	$(SRC_PATH) $(SRC_PATH1) $(SRC_PATH2) $(SRC_PATH3)\
@@ -129,15 +129,17 @@ else
 	@mv -f $(patsubst %, ft_%.c, $(SRCS5)) $(SRC_PATH5)
 	@mv -f $(patsubst %, ft_%.c, $(SRCS6)) $(SRC_PATH6)
 	@mv -f $(patsubst %, ft_%.c, $(SRCS7)) $(SRC_PATH7)
+	@echo “Now in order mode”
 endif
 
 push :
 ifeq ($(IFPUSH), )
-	@echo “Non present”
+	@echo “Already in push mode”
 else
 		@sed -i '' "s~../../includes/libft.h~libft.h~g" $(A_SRC)
 		@mv -f $(A_SRC) $(HEAD)$(FT_H) ./
 		@rm -rf $(SRC_PATH) ./objs/ $(HEAD)
+		@echo “Now in push mode”
 endif
 
 git :
