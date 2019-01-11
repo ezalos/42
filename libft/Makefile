@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/11 20:11:21 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/11 20:30:12 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,10 +49,10 @@ SRCS1 = putchar_fd putendl_fd putnbr_fd putstr_fd
 SRCS2 = atoi itoa
 SRCS3 =	lstadd lstdel lstdelone lstiter lstmap lstnew
 SRCS4 = memalloc memccpy memchr memcmp memcpy memdel memmove memset\
-		strdel strdup strnew strsplit
+		strdel strdup strnew strsplit strjoin
 SRCS5 = bzero isalnum isalpha isascii isdigit islower\
 		isprint isupper strcat strchr strclr strcmp strcpy strequ\
-		striter striteri strjoin strlcat strlen strmap strmapi strncat\
+		striter striteri strlcat strlen strmap strmapi strncat\
 		strncmp strncpy strnequ strnstr strrchr strstr strsub strtrim tolower\
 		toupper
 SRCS6 = putchar putendl putnbr putstr

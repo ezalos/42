@@ -6,11 +6,9 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 17:13:53 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/11 19:35:41 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/11 20:42:28 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int		ft_atoi(const char *src)
 {

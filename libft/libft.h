@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/11 14:34:44 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/11 20:30:28 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *str, int c, size_t n);
 void				ft_strdel(char **as);
 char				*ft_strdup(const char *src);
+char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strnew(size_t size);
 char				**ft_strsplit(char const *s, char c);
 
@@ -67,7 +68,6 @@ char				*ft_strcpy(char *dest, const char *src);
 int					ft_strequ(char const *s1, char const *s2);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlen(const char *s);
 char				*ft_strmap(char const *s, char (*f)(char));
