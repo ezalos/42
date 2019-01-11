@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/11 20:30:12 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/11 21:31:39 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -174,4 +174,4 @@ check1 :
 check2 :
 		yes n | bash /Users/ldevelle/42/Libftest/grademe.sh
 
-.PHONY : clean fclean re all d order push git check1 check2
+.PHONY : clean fclean re all a aclean afclean are f d order push git check1 check2
