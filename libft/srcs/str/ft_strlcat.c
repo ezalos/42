@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_lsth.c                                     :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:37:06 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:43:55 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:44 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 10:48:18 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-t_list	*ft_find_lsth(t_list *lst, size_t umpteenth)
+static int	ft_strlen_n(size_t size, const char *str)
 {
-	t_list	*tmp;
 	size_t	i;
 
-	tmp = lst->next;
-	if (umpteenth == 0)
-	{
-		while (tmp->next)
-			tmp = tmp->next;
-		return (tmp);
-	}
 	i = 0;
-	while (i <= umpteenth)
+	while (i <= size)
+		if (str[i++] == '\0')
+			return (i - 1);
+	return (size);
+}
+
+size_t		ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	size_dst;
+	size_t	size_src;
+
+	size_dst = ft_strlen_n(size, (const char*)dst);
+	size_src = ft_strlen((const char*)src);
+	if (size - size_dst > 1)
 	{
-		if (!tmp->next)
-			return (NULL);
-		tmp = tmp->next;
-		i++;
+		ft_strncpy(dst + size_dst, src, size - size_dst);
+		dst[size - 1] = '\0';
 	}
-	return (tmp);
+	return (size_src + size_dst);
 }

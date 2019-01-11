@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:48 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/09 13:29:15 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strdup(const char *src)
 {
-	t_list	*tmp;
+	char	*dest;
+	int		i;
+	int		size;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	size = ft_strlen(src);
+	if (!(dest = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	dest[size] = '\0';
+	i = -1;
+	while (++i < size)
+		dest[i] = src[i];
+	return (dest);
 }

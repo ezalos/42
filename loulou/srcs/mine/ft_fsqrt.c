@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_fsqrt.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 15:14:46 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 15:15:02 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-
-size_t	ft_count_lst(t_list *lst, size_t i)
+float	ft_fsqrt(int nb, int limite)
 {
-	t_list	*tmp;
+	float	x;
+	float	n;
+	int		i;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	n = (float)nb;
+	if (nb <= 0)
+		return (0);
+	i = 0;
+	x = n / 2;
+	if (limite == 0)
+		limite = 30;
+	while (--limite)
+		x = (x + (n / x)) / 2;
+	return (x);
 }

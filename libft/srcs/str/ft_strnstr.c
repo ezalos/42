@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:08 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 13:46:02 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strnstr(const char *meul, const char *aig, size_t len)
 {
-	t_list	*tmp;
+	int		walker;
+	size_t	ascent;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	ascent = 0;
+	if (*aig == '\0')
+		return ((char*)meul);
+	if (len < ft_strlen(aig))
+		return (NULL);
+	walker = 0;
+	while (ascent + walker < len && meul[ascent + walker] != '\0')
 	{
-		i++;
-		tmp = tmp->next;
+		walker = 0;
+		while (aig[walker] == meul[ascent + walker] && ascent + walker <= len)
+			if (aig[++walker] == '\0')
+				return ((char*)meul + ascent);
+		ascent++;
 	}
-	return (i);
+	return (NULL);
 }

@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:13:53 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 18:04:21 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_atoi(char *str)
 {
-	t_list	*tmp;
+	long long	nb;
+	int			num;
+	int			neg;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	neg = 1;
+	num = 0;
+	nb = 0;
+	if (str == NULL || *str == '\0')
+		return (0);
+	while (ft_char_srch(*str, "\t\n\r\v\f \0"))
+		str++;
+	if (*str == '-')
 	{
-		i++;
-		tmp = tmp->next;
+		neg = -neg;
+		str++;
 	}
-	return (i);
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+		nb = (nb * 10) + (*(str++) - '0');
+	nb *= neg;
+	num = (int)nb;
+	return (num);
 }

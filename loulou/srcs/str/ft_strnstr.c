@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:08 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/09 13:48:16 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	t_list	*tmp;
+	size_t	i;
+	size_t	j;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	i = 0;
+	if (!*needle)
+		return ((char*)haystack);
+	while (len > 0 && *haystack)
 	{
-		i++;
-		tmp = tmp->next;
+		j = 0;
+		while (haystack[j] == needle[j] && haystack[j] && needle[j] && j < len)
+			j++;
+		if (!needle[j])
+			return ((char*)haystack);
+		len--;
+		haystack++;
 	}
-	return (i);
+	return (NULL);
 }

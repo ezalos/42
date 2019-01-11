@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:23:39 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/04 17:35:06 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	t_list	*tmp;
+	t_list	*ptr;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	ptr = lst;
+	while (ptr->next != NULL)
 	{
-		i++;
-		tmp = tmp->next;
+		f(ptr);
+		ptr = ptr->next;
 	}
-	return (i);
+	f(ptr);
 }

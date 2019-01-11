@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_factorial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 14:30:59 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 14:31:01 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_factorial(int nb)
 {
-	t_list	*tmp;
+	int i;
+	int n;
 
-	if (!lst->next)
+	i = 1;
+	n = 1;
+	if (nb == 0)
 		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (nb < 0)
+		return (0);
+	if (nb > 12)
+		return (0);
+	while (nb >= i)
 	{
+		n = n * i;
 		i++;
-		tmp = tmp->next;
 	}
-	return (i);
+	return (n);
 }

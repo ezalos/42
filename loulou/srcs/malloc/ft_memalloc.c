@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 11:06:53 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/10 14:52:22 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+void	*ft_memalloc(size_t size)
 {
-	t_list	*tmp;
+	char	*exact;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if ((size < 1) || !(exact = malloc(size)))
+		return (NULL);
+	while (size > 0)
+		exact[size--] = 0;
+	exact[0] = 0;
+	return (exact);
 }

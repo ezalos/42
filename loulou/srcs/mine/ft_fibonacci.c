@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 14:31:34 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 14:31:39 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_fibonacci(int index)
 {
-	t_list	*tmp;
-
-	if (!lst->next)
+	if (index < 0)
+		return (-1);
+	if (index == 0)
+		return (0);
+	if (index == 1)
 		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:13:53 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/11 14:26:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_atoi(const char *src)
 {
-	t_list	*tmp;
+	int		i;
+	int		sign;
+	int		res;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (((src[i] >= 8 && src[i] <= 13) || src[i] == ' ') && src[i])
 		i++;
-		tmp = tmp->next;
+	if (src[i] == '-' || src[i] == '+')
+	{
+		if (src[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (i);
+	while (src[i] >= '0' && src[i] <= '9')
+		res = res * 10 + src[i++] - 48;
+	return (res * sign);
 }

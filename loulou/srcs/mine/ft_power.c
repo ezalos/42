@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 14:30:26 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/07 14:30:29 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_power(int nb, int power)
 {
-	t_list	*tmp;
+	int x;
 
-	if (!lst->next)
+	x = 1;
+	if (power == 0)
 		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (power < 0)
+		return (0);
+	while (power > 0)
 	{
-		i++;
-		tmp = tmp->next;
+		x = x * nb;
+		power--;
 	}
-	return (i);
+	return (x);
 }

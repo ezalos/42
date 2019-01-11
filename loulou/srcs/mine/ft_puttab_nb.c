@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_puttab_nb.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/07 15:03:37 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/09 13:47:05 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+void	ft_puttab_nb(int length, int separation)
 {
-	t_list	*tmp;
+	int		n;
+	int		tab;
+	char	space;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	n = 4;
+	tab = 0;
+	space = ' ';
+	while (tab + length < separation * n)
 	{
-		i++;
-		tmp = tmp->next;
+		write(1, &space, 1);
+		tab++;
 	}
-	return (i);
 }

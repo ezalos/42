@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 11:28:56 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 14:05:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	t_list	*tmp;
+	int		size;
+	char	*str;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if (s == NULL)
+		return (NULL);
+	size = ft_strlen(s);
+	if (size < 1 || !(str = (char*)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	str[size] = 0;
+	while (--size >= 0)
+		str[size] = f(s[size]);
+	return (str);
 }

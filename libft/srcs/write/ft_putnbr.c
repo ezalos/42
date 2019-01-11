@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 14:48:33 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/14 15:11:00 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+static void	recur(int n)
 {
-	t_list	*tmp;
-
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (n != 0)
 	{
-		i++;
-		tmp = tmp->next;
+		recur(n / 10);
+		ft_putchar((n % 10) + '0');
 	}
-	return (i);
+}
+
+void		ft_putnbr(int n)
+{
+	int		neg;
+
+	neg = 1;
+	if (n >= 0)
+		neg = 0;
+	if (n == 0)
+		return (ft_putchar('0'));
+	if (neg == 1)
+	{
+		if (n == -2147483648)
+			return (ft_putstr("-2147483648"));
+		ft_putchar('-');
+		n = -n;
+	}
+	recur(n);
 }
