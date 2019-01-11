@@ -6,17 +6,17 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 15:03:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/07 15:56:11 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/09 13:47:05 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "libft.h"
 
 void	ft_puttab_nb(int length, int separation)
 {
-	int n;
-	int tab;
-	char space;
+	int		n;
+	int		tab;
+	char	space;
 
 	n = 4;
 	tab = 0;

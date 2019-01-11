@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 11:42:07 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 14:12:08 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	t_list	*tmp;
-
-	if (!lst->next)
+	if (s1 == NULL && s2 == NULL)
 		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	while (*s1 == *s2)
 	{
-		i++;
-		tmp = tmp->next;
+		if (*s1 == *s2 && *s1 == '\0')
+			return (1);
+		s1++;
+		s2++;
 	}
-	return (i);
+	return (0);
 }

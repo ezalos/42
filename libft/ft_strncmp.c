@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:11:27 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/22 19:51:12 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	*tmp;
-
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if (n == 0)
+		return (0);
+	if (*s1 != *s2)
+		return ((unsigned char)*s1 - (unsigned char)*s2);
+	while (*(s1++) == *(s2++) && --n)
+		if (*(s1 - 1) == '\0' || *(s2 - 1) == '\0')
+			return (0);
+	return ((unsigned char)*(s1 - 1) - (unsigned char)*(s2 - 1));
 }

@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 17:10:54 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/11/20 19:35:13 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strstr(const char *meule_de_foin, const char *aiguille)
 {
-	t_list	*tmp;
+	int		walker;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (*aiguille == '\0')
+		return ((char*)meule_de_foin);
+	if (ft_strlen(meule_de_foin) < ft_strlen(aiguille))
+		return (NULL);
+	walker = 0;
+	while (meule_de_foin[walker] != '\0')
 	{
-		i++;
-		tmp = tmp->next;
+		while (aiguille[walker] == meule_de_foin[walker])
+			if (aiguille[++walker] == '\0')
+				return ((char*)meule_de_foin);
+		meule_de_foin++;
+		walker = 0;
 	}
-	return (i);
+	return (NULL);
 }

@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_pstrnstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/01/11 14:30:50 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/01/11 14:32:05 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_pstrnstr(const char *m, const char *a, size_t len)
 {
-	t_list	*tmp;
+	int		walker;
+	size_t	ascent;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	ascent = 0;
+	if (*a == '\0')
+		return ((char*)m);
+	if (len < ft_strlen(a))
+		return (NULL);
+	walker = 0;
+	while (ascent + walker < len && m[ascent + walker] != '\0')
 	{
-		i++;
-		tmp = tmp->next;
+		walker = 0;
+		while (a[walker] == m[ascent + walker] && ascent + walker <= len)
+			if (a[++walker] == '\0')
+				return ((char*)m + ascent);
+		ascent++;
 	}
-	return (i);
+	return (NULL);
 }

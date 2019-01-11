@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 11:49:47 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 14:13:06 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	t_list	*tmp;
+	size_t	i;
 
-	if (!lst->next)
+	if (s1 == NULL && s2 == NULL)
 		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	if (n == 0)
+		return (1);
+	i = 0;
+	while (s1[i] == s2[i] && i < n)
 	{
+		if (s1[i] == s2[i] && s1[i] == '\0')
+			return (1);
 		i++;
-		tmp = tmp->next;
 	}
-	return (i);
+	if (i == n && s1[i - 1] == s2[i - 1])
+		return (1);
+	return (0);
 }

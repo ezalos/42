@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_lst.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/04 14:44:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/04 14:55:56 by ldevelle         ###   ########.fr       */
+/*   Created: 2018/11/12 12:44:53 by ldevelle          #+#    #+#             */
+/*   Updated: 2018/12/11 14:07:57 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count_lst(t_list *lst, size_t i)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list	*tmp;
+	int		size1;
+	int		size2;
+	int		i;
+	char	*str;
 
-	if (!lst->next)
-		return (1);
-	tmp = lst->next;
-	i = 2;
-	while (tmp->next)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	return (i);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	size1 = ft_strlen(s1);
+	size2 = ft_strlen(s2);
+	if (!(str = (char*)ft_strnew(size1 + size2)))
+		return (NULL);
+	i = -1;
+	while (++i < size1)
+		str[i] = s1[i];
+	i = -1;
+	while (++i < size2)
+		str[i + size1] = s2[i];
+	str[size1 + size2] = '\0';
+	return (str);
 }
