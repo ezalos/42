@@ -6,12 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/13 19:15:31 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/12 03:53:13 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "./libft/libft.h"
+#include <stdio.h>
 
 int		send_line(char **line, t_list *gnl)
 {
@@ -44,25 +45,30 @@ int		save_file(t_list *gnl, char *buf, int read)
 {
 	char	*old_line;
 	int		size_save;
-	size_t	i;
+	int		i;
 
+	old_line = NULL;
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
 	else
 		size_save = 0;
-	old_line = (char*)gnl->content;
+	old_line = (char*)(gnl->content);
 	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) *
 	(size_save + read + 1))))
 		return (-2);
 	if (size_save != 0)
-		ft_strncpy((char*)gnl->content, old_line, size_save);
-	ft_strncat((char*)gnl->content, buf, read);
-	free(old_line);
-	i = 0;
-	while (i < (size_t)read && buf[i] != '\n')
-		i++;
-	if (buf[i] == '\n' || read != BUFF_SIZE)
-		return (i);
+		ft_strncpy((char*)gnl->content, old_line, (size_t)size_save);
+	ft_strncat((char*)gnl->content, buf, (size_t)read);
+	//printf("old|%s|\nnew|%s|\n---\n", old_line, (char*)gnl->content);
+	//free(old_line);
+	//old_line = NULL;
+	//printf("FREE\nold|%s|\nnew|%s|\n~~~\n\n", old_line, (char*)gnl->content);
+	if (read != BUFF_SIZE)
+		return (1);
+	i = -1;
+	while (i <= (read + size_save))
+		if (((char*)gnl->content)[++i] == '\n')
+			return (i);
 	return (-1);
 }
 
@@ -72,7 +78,7 @@ int		get_line(t_list *gnl, char **line)
 	int				v_read;
 	int				v_save;
 
-	while (BUFF_SIZE == (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
+	while (0 < (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
 	{
 		if (-1 > (v_save = save_file(gnl, buf, v_read)))
 			return (0);
@@ -81,14 +87,9 @@ int		get_line(t_list *gnl, char **line)
 	}
 	if (v_read == -1)
 		return (-1);
-	if (v_read == 0 && !(gnl->content))
+	if (!(gnl->content) || 0 == ft_strlen(gnl->content))
 		return (0);
-	if (v_read == 0 && 0 == ft_strlen(gnl->content))
-		return (0);
-	if (v_read > 0)
-		if (-1 > (v_save = save_file(gnl, buf, v_read)))
-			return (0);
-	if (v_save >= 0 || v_read == 0)
+	if (v_read == 0)
 		return (send_line(line, gnl));
 	return (-1);
 }
@@ -98,6 +99,8 @@ int		get_next_line(const int fd, char **line)
 	static	t_list	*gnl;
 	t_list			*tmp;
 
+	if (BUFF_SIZE < 1)
+		return (-1);
 	if (gnl == (t_list*)NULL)
 	{
 		gnl = ft_lstnew(0, fd);
