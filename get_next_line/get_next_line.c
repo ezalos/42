@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/12 03:53:13 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/12 17:49:21 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,25 @@ int		save_file(t_list *gnl, char *buf, int read)
 	int		size_save;
 	int		i;
 
-	old_line = NULL;
 	if (gnl->content != NULL)
 		size_save = ft_strlen((char*)gnl->content);
 	else
 		size_save = 0;
-	old_line = (char*)(gnl->content);
-	if (NULL == (gnl->content = (char*)ft_memalloc(sizeof(char) *
+//	old_line = NULL;
+//	old_line = (char*)(gnl->content);
+	if (NULL == (old_line = (char*)ft_memalloc(sizeof(char) *
 	(size_save + read + 1))))
 		return (-2);
 	if (size_save != 0)
-		ft_strncpy((char*)gnl->content, old_line, (size_t)size_save);
-	ft_strncat((char*)gnl->content, buf, (size_t)read);
-	//printf("old|%s|\nnew|%s|\n---\n", old_line, (char*)gnl->content);
-	//free(old_line);
+		ft_strncpy(old_line, (char*)gnl->content, (size_t)size_save);
+	ft_strncat(old_line, buf, (size_t)read);
+																				//printf(_CYAN "size_save: %d\t\t\t\t\t\tread: %d\n" _RESET, size_save, read);
+																				//printf(_GREEN "old|%s|\nnew|%s|\n" _RESET, old_line, (char*)gnl->content);
+	free(gnl->content);
+	gnl->content = ft_strsub(old_line, 0, size_save + read);
+	free(old_line);
 	//old_line = NULL;
-	//printf("FREE\nold|%s|\nnew|%s|\n~~~\n\n", old_line, (char*)gnl->content);
+																				//printf(_RED "\t\t\t\t\t\t\told|%s|\n\t\t\t\t\t\t\tnew|%s|\n\n" _RESET, old_line, (char*)gnl->content);
 	if (read != BUFF_SIZE)
 		return (1);
 	i = -1;
