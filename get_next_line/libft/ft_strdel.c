@@ -6,12 +6,12 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:18:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2018/12/11 14:21:12 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:27:18 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+#include <stdio.h>
 void	ft_strdel(char **as)
 {
 	if (as != NULL)

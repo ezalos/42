@@ -6,7 +6,7 @@
 /*   By: jrameau <jrameau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 05:26:42 by jrameau           #+#    #+#             */
-/*   Updated: 2019/01/12 03:35:08 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/14 15:38:53 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ int		main(int argc, char **argv)
 		fd = open(argv[1], O_RDONLY);
 	else
 		return (2);
+	line = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
 		printf(_RESET "%s\n", line);
-		free(line);
+		ft_strdel(&line);
 	}
 	if (argc == 2)
 		close(fd);
