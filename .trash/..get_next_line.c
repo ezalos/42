@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/05 17:03:34 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/14 18:27:30 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/15 14:26:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		send_line(char **line, t_list *gnl)
 			*line = ft_strsub((char*)gnl->content, 0,
 			ft_strlen((char*)gnl->content));
 		ft_bzero(gnl->content, ft_strlen((char*)gnl->content));
+		//printf("|%s|\n", *line);
 		return (1);
 	}
 	size_line = (int)(ft_strchr((char*)gnl->content, '\n')
@@ -39,6 +40,7 @@ int		send_line(char **line, t_list *gnl)
 	*line = ft_strsub((char*)gnl->content, 0, size_line);
 	ft_memmove((char*)gnl->content, (char*)gnl->content + size_line + 1,
 	ft_strlen((char*)gnl->content));
+	//printf("|%s|\n", *line);
 	return (1);
 }
 
@@ -130,6 +132,7 @@ char	*prt_strnjoin(char **s1, char **s2, int size1, int size2)
 
 int		save_file(t_list *gnl, char *buf, int read)
 {
+	char	*new;
 	int		size_save;
 	int		i;
 
@@ -137,28 +140,34 @@ int		save_file(t_list *gnl, char *buf, int read)
 		size_save = ft_strlen((char*)gnl->content);
 	else
 		size_save = 0;
-/*	if (size_save >= 14)
-	{
-		printf(_CYAN "\n\nsize_save: %d\t\t\t\t\t\tread: %d\n" _RESET, size_save, read);
-		gnl->content = prt_strnjoin((char**)&gnl->content, &buf, size_save, read);
-	}
-	else*/
-		gnl->content = strnjoin((char**)&gnl->content, &buf, size_save, read);
+	//if (size_save >= 14)
+	//{
+	//	printf(_CYAN "\n\nsize_save: %d\t\t\t\t\t\tread: %d\n" _RESET, size_save, read);
+	//	gnl->content = prt_strnjoin((char**)&gnl->content, &buf, size_save, read);
+	//}
+	//else
+	//	gnl->content = strnjoin((char**)&gnl->content, &buf, size_save, read);
+	buf[BUFF_SIZE] = '\0';
+	new = ft_strjoin(gnl->content, buf);
+	ft_strdel((char**)&gnl->content);
+	gnl->content = new;
+	ft_bzero(buf, BUFF_SIZE + 1);
 	if (read != BUFF_SIZE)
 		return (1);
 	i = -1;
-	while (i <= (read + size_save))
-		if (((char*)gnl->content)[++i] == '\n')
+	while (++i <= (read + size_save))
+		if (((char*)gnl->content)[i] == '\n')
 			return (i);
 	return (-1);
 }
 
 int		get_line(t_list *gnl, char **line)
 {
-	char			buf[BUFF_SIZE];
+	char			buf[BUFF_SIZE + 1];
 	int				v_read;
 	int				v_save;
 
+	ft_bzero(buf, BUFF_SIZE + 1);
 	while (0 < (v_read = read(gnl->content_size, buf, BUFF_SIZE)))
 	{
 		if (-2 == (v_save = save_file(gnl, buf, v_read)))

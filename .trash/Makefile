@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:32:15 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/14 17:21:02 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/15 14:23:02 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME=gnl
 
 CC=gcc
 
-CFLAGS=-Wall -Wextra -Werror -g
+CFLAGS=-Wall -Wextra -Werror
+
+DFLAGS=-Wall -Wextra -Werror -fsanitize=address,undefined -g3
 
 SRC = get_next_line.c
 
@@ -22,6 +24,7 @@ OBJ = get_next_line.o
 
 test = test/123.txt
 
+CFLAGS = $(DFLAGS)
 all:		$(NAME)
 
 $(NAME):	$(OBJ) get_next_line.h $(UPDATE)
@@ -45,4 +48,43 @@ update:
 		cd libft | make re
 
 t:	re
+	@./$(NAME) $(test)
+
+r:	re
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+	@make v
+
+v:
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
+	@./$(NAME) $(test)
 	@./$(NAME) $(test)
