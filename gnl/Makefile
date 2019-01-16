@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:32:15 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/15 14:23:02 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/16 20:32:55 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CFLAGS = $(DFLAGS)
 all:		$(NAME)
 
 $(NAME):	$(OBJ) get_next_line.h $(UPDATE)
-			@$(CC) $(CFLAGS) $(OBJ) main.c libft/libft.a -o $@
+			@$(CC) $(CFLAGS) $(OBJ) main.c ../libft/libft.a -o $@
 
 $(OBJ):		$(SRC)
 			@$(CC) $(CFLAGS) -c $(SRC)

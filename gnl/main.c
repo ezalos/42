@@ -6,7 +6,7 @@
 /*   By: jrameau <jrameau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 05:26:42 by jrameau           #+#    #+#             */
-/*   Updated: 2019/01/15 16:24:04 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/16 20:33:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		main(int argc, char **argv)
 		printf("|%s|\n", line);
 		ft_strdel(&line);
 	}
+	printf("\n\n");
 	if (argc == 2)
 		close(fd);
 }
