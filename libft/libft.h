@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/01/11 20:30:28 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:00:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void				ft_putchar(char c);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
 void				ft_putstr(char const *s);
+void				*ft_putstr_rnull(char const *s);
+int					ft_putstr_r0(char const *s);
 
 int					ft_char_srch(char src, char *dlt);
 size_t				ft_count_lst(t_list *lst, size_t i);
@@ -104,10 +106,12 @@ int					ft_nb_char_to_int(char	c);
 int					ft_nmatch(char *s1, char *s2);
 int					*ft_nprime(int limite);
 int					ft_power(int nb, int power);
+void				ft_puttab(const char *s, int separation);
 void				ft_puttab_nb(int length, int separation);
 int					ft_round_upper(float i);
 int					ft_round(float i);
 char				*ft_pstrnstr(const char *m, const char *a, size_t len);
 int					ft_patoi(const char *str);
+int					ft_nb_char_to_int(char c);
 
 #endif
