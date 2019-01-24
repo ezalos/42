@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/21 18:09:44 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/22 17:49:07 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,12 @@ HEAD_DIR	= $(SRC_PATH)
 NHEAD_DIR	= ./includes
 FT_HE		= $(FT_H)
 
-OBJS = $(A_SRC:%.c=$(DIR_OBJ)%.o)
+
+IFOBJDIR	= $(shell ls | grep objs)
+ifeq ("$(IFOBJDIR)","")
+DIR_OBJ		= $(SRC_DIR)
+endif
+OBJS		= $(A_SRC:%.c=$(DIR_OBJ)%.o)
 endif
 ##################
 ##	  ORDER		##
@@ -208,11 +213,11 @@ endif
 
 clean :
 	@rm -f $(OBJS) libft.h.gch
-	@echo "\$(YELLOW) $(NAME) \$(END) has been \$(GREEN)\\t\\t\\t\\t  $@\$(END)"
+	@echo "\$(YELLOW)lib_objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 
 fclean : clean
 	@rm -f $(NAME)
-	@echo "\$(YELLOW) $(NAME) \$(END) has been \$(GREEN)\\t\\t\\t\\t  $@\$(END)"
+	@echo "\$(YELLOW)$(NAME) \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 
 re : fclean all
 

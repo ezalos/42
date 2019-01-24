@@ -6,18 +6,18 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/21 14:40:52 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/24 18:50:42 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fillit
+NAME = ft_printf
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
--ansi -O2 -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int\
+-O2 -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int\
 -Werror-implicit-function-declaration -Wmain -Wparentheses -Wsequence-point\
 -Wreturn-type -Wswitch -Wtrigraphs -Wunused -Wuninitialized -Wunknown-pragmas\
 -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wbad-function-cast\
@@ -39,29 +39,39 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 ##############################################################################
 ##############################################################################
 
-IFORDER		= $(shell ls | grep fill_it_files)
+IFORDER		= $(shell ls | grep ft_printf)
 IFPUSH		= $(shell ls | grep srcs)
 
 SRCS		= $(SRCS0) $(SRCS1) $(SRCS2) $(SRCS3) $(SRCS4) $(SRCS5) $(SRCS6)
 SRCS0		= main
-SRCS1		= read_check recognize
-SRCS2		= setup_struct setup_pieces setup_binary
-SRCS3		= solve
-SRCS4		= printing_the_result
-SRCS5		= free_all free_pieces free_sols
-SRCS6		= binary_str find_struct j_and_maths
+SRCS1		= ft_printf
+#SRCS2		= setup_struct setup_pieces setup_binary
+#SRCS3		= solve
+#SRCS4		= printing_the_result
+#SRCS5		= free_all free_pieces free_sols
+#SRCS6		= binary_str find_struct j_and_maths
 
-MSRC_PATH	= ./srcs
-SRC_PATH0 	= $(MSRC_PATH)/main
-SRC_PATH1 	= $(MSRC_PATH)/read
-SRC_PATH2 	= $(MSRC_PATH)/setup
-SRC_PATH3 	= $(MSRC_PATH)/solve
-SRC_PATH4 	= $(MSRC_PATH)/print
-SRC_PATH5 	= $(MSRC_PATH)/free
-SRC_PATH6 	= $(MSRC_PATH)/logistics
+FOLD0		= ./#fill_it_files
+
+#MSRC_PATH	= ./srcs
+#SRC_PATH0 	= $(MSRC_PATH)/main
+#SRC_PATH1 	= $(MSRC_PATH)/read
+#SRC_PATH2 	= $(MSRC_PATH)/setup
+#SRC_PATH3 	= $(MSRC_PATH)/solve
+#SRC_PATH4 	= $(MSRC_PATH)/print
+#SRC_PATH5 	= $(MSRC_PATH)/free
+#SRC_PATH6 	= $(MSRC_PATH)/logistics
 A_SRC_P		=	srcs $(SRC_PATH0) $(SRC_PATH1) $(SRC_PATH2) $(SRC_PATH3)\
  				$(SRC_PATH4) $(SRC_PATH5) $(SRC_PATH6)
 
+DIR_OBJ = ./objs/
+IFOBJDIR	= $(shell ls | grep objs)
+
+ifeq ("$(IFOBJDIR)","")
+DIR_OBJ		=
+endif
+
+CC_SECU		= 0
 ##########################
 ##						##
 ##	   ARCHITECTURE		##
@@ -73,7 +83,7 @@ NPUH		:= $(wildcard ./srcs/main/main.c)
 ##################
 ifeq ("$(NPUH)","")
 
-SRC_PATH	= ./fill_it_files
+SRC_PATH	= $(FOLD0)
 NSRC_PATH  	= srcs
 
 A_SRC 		= $(patsubst %,$(SRC_PATH)/%.c,$(SRCS))
@@ -85,12 +95,17 @@ NA_SRC 		= $(addsuffix .c,	$(addprefix $(SRC_PATH0)/, $(SRCS0))\
 								$(addprefix $(SRC_PATH5)/, $(SRCS5))\
 								$(addprefix $(SRC_PATH6)/, $(SRCS6)))
 
-LIB_PATH	= ./libft
+LIB_PATH	= ./../libft
 NLIB_PATH	= ./.annex/libft
 HEAD_PATH	= $(SRC_PATH)
+HEAD_DIR	= $(SRC_PATH)
 NHEAD_PATH	= ./includes
-NALL_PATH	= ./fill_it_files
+NALL_PATH	= ./$(FOLD0)
+HEAD_		= $(HEAD_PATH)/head.h
 
+#PROTEC_rsbs		:= $(shell grep print_soltion_link $(FOLD0)/solve.c)
+
+OBJS = $(A_SRC:$(SRC_PATH)/%.c=$(DIR_OBJ)%.o)
 ##################
 ##	  ORDER		##
 ##################
@@ -99,11 +114,13 @@ else
 LIB_PATH	= ./.annex/libft
 NLIB_PATH	= ./libft
 HEAD_PATH	= ./includes
-NHEAD_PATH	= ./fill_it_files
-NALL_PATH	= ./fill_it_files
+HEAD_DIR	= $(HEAD_PATH)
+HEAD_		= $(HEAD_PATH)
+NHEAD_PATH	= ./$(FOLD0)
+NALL_PATH	= ./$(FOLD0)
 
 SRC_PATH  	= ./srcs
-NSRC_PATH	= ./fill_it_files
+NSRC_PATH	= ./$(FOLD0)
 
 A_SRC 		= $(addsuffix .c,	$(addprefix $(SRC_PATH0)/, $(SRCS0))\
 								$(addprefix $(SRC_PATH1)/, $(SRCS1))\
@@ -113,8 +130,14 @@ A_SRC 		= $(addsuffix .c,	$(addprefix $(SRC_PATH0)/, $(SRCS0))\
 								$(addprefix $(SRC_PATH5)/, $(SRCS5))\
 								$(addprefix $(SRC_PATH6)/, $(SRCS6)))
 NA_SRC 		= $(patsubst %,$(SRC_PATH)/%.c,$(SRCS))
+
+OBJS = $(NA_SRC:$(SRC_PATH)/%.c=$(DIR_OBJ)%.o)
+
+CC_SECU		= 1
 endif
 
+PROTEC		:= $(wildcard ./.annex)
+ifneq ("$(PROTEC)","")
 NOPT		:= $(wildcard ./.annex/time/time_exe.c.old)
 ##################
 ##	  W/_OPT	##
@@ -126,8 +149,12 @@ PRINT_DBG	=	./.annex/printing/print_debug.c
 PRINT_R		=	./.annex/printing/print_r_in_color.c
 PRINT		= 	$(PRINT_DBG) $(PRINT_R)
 
-A_SRC += $(TIME_EXE) $(PRINT)
+P_SRC 		= $(TIME_EXE) $(PRINT)
+NP_SRC 		= time_exe.c print_debug.c print_r_in_color.c
 
+CFLAGS		=
+
+CC_SECU		= 1
 ##################
 ##	  NO_OPT	##
 ##################
@@ -139,14 +166,13 @@ PRINT_R		=	./.annex/printing/print_r_in_color.c.old
 PRINT 		= 	$(PRINT_DBG) $(PRINT_R)
 
 endif
+PIECE = ./.annex/tests/good/fit/7_0
+endif
 
-SRCPUSH = $(patsubst %, $(FOLD0)%.c,$(SRCS))
-OBJS = $(patsubst %, ft_%.o,$(SRCS))
 
 LIB			= $(LIB_PATH)/libft.a
 HEAD		= $(HEAD_PATH)/head.h
 
-PIECE = ./.annex/tests/good/fit/7_0
 
 ##########################
 ##						##
@@ -162,18 +188,25 @@ VALGRIND = valgrind --track-origins=yes --leak-check=full --show-leak-kinds=defi
 ##						##
 ##########################
 
-GREEN   = '\x1b[32m'
-RED     = '\x1b[31m'
-END     = '\x1b[0m'
+RED     = \x1b[31m
+GREEN   = \x1b[32m
+YELLOW  = \x1b[33m
+BLUE	= \x1b[34m
+MAGENTA	= \x1b[35m
+CYAN	= \x1b[36m
+END     = \x1b[0m
 
-COM_COLOR   = \033[0;34m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
+COM_COLOR   = $(BLUE)
+OBJ_COLOR   = $(CYAN)
+OK_COLOR    = $(GREEN)
+ERROR_COLOR = $(RED)
+WARN_COLOR  = $(YELLOW)
+NO_COLOR    = $(END)
 
-#@$(call run_and_test, ar -rc $(NAME) $(D_OBJS_P) $(D_OBJS_L))
+OK_STRING    = [OK]
+ERROR_STRING = [ERROR]
+WARN_STRING  = [WARNING]
+COM_STRING   = Compiling
 
 define run_and_test
 printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
@@ -209,27 +242,36 @@ endef
 
 all :	$(NAME)
 
-$(NAME):
+$(NAME): $(OBJS) $(HEAD_)
 		@$(MAKE) -C $(LIB_PATH)
-		@echo "$(GREEN) $(LIB) has been created $(END)"
-		@$(call run_and_test, $(CC) $(CFLAGS) $(A_SRC) $(LIB) -o $(NAME))
-		@echo "$(GREEN) $(NAME) has been created $(END)"
+		@$(call run_and_test, $(CC) $(CFLAGS) -I./$(HEAD_DIR) $(OBJS) $(NP_SRC:%.c=%.o) $(LIB) -o $(NAME))
+
+ifeq ($(CC_SECU), 0)
+$(DIR_OBJ)%.o:$(SRC_PATH)/%.c
+		@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $<)
+else
+$(OBJS):
+		@$(CC) $(CFLAGS) -I./$(HEAD_DIR) -c $(P_SRC) $(A_SRC)
+ifneq ("$(IFOBJDIR)","")
+		@mv $(P_SRC:%.c=%.o) $(SRCS:%=%.o) $(DIR_OBJ)
+endif
+		@echo "\$(BLUE)Compiling \$(CYAN)objects\$(GREEN)\\t\\t\\t\\t  [OK]\$(END)"
+endif
 
 clean :
 		@$(MAKE) clean -C $(LIB_PATH)
-		@echo "$(RED) Objects have been removed $(END)"
+		@echo "\$(YELLOW)fill_objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 		@rm -f $(OBJS)
+ifeq ("$(NOPT)","")
+		@rm -f $(NP_SRC:%.c=%.o)
+endif
 
-fclean :
+fclean : clean
 		@$(MAKE) fclean -C $(LIB_PATH)
-		@$(MAKE) clean
-		@echo "$(RED) Project has been removed $(END)"
-		@rm -f $(NAME)
+		@echo "\$(YELLOW)$(NAME) \$(END)\\t\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
+		@rm -rf $(NAME) fillit.dSYM
 
-re :
-		@$(MAKE) re -C $(LIB_PATH)
-		@$(MAKE) fclean
-		@$(MAKE)
+re :	fclean all
 
 git :
 		@git add -A
@@ -237,13 +279,17 @@ git :
 		@git commit -am "Makefile automated push"
 		@git push
 
+print : all
+		./$(NAME) $(arg0) $(arg1) $(arg2) $(arg3) $(arg4) $(arg5)
+
+ifneq ("$(PROTEC)","")
 ##########################
 ##						##
 ##		  TESTS			##
 ##						##
 ##########################
 
-teste : re
+teste : all
 		./$(NAME) ./.annex/tests/bad/err0
 		./$(NAME) ./.annex/tests/bad/err1
 		./$(NAME) ./.annex/tests/bad/err2
@@ -251,15 +297,25 @@ teste : re
 		./$(NAME) ./.annex/tests/bad/err4
 		./$(NAME) ./.annex/tests/bad/err5
 		./$(NAME) ./.annex/tests/bad/err6
+		./$(NAME) ./.annex/tests/bad/err7
 		./$(NAME)
 		./$(NAME) ./.annex/test lol
 		./$(NAME) ./.annex
+		./$(NAME) ./.annex/tests/bad/otherTest/binary1.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/binary2.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/binary3.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/eof.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/twentyseven.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/twentysix.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/wrongdot1.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/wrongdot2.txt
+		./$(NAME) ./.annex/tests/bad/otherTest/wrongdot3.txt
 
-testv :	re
+testv :	all
 		$(VALGRIND) ./$(NAME) $(PIECE)
 
 
-testp :	re
+testp :	all
 		./$(NAME) $(PIECE)
 
 check :
@@ -282,10 +338,22 @@ check :
 ##########################
 
 testa : all
+ifneq ("$(p)", "")
+ifneq ("$(n)", "")
+ifneq ("$(PROTEC_rsbs)","")
+		@bash ./.annex/training_set/make_tests.sh $(p) 1
+		@bash ./.annex/tests/launch_tests.sh $(NAME) 1
+else
 		@bash ./.annex/training_set/make_tests.sh $(p) $(n)
 		@bash ./.annex/tests/launch_tests.sh $(NAME) $(n) > ./.annex/tests/last_test
 		@cat ./.annex/tests/last_test
 		@rm -rf ./.annex/tests/random_generated/*
+endif
+endif
+else
+		@echo 'usage: make test a=x p=y'
+		@echo 'for (p >= 1 && n >= 1)'
+endif
 
 ##########################
 ##						##
@@ -295,14 +363,16 @@ testa : all
 
 order :
 ifneq ($(IFORDER), )
-		@$(MAKE) offption
-		@sed -i '' "s~head.h~../../includes/head.h~g" $(A_SRC)
-		@sed -i '' "s~../../libft/libft.h~../libft/libft.h~g" $(TIME_EXE_H)
+ifeq ("$(NOPT)","")
+	@$(MAKE) offption
+endif
+		@$(MAKE) fclean
+		@sed -i '' "s~./head.h~../../includes/head.h~g" $(A_SRC)
 		@sed -i '' "s~../libft/libft.h~../.annex/libft/libft.h~g" $(HEAD)
-		@sed -i '' "s~fill_it_files/head.h~includes/head.h~g" $(PRINT)
 		@mkdir $(A_SRC_P) $(NHEAD_PATH)
 		@mv -f $(HEAD_PATH)/head.h $(NHEAD_PATH)
 		@mv -f $(LIB_PATH) $(NLIB_PATH)
+		@mkdir ./objs ./.annex/libft/objs
 		@mv -f $(patsubst %, $(NALL_PATH)/%.c, $(SRCS0)) $(SRC_PATH0)
 		@mv -f $(patsubst %, $(NALL_PATH)/%.c, $(SRCS1)) $(SRC_PATH1)
 		@mv -f $(patsubst %, $(NALL_PATH)/%.c, $(SRCS2)) $(SRC_PATH2)
@@ -315,11 +385,13 @@ endif
 
 push :
 ifneq ($(IFPUSH), )
-		@$(MAKE) offption
-		@sed -i '' "s~../../includes/head.h~head.h~g" $(A_SRC)
-		@sed -i '' "s~../libft/libft.h~../../libft/libft.h~g" $(TIME_EXE_H)
+ifeq ("$(NOPT)","")
+	@$(MAKE) offption
+endif
+		@$(MAKE) fclean
+		@sed -i '' "s~../../includes/head.h~./head.h~g" $(A_SRC)
 		@sed -i '' "s~../.annex/libft/libft.h~../libft/libft.h~g" $(HEAD)
-		@sed -i '' "s~includes/head.h~fill_it_files/head.h~g" $(PRINT)
+		@rm -rf ./objs ./.annex/libft/objs
 		@mkdir $(NALL_PATH)
 		@mv -f $(HEAD_PATH)/head.h $(NALL_PATH)
 		@mv -f $(A_SRC) $(NALL_PATH)
@@ -328,8 +400,11 @@ ifneq ($(IFPUSH), )
 endif
 
 malloc_check :
-		grep -n -e "memalloc" -e "strdup" srcs/*/*
-#		grep -n "malloc" srcs/*/*
+		sh ./.annex/find_text.sh malloc
+		sh ./.annex/find_text.sh ft_memalloc
+		sh ./.annex/find_text.sh ft_strdup
+		sh ./.annex/find_text.sh ft_strjojn
+		sh ./.annex/find_text.sh ft_strnew
 
 
 ##########################
@@ -338,9 +413,12 @@ malloc_check :
 ##						##
 ##########################
 
-# to put time_exe in *.c. Note that it will be configured to work when project is using the topush_ file structure.
 onption :
 ifneq ("$(NOPT)","")
+ifneq ($(IFPUSH), )
+	@$(MAKE) push
+endif
+	@$(MAKE) fclean
 	@bash .annex/time/input_tim.sh
 	@mv -f .annex/printing/print_r_in_color.c.old .annex/printing/print_r_in_color.c
 	@mv -f .annex/time/time_exe.h.old .annex/time/time_exe.h
@@ -349,20 +427,52 @@ ifneq ("$(NOPT)","")
 	@bash .annex/show/show_debug.sh
 endif
 
-# to remove time_exe from *.c.
-# Attention a nos wildcards. Il y en a une autre ligne 212.
 offption :
 ifeq ("$(NOPT)","")
-	@sed -i '' '/time_exe/d' fill_it_files/*.c
-	@sed -i '' '/print_debug/d' fill_it_files/setup_struct.c
-	@sed -i '' 's/print_pieces_color/print_pieces/' fill_it_files/printing_the_result.c
-	@sed -i '' '/print_soltion_link/d' fill_it_files/solve.c
+ifneq ($(IFPUSH), )
+	@$(MAKE) push
+endif
+	@$(MAKE) fclean
+	@sed -i '' '/time_exe/d' $(A_SRC)
+	@sed -i '' '/print_debug/d' $(A_SRC)
+	@sed -i '' 's/print_pieces_color/print_pieces/' $(A_SRC)
+	@sed -i '' '/print_soltion_link/d' $(A_SRC)
 	@sed -i '' '/print_time/d' .annex/printing/print_r_in_color.c
 	@mv -f .annex/printing/print_r_in_color.c .annex/printing/print_r_in_color.c.old
 	@mv -f .annex/time/time_exe.h .annex/time/time_exe.h.old
 	@mv -f .annex/time/time_exe.c .annex/time/time_exe.c.old
 	@mv -f .annex/printing/print_debug.c .annex/printing/print_debug.c.old
-	@sed -i '' 's/define ONPTION/define OFFPTION/' fill_it_files/head.h
+	@sed -i '' 's/define ONPTION/define OFFPTION/' $(HEAD)
+endif
+
+##########################
+##                      ##
+##    STEP BY STEP      ##
+##                      ##
+##########################
+
+sbs :
+ifeq ("$(PROTEC_rsbs)","")
+ifneq ("$(NOPT)","")
+	@$(MAKE) onption
+endif
+	@sh .annex/show/sbs.sh
+	@$(MAKE) re
+else
+	@echo No sbs needed.
+endif
+
+rsbs :
+ifneq ("$(NOPT)","")
+	@$(MAKE) onption
+endif
+ifneq ("$(PROTEC_rsbs)","")
+ifeq ("$(NPUH)","")
+	@sed -i '' "/print_soltion_link/d" $(A_SRC)
+	@$(MAKE) re
+endif
+else
+	@echo No rsbs needed.
 endif
 
 ##########################
@@ -379,7 +489,7 @@ grep_ :
 hide_ :
 		sed -i '' '/printf/d' $(A_SRC)
 		sed -i '' '/time/d' $(A_SRC)
-
+endif
 ##########################
 ##						##
 ##		 .PHONY			##
