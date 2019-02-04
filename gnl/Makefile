@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/14 15:32:15 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/16 20:32:55 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/04 03:53:28 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,12 @@ re: 		fclean all
 
 update:
 		cd libft | make re
+
+git :
+		@git add -A
+		@git status
+		@git commit -am "Makefile automated push"
+		@git push
 
 t:	re
 	@./$(NAME) $(test)

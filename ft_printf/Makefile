@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/01/24 18:50:42 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/01/24 22:40:53 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -405,75 +405,6 @@ malloc_check :
 		sh ./.annex/find_text.sh ft_strdup
 		sh ./.annex/find_text.sh ft_strjojn
 		sh ./.annex/find_text.sh ft_strnew
-
-
-##########################
-##						##
-##	   ON/OFF PTION		##
-##						##
-##########################
-
-onption :
-ifneq ("$(NOPT)","")
-ifneq ($(IFPUSH), )
-	@$(MAKE) push
-endif
-	@$(MAKE) fclean
-	@bash .annex/time/input_tim.sh
-	@mv -f .annex/printing/print_r_in_color.c.old .annex/printing/print_r_in_color.c
-	@mv -f .annex/time/time_exe.h.old .annex/time/time_exe.h
-	@mv -f .annex/time/time_exe.c.old .annex/time/time_exe.c
-	@mv -f .annex/printing/print_debug.c.old .annex/printing/print_debug.c
-	@bash .annex/show/show_debug.sh
-endif
-
-offption :
-ifeq ("$(NOPT)","")
-ifneq ($(IFPUSH), )
-	@$(MAKE) push
-endif
-	@$(MAKE) fclean
-	@sed -i '' '/time_exe/d' $(A_SRC)
-	@sed -i '' '/print_debug/d' $(A_SRC)
-	@sed -i '' 's/print_pieces_color/print_pieces/' $(A_SRC)
-	@sed -i '' '/print_soltion_link/d' $(A_SRC)
-	@sed -i '' '/print_time/d' .annex/printing/print_r_in_color.c
-	@mv -f .annex/printing/print_r_in_color.c .annex/printing/print_r_in_color.c.old
-	@mv -f .annex/time/time_exe.h .annex/time/time_exe.h.old
-	@mv -f .annex/time/time_exe.c .annex/time/time_exe.c.old
-	@mv -f .annex/printing/print_debug.c .annex/printing/print_debug.c.old
-	@sed -i '' 's/define ONPTION/define OFFPTION/' $(HEAD)
-endif
-
-##########################
-##                      ##
-##    STEP BY STEP      ##
-##                      ##
-##########################
-
-sbs :
-ifeq ("$(PROTEC_rsbs)","")
-ifneq ("$(NOPT)","")
-	@$(MAKE) onption
-endif
-	@sh .annex/show/sbs.sh
-	@$(MAKE) re
-else
-	@echo No sbs needed.
-endif
-
-rsbs :
-ifneq ("$(NOPT)","")
-	@$(MAKE) onption
-endif
-ifneq ("$(PROTEC_rsbs)","")
-ifeq ("$(NPUH)","")
-	@sed -i '' "/print_soltion_link/d" $(A_SRC)
-	@$(MAKE) re
-endif
-else
-	@echo No rsbs needed.
-endif
 
 ##########################
 ##						##
