@@ -1,0 +1,18 @@
+[submodule "fill_it"]
+	path = fill_it
+	url = https://github.com/ezalos/fill_it.git
+[submodule "gnl"]
+	path = gnl
+	url = https://github.com/ezalos/gnl.git
+[submodule "libft"]
+	path = libft
+	url = https://github.com/ezalos/libft.git
+[submodule "ft_printf"]
+	path = ft_printf
+	url = https://github.com/ezalos/ft_printf.git
+[submodule "time_exe"]
+	path = time_exe
+	url = https://github.com/ezalos/time_exe.git
+[submodule "sudoku"]
+	path = sudoku
+	url = https://github.com/ezalos/sudoku.git
