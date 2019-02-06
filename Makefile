@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/04 08:00:41 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/06 14:35:45 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ srcs =	fill_it\
 		sudoku
 
 
-MSG ?= "Makefile automated push"
+MSG ?= Makefile automated push
 #srcs = sudoku
 
 git_link = $(srcs:%=$(link)%.git)
