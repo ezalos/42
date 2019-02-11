@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/06 14:35:45 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/11 16:46:17 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ srcs =	fill_it\
 		libft\
 		ft_printf\
 		time_exe\
-		sudoku
+		sudoku\
+		push_swap
 
 
 MSG ?= Makefile automated push
