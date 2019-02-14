@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/11 16:46:17 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/14 19:53:20 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ srcs =	fill_it\
 		ft_printf\
 		time_exe\
 		sudoku\
-		push_swap
+		push_swap\
+		graph_theory
 
 
 MSG ?= Makefile automated push
@@ -51,5 +52,5 @@ rmdl :
 git :
 		@git add -A
 		@git status
-		git commit -am "$(MSG)"
+		@git commit -am "$(MSG)"
 		@git push
