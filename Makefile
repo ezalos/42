@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/14 19:53:20 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/15 17:15:40 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ git_submodules_add = $(git_link:%=git submodule add % ; )
 dl :
 		$(git_order)
 
-push :
+push :	git
 		$(git_push)
 
 pull :
