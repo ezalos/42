@@ -16,3 +16,6 @@
 [submodule "sudoku"]
 	path = sudoku
 	url = https://github.com/ezalos/sudoku.git
+[submodule "push_swap"]
+	path = push_swap
+	url = https://github.com/ezalos/push_swap.git
