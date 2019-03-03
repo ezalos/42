@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/16 15:13:38 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/02/28 15:19:22 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,3 +55,7 @@ git :
 		@git status
 		@git commit -am "$(MSG)"
 		@git push
+
+
+check :
+	bash /Users/ldevelle/42/TESTS/42FileChecker/42FileChecker.sh
