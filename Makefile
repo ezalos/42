@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/02/28 15:19:22 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/03/07 15:18:02 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ srcs =	fill_it\
 		time_exe\
 		sudoku\
 		push_swap\
-		graph_theory
+		graph_theory\
+		FdF
 
 
 MSG ?= Makefile automated push
