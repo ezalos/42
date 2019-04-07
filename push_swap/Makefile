@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/04/03 21:26:08 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/04/07 19:34:13 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,9 @@ SRCS		=	main\
 				debug\
 				bubble_it\
 				the_choosen_alg\
+				old_alg\
+				fresh\
+				median\
 				print
 
 SRC_PATH	= ./srcs
@@ -114,7 +117,7 @@ COM_STRING   = Compiling
 MSG ?= Makefile automated push
 nb ?= 10
 
-ARG=`ruby -e "puts (0..$(nb)).to_a.shuffle.join(' ')"`
+ARG=`ruby -e "puts (1..$(nb)).to_a.shuffle.join(' ')"`
 
 define run_and_test
 printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
@@ -220,6 +223,7 @@ tho :
 		@$(MAKE) hund
 		@$(MAKE) hund
 		@$(MAKE) hund
+		@$(MAKE) t MSG="../push_swap/tests/count/$(nb)" -C $(LIB_DIR)
 
 echooo :
 		@echo $(ARG)
