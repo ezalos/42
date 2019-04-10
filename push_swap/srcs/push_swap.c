@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/09 20:09:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:08:02 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,17 @@ int		execute_push(t_tab **stack_a, t_tab **stack_b)
 		return (0);
 	if (ft_tabloop_lendir(*stack_a, 0) <= 1)
 	{
-		// ft_printf("%s-IF: %d\n", __func__, ft_tabloop_lendir(*stack_a, 0));
 		ft_tabadd_start(stack_b, *stack_a, 0);
 		*stack_a = NULL;
 	}
 	else
 	{
-		// ft_printf("%s-ELSE: %d\n", __func__, ft_tabloop_lendir(*stack_a, 0));
-		// if (!stack_b)
-		// 	stack_b = cnalloc(NULL, sizeof(t_tab*));
-		// ft_printf("%~{!}\t%~{!}\t%~{!}\n", (*stack_a)->dir[2], (*stack_a), (*stack_a)->dir[0]);
 		execute_rotation(stack_a, 2);
-		// ft_printf("%~{!}\t%~{!}\t%~{!}\n", (*stack_a)->dir[2], (*stack_a), (*stack_a)->dir[0]);
 		tmp = ft_tab_cutone((*stack_a)->dir[0]);
-		// ft_printf("%~{!}\n", tmp);
-		// ft_printf("%~{!}\t%~{!}\t%~{!}\n", (*stack_a)->dir[2], (*stack_a), (*stack_a)->dir[0]);
 		ft_tabadd_start(stack_b, tmp, 0);
 		ft_tabloop_it(*stack_b, 0);
-		// ft_printf("%~{!}\t%~{!}\t%~{!}\n", (*stack_b)->dir[2], (*stack_b), (*stack_b)->dir[0]);
 		execute_rotation(stack_a, 0);
 	}
-	// ft_printf("end\n");
 	return (1);
 }
 
@@ -163,18 +153,12 @@ int		execute_order_66(t_push_swap *push)
 		lets_solve(push);
 		return (1);
 	}
-	// print_push_swap(push);
 	return(r_val);
 }
 
 int		lets_play(t_push_swap *push)
 {
-	*ft_remember_push() = push;
 	print_push_swap(push);
-	// ft_wait_pls(0);
-	// ft_wait_pls(0);
-	// ft_wait_pls(0);
-	lets_solve(push);
 /*
 ** 	if (0 >= get_next_line(0, &push->instruction))
 ** 		return (-1);

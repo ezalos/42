@@ -6,21 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 21:14:29 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:08:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
-
-void		ft_add_to_file(char *name, char *data)
-{
-	int				fd;
-
-	fd = open(name, O_CREAT|O_RDWR|O_APPEND, S_IRWXU|S_IRWXG|S_IRWXO);
-	ft_putendl_fd(data, fd);
-	close(fd);
-	// return (fd);
-}
 
 void    show_it(void)
 {
@@ -60,7 +50,7 @@ int		main(int ac, char **av)
 	size = 0;
 	while ((int)++size < ac)
 		ft_add_to_file("tests/last", av[size]);
-	lets_play(push);
+	lets_solve(push);
 	// action_list();
 	// ft_printf("%d\n", push->count);
 	traduction();

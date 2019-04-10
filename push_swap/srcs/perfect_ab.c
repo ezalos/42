@@ -6,28 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 19:54:36 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/08 17:30:59 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 22:58:56 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-void	dg(void)
-{
-	ft_press_any_key();
-	print_push_swap((*ft_remember_push()));
-}
-
-void	ab_1(void)
-{
-	// pa();
-}
-
 void	ab_2(void)
 {
 	if (stack_a(0) >= stack_a(1))
 		sa();
-	// pa();
 }
 
 void	ab_3(void)
@@ -354,31 +342,17 @@ void	ab_4(void)
 		rra();
 		rra();
 	}
-	else
-	{
-		ft_printf("CAN'T CATEGORIZE: %d %d %d %d\n", a, b, c, d);
-		ft_press_any_key();
-	}
 }
 
 int 	perfect_ab(size_t size)
 {
-	print_push_swap((*ft_remember_push()));
-	if (size == 0)
+	if (size == 0 || size == 1)
 		return (-1);
-	else if (size == 1)
-		ab_1();
 	else if (size == 2)
 		ab_2();
 	else if (size == 3)
 		ab_3();
 	else if (size == 4)
 		ab_4();
-	if (!order_a(size))
-	{
-		ft_press_any_key();
-		print_push_swap((*ft_remember_push()));
-		ft_press_any_key();
-	}
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 21:15:59 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:06:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void 		banab(int size, int start)
 		return ;
 	if (start)
 	{
-		lets_see(1, size);
 		if (size > (int)(*ft_remember_push())->size_b)
 		{
 			last_one();
@@ -60,8 +59,6 @@ void 		banab(int size, int start)
 	size /= 2;
 	if (!order_a(size))
 	{
-		lets_see(2, size);
-		// ab(size);
 		if (-1 == ab(size))
 			return ;
 		opt = 1;
@@ -79,15 +76,11 @@ static int	repeat(void)
 
 	push = (*ft_remember_push());
 	size = push->size_a;
-	lets_see(0, size);
 	if (!order_a(push->size_a))
 	{
-		lets_see(0, size);
-		// ab(size);
 		if (-1 == ab(size))
 			return (-1);
 		repeat();
-		lets_see(-2, size);
 		banab(size, 1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 19:56:21 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 20:49:05 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:26:09 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,19 +111,7 @@ int		traduction(void)
 		}
 		if (i < 0)
 			i = 0;
-		// if (i == (*ft_remember_push())->count - 1)
-		// {
-		// 	if (!r)
-		// 		break ;
-		// 	else
-		// 	{
-		// 		ft_printf("\nHELLO\n\n%d\n", r);
-		// 		i = 0;
-		// 		r = 0;
-		// 	}
-		// }
 	}
-	// ft_printf("\n%d\n", r);
 	return (1);
 }
 

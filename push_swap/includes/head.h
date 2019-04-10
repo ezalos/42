@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 14:19:35 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:07:53 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,9 @@ int		ab(size_t size);
 int		ba(size_t size);
 void    show_it(void);
 
-
-void		ba5(void);
-void		ba4(void);
-void		ba3(void);
-void		ba2(void);
-void		ba1(void);
-
 int		add_action(char *str);
 
 int		the_choosen_alg(t_push_swap *push);
-int		the_old_choosen_alg(t_push_swap *push);
-int		fresh_start(t_push_swap *push);
 
 t_push_swap		**ft_remember_push(void);
 void			pa(void);
@@ -84,15 +75,8 @@ void			rrb(void);
 void			rr(void);
 void			rrr(void);
 
-void	lest_print_recur(int size);
-void	lest_print_recur2(int size);
-void	lest_print_recur3(int size, int in);
 
-
-void	not_smart(void);
 int		bubble_it(void);
-int		algo_tro_bo1(t_push_swap *push);
-int		algo_tro_bo2(t_push_swap *push);
 
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/04/10 21:02:21 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/04/10 23:17:40 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,17 +45,11 @@ SRCS		=	main\
 				push_swap\
 				check\
 				solve\
-				tab\
 				action\
-				not_smart\
 				tools\
-				recursive\
-				debug\
 				bubble_it\
 				the_choosen_alg\
 				perfect_ab\
-				old_alg\
-				fresh\
 				median\
 				save_actions\
 				print

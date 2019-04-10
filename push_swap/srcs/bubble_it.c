@@ -6,11 +6,30 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 00:42:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/03/31 01:58:40 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/10 23:17:32 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
+
+int		get_tabint_inint(t_tab *tab, size_t dir, int *array)
+{
+	t_tab	*ptr;
+	int		lin;
+
+	if (tab != NULL)
+	{
+		ptr = tab;
+		lin = 0;
+		while (ptr && (ptr != tab || !lin))
+		{
+			array[lin] = *(int*)ptr->content;
+			ptr = ptr->dir[dir];
+			lin++;
+		}
+	}
+	return (0);
+}
 
 int		is_it_order(t_push_swap *push)
 {
@@ -67,14 +86,11 @@ int		bubble_it(void)
 {
 	static int		*solved;
 	t_push_swap		*push;
-	t_tab			*tmp;
-
 
 	push = (*ft_remember_push());
-	print_push_swap(push);
-	if (!solved)
-		get_solve_data(push, &solved);
-	tmp = push->stack_a;
+	solved = ft_memalloc(sizeof(int) * (push->all + 1));
+	get_tabint_inint(push->stack_a, 0, solved);
+	ft_squick_sort(&solved, 0, push->all - 1);
 	order_one_stack(push, solved);
 	return (1);
 }
