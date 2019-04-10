@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/04/09 20:16:11 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/04/10 21:02:21 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,15 +192,25 @@ t	:	all
 		@./$(NAME) $(ARG)
 
 ten :
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
+		@rm -rf tests/last
 		@./$(NAME) $(ARG)
 
 hund :	all
@@ -215,16 +225,27 @@ hund :	all
 		@$(MAKE) ten
 		@$(MAKE) ten
 tho :
+		@echo "0%"
 		@$(MAKE) hund
+		@echo "10%"
 		@$(MAKE) hund
+		@echo "20%"
 		@$(MAKE) hund
+		@echo "30%"
 		@$(MAKE) hund
+		@echo "40%"
 		@$(MAKE) hund
+		@echo "50%"
 		@$(MAKE) hund
+		@echo "60%"
 		@$(MAKE) hund
+		@echo "70%"
 		@$(MAKE) hund
+		@echo "80%"
 		@$(MAKE) hund
+		@echo "90%"
 		@$(MAKE) hund
+		@echo "100%"
 		@$(MAKE) t MSG="../push_swap/tests/count/$(nb)" -C $(LIB_DIR)
 
 echooo :
