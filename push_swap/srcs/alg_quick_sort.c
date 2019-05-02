@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_choosen_alg.c                                  :+:      :+:    :+:   */
+/*   alg_quick_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 14:32:56 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 17:37:59 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
-
-static void			lets_see(int mode, int size)
-{
-	return ;
-	print_push_swap((*ft_remember_push()));
-	return ;
-	if (mode == 0)
-		ft_printf("%~{?}%s size: (%d)\n\n\n", "REPEAT", size);
-	else if (mode == 1)
-		ft_printf("%~{?}\nSTART BA(%d)\tif(%d)      \n\n", size, !order_a(size));
-	else if (mode == -1)
-		ft_printf("%~{?}\n!START      \tif:%d      \n\n", !order_a(size));
-	else if (mode == 2)
-		ft_printf("%~{?}\n\n\tAB(%d)\n", size);
-	else if (mode == -2)
-		ft_printf("%~{?}BANAB OF (%d)\n\n\n", size);
-	if (mode >= 0)
-		ft_press_any_key();
-}
-
-void 		banab(int size, int start);
 
 static void 		last_one(void)
 {
@@ -91,7 +70,7 @@ static int	repeat(void)
 	return (0);
 }
 
-int		the_choosen_alg(t_push_swap *push)
+int			the_choosen_alg(t_push_swap *push)
 {
 	time_exe(__func__);
 	int		size;

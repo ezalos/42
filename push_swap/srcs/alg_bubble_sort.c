@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_it.c                                        :+:      :+:    :+:   */
+/*   alg_bubble_sort.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/31 00:42:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/30 15:08:40 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/05/02 17:24:31 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/05/02 17:36:31 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-int		get_tabint_inint(t_tab *tab, size_t dir, int *array)
+static int			get_tabint_inint(t_tab *tab, size_t dir, int *array)
 {
-	t_tab	*ptr;
-	int		lin;
+	t_tab		*ptr;
+	int			lin;
 
 	if (tab != NULL)
 	{
@@ -31,7 +31,7 @@ int		get_tabint_inint(t_tab *tab, size_t dir, int *array)
 	return (0);
 }
 
-int		is_it_order(t_push_swap *push)
+static int			is_it_order(t_push_swap *push)
 {
 	int			i;
 	int			actual;
@@ -48,36 +48,35 @@ int		is_it_order(t_push_swap *push)
 	return (1);
 }
 
-int		order_one_stack(t_push_swap *push, int *solved)
+static void		order_one_stack_while(t_push_swap *push, int *solved)
 {
 	int				now;
 	int				next;
 	int				save;
 
 	save = push->size_b;
-	while (push->size_a > 1 && !is_it_order(push))
+	print_push_swap(push);
+	now = stack_a(0);
+	next = stack_a(1);
+	if (now == solved[push->size_b])
+		pa();
+	else if (next == solved[push->size_b])
 	{
-		print_push_swap(push);
-		now = stack_a(0);
-		next = stack_a(1);
-		if (now == solved[push->size_b])
-			pa();
-		else if (next == solved[push->size_b])
-		{
-			sa();
-			pa();
-		}
-		else if (now > next)
-			sa();
-		else
-			rra();
-		if (save * 2 <= (int)push->size_b)
-		{
-			if (save)
-				ft_printf("%~{!} ", push->size_b);
-			save = push->size_b;
-		}
+		sa();
+		pa();
 	}
+	else if (now > next)
+		sa();
+	else
+		rra();
+	if (save * 2 <= (int)push->size_b)
+		save = push->size_b;
+}
+
+static int			order_one_stack(t_push_swap *push, int *solved)
+{
+	while (push->size_a > 1 && !is_it_order(push))
+		order_one_stack_while(push, solved);
 	while (push->size_b)
 	{
 		print_push_swap(push);
@@ -86,7 +85,7 @@ int		order_one_stack(t_push_swap *push, int *solved)
 	return (0);
 }
 
-int		bubble_it(void)
+int			bubble_it(void)
 {
 	static int		*solved;
 	t_push_swap		*push;

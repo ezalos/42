@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/04/30 13:20:50 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/02 17:52:15 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,18 +41,30 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 ##############################################################################
 
 SRCS		=	main\
-				init\
-				push_swap\
+				alg_bubble_sort\
+				alg_quick_sort\
+				alg_write_ab\
+				alg_write_it_yourself\
 				check\
-				solve\
-				action\
-				tools\
-				bubble_it\
-				the_choosen_alg\
-				perfect_ab\
-				median\
-				save_actions\
-				print
+				db_actions\
+				db_global\
+				init\
+				lvl_actions_a\
+				lvl_actions_ab\
+				lvl_actions_b\
+				lvl_memory\
+				lvl_movements\
+				menu_solve\
+				out_debug\
+				out_print_push_swap\
+				tool_median_sort\
+				tool_perfect_ab\
+				tool_perfect_ab_3\
+				tool_perfect_ab_4\
+				tool_perfect_ba\
+				tool_stack_check\
+				tool_stack_median\
+				zip_action
 
 SRC_PATH	= ./srcs
 

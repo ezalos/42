@@ -1,115 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   alg_write_it_yourself.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 14:35:58 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 17:29:02 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
-
-int		execute_rotation(t_tab **stack, size_t dir)
-{
-	t_tab	*tmp;
-
-	if (!stack || !*stack)
-		return (0);
-	tmp = ft_tab_dirth(*stack, dir, 1);
-	*stack = tmp;
-	return (1);
-}
-
-int		execute_swap(t_tab **stack)
-{
-	t_tab 	*tmp;
-	size_t	len;
-
-	len = ft_tabloop_lendir(*stack, 0);
-	if (len < 1)
-		return (0);
-	else if (len == 1)
-	{
-		execute_rotation(stack, 0);
-		return (1);
-	}
-	tmp = ft_tab_cutone((*stack)->dir[0]);
-	ft_tabadd(stack, tmp, 0, 0);
-	return (1);
-}
-
-int		execute_push(t_tab **stack_a, t_tab **stack_b)
-{
-	t_tab	*tmp;
-
-	if (!stack_a || !*stack_a)
-		return (0);
-	if (ft_tabloop_lendir(*stack_a, 0) <= 1)
-	{
-		ft_tabadd_start(stack_b, *stack_a, 0);
-		*stack_a = NULL;
-	}
-	else
-	{
-		execute_rotation(stack_a, 2);
-		tmp = ft_tab_cutone((*stack_a)->dir[0]);
-		ft_tabadd_start(stack_b, tmp, 0);
-		ft_tabloop_it(*stack_b, 0);
-		execute_rotation(stack_a, 0);
-	}
-	return (1);
-}
-
-int		execute_double(t_push_swap *push, int mode)
-{
-	int		r_val;
-
-	r_val =0;
-	if (mode == 0)
-	{
-		r_val += execute_swap(&push->stack_a);
-		r_val += execute_swap(&push->stack_b);
-	}
-	if (mode == 1)
-	{
-		r_val += execute_rotation(&push->stack_a, 0);
-		r_val += execute_rotation(&push->stack_b, 0);
-	}
-	if (mode == 2)
-	{
-		r_val += execute_rotation(&push->stack_a, 2);
-		r_val += execute_rotation(&push->stack_b, 2);
-	}
-	return (r_val);
-}
-
-int		extra_push(t_push_swap *push, int a)
-{
-	if (a)
-	{
-		if (push->size_a)
-			if (execute_push(&push->stack_a, &push->stack_b))
-			{
-				push->size_a--;
-				push->size_b++;
-				return (1);
-			}
-	}
-	else
-	{
-		if (push->size_b)
-			if (execute_push(&push->stack_b, &push->stack_a))
-			{
-				push->size_a++;
-				push->size_b--;
-				return (1);
-			}
-	}
-	return (0);
-}
 
 int		execute_order_66(t_push_swap *push)
 {
@@ -146,14 +47,11 @@ int		execute_order_66(t_push_swap *push)
 	else if (!ft_strcmp(push->instruction, "cs"))
 			CLEAR_SCREEN
 	else
-	{
-		// lets_solve(push);
 		return (1);
-	}
 	return(r_val);
 }
 
-int		lets_play(t_push_swap *push)
+int		write_it_yourself(t_push_swap *push)
 {
 	print_push_swap(push);
 	if (0 >= get_next_line(0, &push->instruction))

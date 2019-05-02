@@ -6,32 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/01 19:32:48 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 17:35:23 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
-
-void    show_it(void)
-{
-	int size;
-
-	size = -1;
-	while (++size < (int)(*ft_remember_push())->all)
-		ft_printf("[%d]:%d\n", size, stack_a(size));
-	ft_press_any_key();
-}
-
-void	action_list(void)
-{
-	int i;
-
-	i = -1;
-	ft_putendl("");
-	while (++i < (*ft_remember_push())->count)
-		ft_printf("%d%s ", i, *(char**)ft_tab_dirth((*ft_remember_push())->actions, 0, i)->content);
-	ft_putendl("");
-}
 
 int		main(int ac, char **av)
 {
@@ -64,8 +43,6 @@ int		main(int ac, char **av)
 	if (PROGRESS)
 		ft_progress("Init", 2, 3);
 	lets_solve(push);
-	// ft_printf("BEF: %d\n", push->count);
-	// action_list();
 	traduction();
 	ft_printf("%d\n", push->count);
 	time_exe(__func__);

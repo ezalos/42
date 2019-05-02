@@ -1,178 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perfect_ab.c                                       :+:      :+:    :+:   */
+/*   tool_perfect_ab_4.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/07 19:54:36 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 14:25:49 by ldevelle         ###   ########.fr       */
+/*   Created: 2019/05/02 16:45:18 by ldevelle          #+#    #+#             */
+/*   Updated: 2019/05/02 17:48:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-void	ab_2(void)
-{
-	if (stack_a(0) >= stack_a(1))
-		sa();
-}
-
-void	ab_3(void)
-{
-	time_exe(__func__);
-	int		a;
-	int		b;
-	int		c;
-
-	a = stack_a(0);
-	b = stack_a(1);
-	c = stack_a(2);
-	if (a < b)
-	{
-		if (b < c && a < c)		//012
-			return ;
-		else if (c < b && a < c)//021	put c first
-		{
-			if ((*ft_remember_push())->size_a == 3)
-			{
-				rra();
-				sa();
-			}
-			else
-			{
-				pa();
-				sa();
-				pb();
-			}
-		}
-		else					//120	switch b & c
-		{
-			if ((*ft_remember_push())->size_a == 3)
-			{
-				rra();
-			}
-			else
-			{
-				pa();//20	1
-				sa();//02	1
-				ra();//2|0	1
-				pb();//12|0
-				rra();//012
-			}
-		}
-	}
-	else if (a > b)
-	{
-		if (b > c && a > c)		//210	switch a & c
-		{
-			if ((*ft_remember_push())->size_a == 3)
-			{
-				sa();
-				rra();
-			}
-			else
-			{
-				sa();//120
-				pa();//20-1
-				sa();//02-1
-				ra();//2|0-1
-				pb();//12|0
-				rra();//012
-			}
-		}
-		else if (a > c && a > c)	//201	put a last
-		{
-			if ((*ft_remember_push())->size_a == 3)
-			{
-				ra();
-			}
-			else
-			{
-				sa();
-				ra();
-				sa();
-				rra();
-			}
-		}
-		else			//102	switch a & b
-			sa();
-
-	}
-}
-
-void	ba_2(void)
-{
-	if (stack_b(0) < stack_b(1))
-		sb();
-}
-
-void	ba_3(void)
-{
-	time_exe(__func__);
-	int		a;
-	int		b;
-	int		c;
-
-	a = stack_b(0);
-	b = stack_b(1);
-	c = stack_b(2);
-	if (a > b)
-	{
-		if (b > c && a > c)		//012 210
-		{
-			pb();
-			pb();
-			pb();
-		}
-		else if (c > b && a > c)//021 201	put c first
-		{
-			pb();
-			sb();
-			pb();
-			pb();
-		}
-		else					//120 102	switch b & c
-		{
-			rb();
-			sb();
-			pb();
-			rrb();
-			pb();
-			pb();
-		}
-	}
-	else if (a < b)
-	{
-		if (b < c && a < c)		//210 012	switch a & c
-		{
-			rb();
-			sb();
-			pb();
-			pb();
-			rrb();
-			pb();
-		}
-		else if (a < c && a < c)	//201 021	put a last
-		{
-			sb();
-			pb();
-			sb();
-			pb();
-			pb();
-		}
-		else			//102 120	switch a & b
-		{
-			sb();
-			pb();
-			pb();
-			pb();
-		}
-
-	}
-}
-
-void	ab_4(void)
+void		ab_4(void)
 {
 	time_exe(__func__);
 	int		a;
@@ -415,30 +255,4 @@ void	ab_4(void)
 		rra();
 		rra();
 	}
-}
-
-int 	perfect_ab(size_t size)
-{
-	if (size == 0 || size == 1)
-		return (-1);
-	else if (size == 2)
-		ab_2();
-	else if (size == 3)
-		ab_3();
-	else if (size == 4)
-		ab_4();
-	time_exe(__func__);
-	return (-1);
-}
-
-int 	perfect_ba(size_t size)
-{
-	if (size == 0 || size == 1)
-		return (-1);
-	else if (size == 2)
-		ba_2();
-	else if (size == 3)
-		ba_3();
-	time_exe(__func__);
-	return (-1);
 }
