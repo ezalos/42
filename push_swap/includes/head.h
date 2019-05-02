@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:49:38 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 18:26:03 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define STEP_BY_STEP	0
 # define SLOW			0
 # define CHOOSE_ALG		0
+# define COUNT			1
 # define PROGRESS		0
 
 # include "../../libft/includes/libft.h"
@@ -139,6 +140,8 @@ int			lets_solve(t_push_swap *push);
 */
 void		action_list(void);
 int			print_push_swap(t_push_swap *push);
+int			ft_save_file_exit_ko(int ac, char **av);
+int			ft_save_file_exit_ok(t_push_swap *push, int ac, char **av);
 
 /*
 **************

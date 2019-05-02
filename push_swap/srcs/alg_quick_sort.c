@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:37:59 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 18:25:12 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,7 @@ void 		banab(int size, int start)
 		banab(size, 0);
 	}
 	else if (PROGRESS)
-	{
 		ft_progress(__func__, (*ft_remember_push())->size_a, (*ft_remember_push())->all);
-	}
 	if (opt)
 		banab(size, 1);
 }

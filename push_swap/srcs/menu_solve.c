@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:42:46 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 18:20:40 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int		lets_solve(t_push_swap *push)
 	int				choice;
 
 	*ft_remember_push() = push;
-	if (PROGRESS)
-		ft_progress("Init", 3, 3);
 	if (VISUAL_MODE)
 		print_push_swap(push);
 	if (CHOOSE_ALG && VISUAL_MODE)
