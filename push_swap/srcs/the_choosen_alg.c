@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 23:06:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:32:56 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static void 		last_one(void)
 
 void 		banab(int size, int start)
 {
+	time_exe(__func__);
 	int		opt;
 
 	opt = 0;
@@ -64,15 +65,19 @@ void 		banab(int size, int start)
 		opt = 1;
 		banab(size, 0);
 	}
+	else if (PROGRESS)
+	{
+		ft_progress(__func__, (*ft_remember_push())->size_a, (*ft_remember_push())->all);
+	}
 	if (opt)
 		banab(size, 1);
 }
 
 static int	repeat(void)
 {
+	time_exe(__func__);
 	t_push_swap		*push;
 	int				size;
-	// int			i;
 
 	push = (*ft_remember_push());
 	size = push->size_a;
@@ -88,7 +93,7 @@ static int	repeat(void)
 
 int		the_choosen_alg(t_push_swap *push)
 {
-	// t_list	*
+	time_exe(__func__);
 	int		size;
 
 	(void)push;
@@ -96,6 +101,8 @@ int		the_choosen_alg(t_push_swap *push)
 	int i;
 
 	i = 0;
+	if (PROGRESS)
+		ft_progress("banab", 0, (*ft_remember_push())->all);
 	repeat();
 	return (1);
 }

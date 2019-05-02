@@ -6,12 +6,32 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 23:07:53 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:29:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEAD_H
 # define HEAD_H
+
+/*
+** #  define VISUAL_MODE	0	No visual OUTPUT
+** #  define VISUAL_MODE	1	Smart Visual OUTPUT
+** #  define VISUAL_MODE	2	FULL visual OUTPUT
+**
+** #  define STEP_BY_STEP	0	No input required
+** #  define STEP_BY_STEP	1	Input asked at every print
+**
+** #  define CHOOSE_ALG		0
+** #  define CHOOSE_ALG		1
+*/
+
+# ifndef VISUAL_MODE
+#  define VISUAL_MODE	0
+# endif
+# define STEP_BY_STEP	0
+# define SLOW			0
+# define CHOOSE_ALG		0
+# define PROGRESS		0
 
 # include "../../libft/includes/libft.h"
 
@@ -19,13 +39,12 @@ typedef struct		s_push_swap
 {
 	t_tab			*stack_a;
 	t_tab			*stack_b;
-//	int				*stack_a;
-//	int				*stack_b;
 	char			*instruction;
 	size_t			all;
 	size_t			size_a;
 	size_t			size_b;
 	int				count;
+	int				save;
 	t_tab			*actions;
 }					t_push_swap;
 
@@ -75,6 +94,8 @@ void			rrb(void);
 void			rr(void);
 void			rrr(void);
 
+void	ba_3(void);
+void	ab_3(void);
 
 int		bubble_it(void);
 

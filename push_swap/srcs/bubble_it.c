@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/31 00:42:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 23:17:32 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/30 15:08:40 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		order_one_stack(t_push_swap *push, int *solved)
 	save = push->size_b;
 	while (push->size_a > 1 && !is_it_order(push))
 	{
+		print_push_swap(push);
 		now = stack_a(0);
 		next = stack_a(1);
 		if (now == solved[push->size_b])
@@ -78,7 +79,10 @@ int		order_one_stack(t_push_swap *push, int *solved)
 		}
 	}
 	while (push->size_b)
+	{
+		print_push_swap(push);
 		pb();
+	}
 	return (0);
 }
 

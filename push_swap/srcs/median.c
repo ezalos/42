@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 13:28:03 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 22:56:10 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/27 17:59:24 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	print_it(t_tab *stack)
 
 int		ft_mv(t_push_swap *push, size_t size, int a)
 {
+	time_exe(__func__);
 	int 	i;
 	int 	done;
 	int		median;
@@ -37,6 +38,7 @@ int		ft_mv(t_push_swap *push, size_t size, int a)
 		return (0);
 	if ((a && (size > push->size_a)) || (!a && (size > push->size_b)))
 		return (0);
+	time_exe("MEDIAN");
 	if (size == 1)
 	{
 		if (a)
@@ -47,10 +49,12 @@ int		ft_mv(t_push_swap *push, size_t size, int a)
 	}
 	i = 0;
 	done = 0;
+	(a) ? (median = median_a(size)) : (median = median_b(size));
 	if (a)
 		median = median_a(size);
 	else
 		median = median_b(size);
+	time_exe("GO_THROUGH");
 	while (i < (int)size && (i - done) * 2 < (int)size)
 	{
 		if (a)
@@ -77,6 +81,7 @@ int		ft_mv(t_push_swap *push, size_t size, int a)
 		tip = (int)push->size_a;
 	else
 		tip = (int)push->size_b;
+	time_exe("GO_AROUND");
 	if (done == tip)
 		return (size / 2);
 	else if (done < tip - done)

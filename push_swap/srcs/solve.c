@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 23:09:01 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/30 18:31:20 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void		print_menu(void)
 {
 	C_ORANGE
 	ft_putendl("");
-	ft_putstr("\t0  : BUBBLE\n");
+	ft_putstr("\t0  : L'ELU\n");
 	ft_putstr("\t1  : WRITE\n");
-	ft_putstr("\t2  : L'ELU\n");
+	ft_putstr("\t2  : WRITE EVERYTHING\n");
+	ft_putstr("\t3  : BUBBLE\n");
 	C_BLUE
 	ft_putstr("\tPlease enter your selection :\t");
 	C_RESET
@@ -62,26 +63,36 @@ void		print_menu(void)
 
 int		choose_solve(void)
 {
-	char *instructions;
-	int choice;
+	char			*instructions;
+	int				choice;
 	t_push_swap		*push;
 
 	push = (*ft_remember_push());
-	// print_menu();
-	/*
-	C_CYAN
-	if (-1 == get_next_line(0, &instructions))
-		return (-1);
-	C_RESET
-	CLEAR_SCREEN
-	choice = ft_atoi(instructions);
-//*/ 	choice = 2;
+
+	if (PROGRESS)
+		ft_progress("Init", 3, 3);
+	if (VISUAL_MODE)
+		print_push_swap(push);
+	if (CHOOSE_ALG && VISUAL_MODE)
+	{
+		print_menu();
+		C_CYAN
+		if (-1 == get_next_line(0, &instructions))
+			return (-1);
+		C_RESET
+		CLEAR_SCREEN
+		choice = ft_atoi(instructions);
+	}
+	else
+ 		choice = 0;
 	if (choice == 0)
-		bubble_it();//work
+		the_choosen_alg(push);
 	else if (choice == 1)
 		do_it_yourself();//work
 	else if (choice == 2)
-		the_choosen_alg(push);
+		lets_play(*ft_remember_push());//work
+	else if (choice == 3)
+		bubble_it();//work
 	ft_strdel(&instructions);
 	print_push_swap(push);
 	return (0);

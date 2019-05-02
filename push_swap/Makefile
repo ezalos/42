@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/04/10 23:17:40 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/04/30 13:20:50 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,14 +149,17 @@ endef
 
 all :	$(NAME)
 
-$(NAME): $(A_OBJ) $(HEAD_PATH) $(LIB) Makefile
+$(NAME): $(LIB) Makefile $(A_OBJ)
 		@$(call run_and_test, $(CC) $(CFLAGS) -I./$(HEAD_DIR) $(A_OBJ) $(LIB) -o $(NAME))
 
-$(DIR_OBJ)%.o:$(SRC_PATH)/%.c
+$(DIR_OBJ)%.o:$(SRC_PATH)/%.c $(HEAD_PATH)
 		@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $<)
 
 $(LIB): FORCE
 		@$(MAKE) -C $(LIB_DIR)
+
+$(HEAD_PATH):
+	@$(MAKE) -C $(LIB_DIR)
 
 clean :
 		@echo "\$(YELLOW)fill_objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
@@ -184,6 +187,10 @@ git :
 
 t	:	all
 		@./$(NAME) $(ARG)
+
+stat :
+		@$(CC) $(CFLAGS) ./srcs/show_stats.c $(LIB) -o stats
+		@./stats $(nb)
 
 ten :
 		@rm -rf tests/last

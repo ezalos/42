@@ -6,37 +6,44 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 18:57:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 20:30:20 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/24 11:06:36 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Components/FilmItem.js
-
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import { getImageFromApi } from '../API/TMDBApi' // import { } from ... car c'est un export nommé dans TMDBApi.js
 
 class FilmItem extends React.Component {
   render() {
+    // console.log(this.props)
+	const { film, displayDetailForFilm } = this.props
+	//ligne du dessus similaire a ces deux lignes :
+	//	const film = this.props.film
+	//	const displayDetailForFilm = this.props.displayDetailForFilm
     return (
-      <View style={styles.main_container}>
-        <Image
-          style={styles.image}
-          source={{uri: "image"}}
-        />
-        <View style={styles.content_container}>
-          <View style={styles.header_container}>
-            <Text style={styles.title_text}>Titre du film</Text>
-            <Text style={styles.vote_text}>Vote </Text>
-          </View>
-          <View style={styles.description_container}>
-            <Text style={styles.description_text} numberOfLines={6}>Description</Text>
-            {/* La propriété numberOfLines permet de couper un texte si celui-ci est trop long, il suffit de définir un nombre maximum de ligne */}
-          </View>
-          <View style={styles.date_container}>
-            <Text style={styles.date_text}>Sorti le 00/00/0000</Text>
-          </View>
-        </View>
-      </View>
+		<TouchableOpacity
+			style={styles.main_container}
+			onPress={() => displayDetailForFilm(film.id)}>
+	        <Image
+	          style={styles.image}
+	          source={{uri: getImageFromApi(film.poster_path)}}
+	        />
+	        <View style={styles.content_container}>
+	          <View style={styles.header_container}>
+	            <Text style={styles.title_text}>{film.title}</Text>
+	            <Text style={styles.vote_text}>{film.vote_average} </Text>
+	          </View>
+	          <View style={styles.description_container}>
+	            <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
+	            {/* La propriété numberOfLines permet de couper un texte si celui-ci est trop long, il suffit de définir un nombre maximum de ligne */}
+	          </View>
+	          <View style={styles.date_container}>
+	            <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
+	          </View>
+		  </View>
+	  </TouchableOpacity>
     )
   }
 }
@@ -49,8 +56,7 @@ const styles = StyleSheet.create({
   image: {
     width: 120,
     height: 180,
-    margin: 5,
-    backgroundColor: 'gray'
+    margin: 5
   },
   content_container: {
     flex: 1,

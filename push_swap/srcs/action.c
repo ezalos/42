@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 17:15:02 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/09 20:10:16 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/04/30 12:09:15 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ void			pa(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (extra_push(push, 1))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
+	// ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -37,9 +39,11 @@ void			pb(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (extra_push(push, 0))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
+	// ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -49,9 +53,11 @@ void			sa(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_swap(&push->stack_a))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
+	// ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -61,9 +67,11 @@ void			sb(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_swap(&push->stack_b))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
+	// ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -73,9 +81,11 @@ void			ra(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_rotation(&push->stack_a, 0))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
+	// ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -85,9 +95,10 @@ void			rra(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_rotation(&(push->stack_a), 2))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -97,9 +108,10 @@ void			rb(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_rotation(&push->stack_b, 0))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -109,9 +121,10 @@ void			rrb(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_rotation(&push->stack_b, 2))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -121,9 +134,10 @@ void			rr(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_double(push, 1))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
 	// push->count++;
 }
 
@@ -133,8 +147,9 @@ void			rrr(void)
 
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
-	if (execute_order_66(push))
+	if (execute_double(push, 2))
 		add_action(push->instruction);
-	ft_strdel(&push->instruction);
+	else
+		ft_strdel(&push->instruction);
 	// push->count++;
 }

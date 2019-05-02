@@ -6,12 +6,11 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/04/10 23:08:02 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/02 14:35:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
-#include <stdio.h>
 
 int		execute_rotation(t_tab **stack, size_t dir)
 {
@@ -118,8 +117,6 @@ int		execute_order_66(t_push_swap *push)
 
 	if (push->instruction[0] == ' ')
 		ft_memmove(push->instruction, &push->instruction[1], ft_strlen(push->instruction));
-	// else
-	// 	CLEAR_SCREEN
 	r_val = 0;
 	if (!ft_strcmp(push->instruction, "sa"))
 		r_val = execute_swap(&push->stack_a);
@@ -150,7 +147,7 @@ int		execute_order_66(t_push_swap *push)
 			CLEAR_SCREEN
 	else
 	{
-		lets_solve(push);
+		// lets_solve(push);
 		return (1);
 	}
 	return(r_val);
@@ -159,20 +156,17 @@ int		execute_order_66(t_push_swap *push)
 int		lets_play(t_push_swap *push)
 {
 	print_push_swap(push);
-/*
-** 	if (0 >= get_next_line(0, &push->instruction))
-** 		return (-1);
-** 	while (push->instruction[0] != '\0')
-** 	{
-** 		if (!(execute_order_66(push)))
-** 			return (-1);
-** 		push->count++;
-** //		CLEAR_SCREEN
-** 		print_push_swap(push);
-** 		ft_strdel(&push->instruction);
-** 		if (0 >= get_next_line(0, &push->instruction))
-** 			return (-1);
-** 	}
-*/
+	if (0 >= get_next_line(0, &push->instruction))
+		return (-1);
+	while (push->instruction[0] != '\0')
+	{
+		if (!(execute_order_66(push)))
+			return (-1);
+		push->count++;
+		print_push_swap(push);
+		ft_strdel(&push->instruction);
+		if (0 >= get_next_line(0, &push->instruction))
+			return (-1);
+	}
 	return (push->count);
 }
