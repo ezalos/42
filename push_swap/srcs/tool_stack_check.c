@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:25:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:25:30 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:29:50 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int			stack_a(int i)
 	t_tab		*stack;
 	int			r_v;
 
+	if (!(*ft_remember_push())->stack_a)
+		return (-1);
 	stack = (*ft_remember_push())->stack_a;
 	r_v = *(int*)ft_tab_dirth(stack, 0, i)->content;
 	time_exe("END");
@@ -71,6 +73,8 @@ int			stack_b(int i)
 	time_exe(__func__);
 	t_tab		*stack;
 
+	if (!(*ft_remember_push())->stack_b)
+		return (-1);
 	stack = (*ft_remember_push())->stack_b;
 	return (*(int*)ft_tab_dirth(stack, 0, i)->content);
 }

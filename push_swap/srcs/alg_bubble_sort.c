@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:24:31 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:36:31 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 13:35:23 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int			get_tabint_inint(t_tab *tab, size_t dir, int *array)
 {
-	t_tab		*ptr;
-	int			lin;
+	t_tab			*ptr;
+	int				lin;
 
 	if (tab != NULL)
 	{
@@ -33,9 +33,9 @@ static int			get_tabint_inint(t_tab *tab, size_t dir, int *array)
 
 static int			is_it_order(t_push_swap *push)
 {
-	int			i;
-	int			actual;
-	int			save;
+	int				i;
+	int				actual;
+	int				save;
 
 	i = -1;
 	while (++i < (int)push->size_a)
@@ -48,7 +48,7 @@ static int			is_it_order(t_push_swap *push)
 	return (1);
 }
 
-static void		order_one_stack_while(t_push_swap *push, int *solved)
+static void			order_one_stack_while(t_push_swap *push, int *solved)
 {
 	int				now;
 	int				next;
@@ -85,7 +85,7 @@ static int			order_one_stack(t_push_swap *push, int *solved)
 	return (0);
 }
 
-int			bubble_it(void)
+int					bubble_it(void)
 {
 	static int		*solved;
 	t_push_swap		*push;

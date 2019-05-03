@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:40:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:47:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:46:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,30 +81,23 @@ int		ba(size_t size)
 {
 	int		r_v;
 
+	r_v = 1;
 	if (size == 0)
 		return (0);
-	if (size == 1)
-	{
+	else if (size == 1)
 		pb();
-		if (VISUAL_MODE == 1)
-			print_push_swap((*ft_remember_push()));
-		return (1);
-	}
-	if (size == 2)
+	else if (size == 2)
 	{
 		if (stack_b(0) < stack_b(1))
 			sb();
 		pb();
-		if (VISUAL_MODE == 1)
-			print_push_swap((*ft_remember_push()));
-		return (1);
 	}
-	if (size == 3)
-	{
-		ba_3();
-		return (1);
-	}
-	r_v = ft_mv(*ft_remember_push(), size, 0);
+	// else if (size == 3)
+	// 	ba_3();
+	// else if (size <= 8)
+	// 	ft_insert_push_ba(size / 2);
+	else
+		r_v = ft_mv(*ft_remember_push(), size, 0);
 	if (VISUAL_MODE == 1)
 		print_push_swap((*ft_remember_push()));
 	return (r_v);

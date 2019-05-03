@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:29:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:47:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:45:48 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int			ab(size_t size)
 {
 	int		r_v;
 
-	if (size <= 4)
+	if (size < 4)
 	{
 		r_v = perfect_ab(size);
 		if (VISUAL_MODE == 1)

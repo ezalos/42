@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 18:26:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 18:17:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@
 */
 
 # ifndef VISUAL_MODE
-#  define VISUAL_MODE	0
+#  define VISUAL_MODE	1
 # endif
-# define STEP_BY_STEP	0
+# define STEP_BY_STEP	1
 # define SLOW			0
 # define CHOOSE_ALG		0
 # define COUNT			1
 # define PROGRESS		0
+# define INSERT_SWITCH	12
 
 # include "../../libft/includes/libft.h"
 
@@ -89,8 +90,9 @@ int			is_it_good(t_push_swap *push);
 **    DB	**
 **************
 */
-int				add_action(char *str);
-t_push_swap		**ft_remember_push(void);
+int			add_action(char *str);
+t_push_swap	**ft_remember_push(void);
+int			ft_insert_push_ba(int size);
 
 /*
 **************
@@ -101,16 +103,16 @@ t_push_swap		**ft_remember_push(void);
 /*
 **   ACTION	**
 */
-void			pa(void);
-void			sa(void);
-void			ra(void);
-void			rra(void);
-void			pb(void);
-void			sb(void);
-void			rb(void);
-void			rrb(void);
-void			rr(void);
-void			rrr(void);
+void		pa(void);
+void		sa(void);
+void		ra(void);
+void		rra(void);
+void		pb(void);
+void		sb(void);
+void		rb(void);
+void		rrb(void);
+void		rr(void);
+void		rrr(void);
 
 /*
 **   MEM	**
@@ -142,6 +144,7 @@ void		action_list(void);
 int			print_push_swap(t_push_swap *push);
 int			ft_save_file_exit_ko(int ac, char **av);
 int			ft_save_file_exit_ok(t_push_swap *push, int ac, char **av);
+int			ft_save_arguments(char* path, int ac, char **av);
 
 /*
 **************
@@ -166,6 +169,6 @@ int			stack_b(int i);
 **   ZIP	**
 **************
 */
-int		traduction(void);
+int			traduction(void);
 
 #endif

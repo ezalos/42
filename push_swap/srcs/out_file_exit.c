@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 18:06:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 18:17:55 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 16:56:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,23 @@ int			ft_save_file_exit_ko(int ac, char **av)
 	while (++i < ac)
 		ft_printf("%~.*%~%s ", fd, av[i]);
 	print_time();
+	return (1);
+}
+
+int			ft_save_arguments(char* path, int ac, char **av)
+{
+	int				i;
+	int				fd;
+
+	if ((fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU|S_IRWXG|S_IRWXO)) > 0)
+	{
+		i = 0;
+		while (++i < ac)
+		{
+			ft_putstr_fd(av[i], fd);
+			ft_putstr_fd(" ", fd);
+		}
+		close(fd);
+	}
 	return (1);
 }

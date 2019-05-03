@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:24:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:43:47 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:52:42 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,14 @@ static void		print_stacks(t_push_swap *push)
 	while (in < push->all || (in < push->size_a || in < push->size_b))
 	{
 		ft_putstr("\n\t\t\t");
+//		ft_printf("|%d-%d|", in, push->size_a);
 		if (in < push->size_a)
 			good_a = print_one_stack(push, in, good_a, 1);
 		else
 			ft_putstr("   ");
 		ft_putstr("\t\t");
 		if (in < push->size_b)
-			good_b = print_one_stack(push, in, good_b, 1);
+			good_b = print_one_stack(push, in, good_b, 0);
 		else
 			ft_putstr("   ");
 		in++;
@@ -87,10 +88,12 @@ int			print_push_swap(t_push_swap *push)
 {
 	int		i;
 
+	// ft_printf("%s\n", __func__);
 	if (!VISUAL_MODE)
 		return (0);
 	if (STEP_BY_STEP)
 		ft_press_any_key();
+	// CLEAR_SCREEN
 	ft_place_cursor(0, 0);
 	print_header(push);
 	print_stacks(push);

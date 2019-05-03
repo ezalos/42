@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/02 18:17:15 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/03 16:52:53 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 
 SRCS		=	main\
 				alg_bubble_sort\
+				alg_insertion_sort\
 				alg_quick_sort\
 				alg_write_ab\
 				alg_write_it_yourself\

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 18:20:40 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/03 15:52:50 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ static void		print_menu(void)
 	C_RESET
 }
 
+static int		insert_it(void)
+{
+	while ((*ft_remember_push())->size_a)
+	{
+		pa();
+		print_push_swap((*ft_remember_push()));
+	}
+	ft_insert_push_ba((*ft_remember_push())->size_b);
+	return (1);
+}
+
 static int		choose_solve(int choice)
 {
 	t_push_swap		*push;
@@ -38,6 +49,8 @@ static int		choose_solve(int choice)
 		write_it_yourself(*ft_remember_push());//work
 	else if (choice == 3)
 		bubble_it();//work
+	else if (choice == 4)
+		insert_it();//work
 	print_push_swap(push);
 	return (0);
 }
