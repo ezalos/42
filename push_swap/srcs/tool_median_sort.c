@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:25:09 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 18:46:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 17:20:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,37 @@ static int		ft_mv_setup(t_push_swap *push, size_t size, int a, int *median)
 			pb();
 		return (1);
 	}
-	(a) ? (*median = median_a(size)) : (*median = median_b(size));
+	if (a)
+		*median = median_a(size);
+	else
+		*median = median_b(size);
 	return (-1);
 }
 
 static int		ft_mv_act(size_t size, int a, int median)
 {
-	time_exe(__func__);
-	int 	i;
-	int 	done;
+	int			i;
+	int			done;
 
+	time_exe(__func__);
 	i = 0;
 	done = 0;
 	while (i < (int)size && (i - done) * 2 < (int)size)
 	{
 		if (a)
 		{
-			if (stack_a(0) <= median)
-				pa();
-			else
-			{
+			if (!(stack_a(0) <= median) && ++done)
 				ra();
-				done++;
-			}
+			else
+				pa();
 		}
 		else
-			if (stack_b(0) > median)
-				pb();
-			else
-			{
+		{
+			if (!(stack_b(0) > median) && ++done)
 				rb();
-				done++;
-			}
+			else
+				pb();
+		}
 		i++;
 	}
 	return (done);
@@ -66,38 +65,37 @@ static int		ft_mv_act(size_t size, int a, int median)
 
 static int		ft_mv_clean(t_push_swap *push, size_t size, int a, int done)
 {
-	time_exe(__func__);
-	int		tip;
+	int			tip;
 
-	(a) ? (tip = (int)push->size_a) : (tip = (int)push->size_b);
+	time_exe(__func__);
+	if (a)
+		tip = (int)push->size_a;
+	else
+		tip = (int)push->size_b;
 	if (done == tip)
 		return (size / 2);
 	else if (done < tip - done)
-	{
 		while (done--)
 			if (a)
 				rra();
 			else
 				rrb();
-	}
 	else
-	{
 		while (tip - 1 > done++)
 			if (a)
 				ra();
 			else
 				rb();
-	}
 	return (size / 2);
 }
 
-int			ft_mv(t_push_swap *push, size_t size, int a)
+int				ft_mv(t_push_swap *push, size_t size, int a)
 {
-	time_exe(__func__);
-	int 	done;
-	int 	r_v;
-	int		median;
+	int			done;
+	int			r_v;
+	int			median;
 
+	time_exe(__func__);
 	if ((r_v = ft_mv_setup(push, size, a, &median)) != -1)
 		return (r_v);
 	done = ft_mv_act(size, a, median);

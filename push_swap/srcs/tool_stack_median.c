@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:25:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 18:39:21 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 16:16:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static int		ft_get_median(t_tab *stack, size_t size)
 	return (i);
 }
 
-int		median_a(size_t size)
+int				median_a(size_t size)
 {
 	return (ft_get_median((*ft_remember_push())->stack_a, size));
 }
 
-int		median_b(size_t size)
+int				median_b(size_t size)
 {
 	return (ft_get_median((*ft_remember_push())->stack_b, size));
 }

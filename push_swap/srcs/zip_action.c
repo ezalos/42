@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:56:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:45:21 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 17:19:00 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-static int		ft_tab_change_two(t_tab *act, char *action)
+int				ft_tab_change_two(t_tab *act, char *action)
 {
 	t_tab	*tab;
 	t_tab	*del;
@@ -35,63 +35,7 @@ static int		ft_tab_change_two(t_tab *act, char *action)
 	return (0);
 }
 
-static void	ft_recognize_case(t_tab *action)
-{
-	if (!ft_strcmp(*(char**)action->dir[0]->content, "sa"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "sa"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "sb"))
-			ft_tab_change_two(action, "ss");
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "sb"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "sb"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "sa"))
-			ft_tab_change_two(action, "ss");
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "pa"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "pb"))
-			ft_tab_change_two(action, NULL);
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "pb"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "pa"))
-			ft_tab_change_two(action, NULL);
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "ra"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rra"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rb"))
-			ft_tab_change_two(action, "rr");
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "rb"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rrb"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "ra"))
-			ft_tab_change_two(action, "rr");
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "rra"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "ra"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rrb"))
-			ft_tab_change_two(action, "rrr");
-	}
-	else if (!ft_strcmp(*(char**)action->dir[0]->content, "rrb"))
-	{
-		if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rb"))
-			ft_tab_change_two(action, NULL);
-		else if (!ft_strcmp(*(char**)action->dir[0]->dir[0]->content, "rra"))
-			ft_tab_change_two(action, "rrr");
-	}
-}
-
-static void	ft_update_placement(t_tab **action, int *i, int save)
+static void		ft_update_placement(t_tab **action, int *i, int save)
 {
 	if (save == (*ft_remember_push())->save)
 	{
@@ -105,13 +49,13 @@ static void	ft_update_placement(t_tab **action, int *i, int save)
 	}
 }
 
-int		traduction(void)
+int				traduction(void)
 {
-	time_exe(__func__);
 	t_tab	*action;
 	int		i;
 	int		save;
 
+	time_exe(__func__);
 	i = 0;
 	action = (*ft_remember_push())->actions;
 	while (action && action->dir[0] && action->dir[0]->dir[0])

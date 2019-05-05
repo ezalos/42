@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/03 16:52:53 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/05 17:24:37 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,11 +62,11 @@ SRCS		=	main\
 				tool_median_sort\
 				tool_perfect_ab\
 				tool_perfect_ab_3\
-				tool_perfect_ab_4\
 				tool_perfect_ba\
 				tool_stack_check\
 				tool_stack_median\
-				zip_action
+				zip_action\
+				zip_recognize
 
 SRC_PATH	= ./srcs
 
@@ -205,6 +205,8 @@ t	:	all
 stat :
 		@$(CC) $(CFLAGS) ./srcs/show_stats.c $(LIB) -o stats
 		@./stats $(nb)
+last :	all
+		@./$(NAME) $(shell cat tests/last)
 
 ten :
 		@rm -rf tests/last
@@ -261,7 +263,7 @@ tho :
 		@echo "90%"
 		@$(MAKE) hund
 		@echo "100%"
-		@$(MAKE) t MSG="../push_swap/tests/count/$(nb)" -C $(LIB_DIR)
+		@$(MAKE) stat
 
 echooo :
 		@echo $(ARG)

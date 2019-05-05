@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 16:57:48 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 18:36:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(int ac, char **av)
 
 	time_exe(__func__);
 	if (VISUAL_MODE)
-		CLEAR_SCREEN
+		_CLEAR_SCREEN;
 	if (ac <= 1)
 		return (ft_putstr_r0("Error\n"));
 	if (!(push = setup_tab(ac - 1, av)))
@@ -26,6 +26,7 @@ int		main(int ac, char **av)
 	ft_save_arguments("./tests/last", ac, av);
 	lets_solve(push);
 	traduction();
+	print_push_swap(push);
 	if (COUNT)
 		ft_printf("%d\n", push->count);
 	time_exe(__func__);

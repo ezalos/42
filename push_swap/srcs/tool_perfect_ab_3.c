@@ -6,18 +6,16 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:31:33 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 17:49:40 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 16:25:37 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-static void		ab_3_1_1(int a, int b, int c)
+static void		ab_3_1_1(void)
 {
 	if ((*ft_remember_push())->size_a == 3)
-	{
 		ra();
-	}
 	else
 	{
 		sa();
@@ -36,7 +34,7 @@ static void		ab_3_1_1(int a, int b, int c)
 
 static void		ab_3_1_0(int a, int b, int c)
 {
-	if (b > c && a > c)		//210
+	if (b > c && a > c)
 	{
 		if ((*ft_remember_push())->size_a == 3)
 		{
@@ -54,17 +52,15 @@ static void		ab_3_1_0(int a, int b, int c)
 		}
 	}
 	else if (a > c && a > c)
-		ab_3_1_1(a, b, c);
+		ab_3_1_1();
 	else
 		sa();
 }
 
-static void		ab_3_0_1(int a, int b, int c)
+static void		ab_3_0_1(void)
 {
 	if ((*ft_remember_push())->size_a == 3)
-	{
 		rra();
-	}
 	else
 	{
 		pa();
@@ -101,16 +97,16 @@ static void		ab_3_0_0(int a, int b, int c)
 		}
 	}
 	else
-		ab_3_0_1(a, b, c);
+		ab_3_0_1();
 }
 
-void		ab_3(void)
+void			ab_3(void)
 {
-	time_exe(__func__);
 	int		a;
 	int		b;
 	int		c;
 
+	time_exe(__func__);
 	a = stack_a(0);
 	b = stack_a(1);
 	c = stack_a(2);

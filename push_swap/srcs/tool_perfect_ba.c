@@ -6,81 +6,87 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:40:11 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 18:46:25 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 18:05:10 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
+static void	ba_3_1(int a, int b, int c)
+{
+	if (b < c && a < c)
+	{
+		rb();
+		sb();
+		pb();
+		pb();
+		rrb();
+		pb();
+	}
+	else if (a < c && a < c)
+	{
+		sb();
+		pb();
+		sb();
+		pb();
+		pb();
+	}
+	else
+	{
+		sb();
+		pb();
+		pb();
+		pb();
+	}
+}
+
+static void	ba_3_0(int a, int b, int c)
+{
+	if (b > c && a > c)
+	{
+		pb();
+		pb();
+		pb();
+	}
+	else if (c > b && a > c)
+	{
+		pb();
+		sb();
+		pb();
+		pb();
+	}
+	else
+	{
+		rb();
+		sb();
+		pb();
+		rrb();
+		pb();
+		pb();
+	}
+}
+
 static void	ba_3(void)
 {
-	time_exe(__func__);
 	int		a;
 	int		b;
 	int		c;
 
+	time_exe(__func__);
 	a = stack_b(0);
 	b = stack_b(1);
 	c = stack_b(2);
 	if (a > b)
-	{
-		if (b > c && a > c)		//012 210
-		{
-			pb();
-			pb();
-			pb();
-		}
-		else if (c > b && a > c)//021 201	put c first
-		{
-			pb();
-			sb();
-			pb();
-			pb();
-		}
-		else					//120 102	switch b & c
-		{
-			rb();
-			sb();
-			pb();
-			rrb();
-			pb();
-			pb();
-		}
-	}
+		ba_3_0(a, b, c);
 	else if (a < b)
-	{
-		if (b < c && a < c)		//210 012	switch a & c
-		{
-			rb();
-			sb();
-			pb();
-			pb();
-			rrb();
-			pb();
-		}
-		else if (a < c && a < c)	//201 021	put a last
-		{
-			sb();
-			pb();
-			sb();
-			pb();
-			pb();
-		}
-		else			//102 120	switch a & b
-		{
-			sb();
-			pb();
-			pb();
-			pb();
-		}
-
-	}
+		ba_3_1(a, b, c);
 }
 
-int		ba(size_t size)
+int			ba(size_t size)
 {
 	int		r_v;
 
+	(*ft_sent_count()) = 0;
 	r_v = 1;
 	if (size == 0)
 		return (0);
@@ -92,13 +98,13 @@ int		ba(size_t size)
 			sb();
 		pb();
 	}
-	// else if (size == 3)
-	// 	ba_3();
-	// else if (size <= 8)
-	// 	ft_insert_push_ba(size / 2);
+	else if (size == 3)
+		ba_3();
+	else if (size <= INSERT_SWITCH)
+		ft_insert_push_ba(size);
 	else
 		r_v = ft_mv(*ft_remember_push(), size, 0);
 	if (VISUAL_MODE == 1)
 		print_push_swap((*ft_remember_push()));
-	return (r_v);
+	return ((*ft_sent_count()));
 }

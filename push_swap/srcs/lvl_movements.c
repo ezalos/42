@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:53:07 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 14:53:26 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 16:05:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		execute_double(t_push_swap *push, int mode)
 {
 	int		r_val;
 
-	r_val =0;
+	r_val = 0;
 	if (mode == 0)
 	{
 		r_val += execute_swap(&push->stack_a);

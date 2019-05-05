@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:53:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 15:48:06 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 16:07:40 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		execute_rotation(t_tab **stack, size_t dir)
 
 int		execute_swap(t_tab **stack)
 {
-	t_tab 	*tmp;
+	t_tab	*tmp;
 	size_t	len;
 
 	len = ft_tabloop_lendir(*stack, 0);

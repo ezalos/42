@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:57:08 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 14:57:16 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/04 14:37:00 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ void			pb(void)
 	push = *ft_remember_push();
 	push->instruction = ft_strdup(__func__);
 	if (extra_push(push, 0))
+	{
+		(*ft_sent_count())++;
 		add_action(push->instruction);
+	}
 	else
+	{
 		ft_strdel(&push->instruction);
+	}
 }
 
 void			sb(void)

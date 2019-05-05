@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:25:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/03 15:29:50 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/05 16:12:11 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-int		order_a(int size)
+int			order_a(int size)
 {
 	int			i;
 	int			actual;
@@ -33,7 +33,7 @@ int		order_a(int size)
 	return (1);
 }
 
-int		order_b(int size)
+int			order_b(int size)
 {
 	int			i;
 	int			actual;
@@ -56,25 +56,32 @@ int		order_b(int size)
 
 int			stack_a(int i)
 {
-	time_exe(__func__);
 	t_tab		*stack;
 	int			r_v;
 
 	if (!(*ft_remember_push())->stack_a)
 		return (-1);
+	time_exe(__func__);
 	stack = (*ft_remember_push())->stack_a;
-	r_v = *(int*)ft_tab_dirth(stack, 0, i)->content;
-	time_exe("END");
+	if (i >= 0)
+		r_v = *(int*)ft_tab_dirth(stack, 0, i)->content;
+	else
+		r_v = *(int*)ft_tab_dirth(stack, 2, -i)->content;
 	return (r_v);
 }
 
 int			stack_b(int i)
 {
-	time_exe(__func__);
 	t_tab		*stack;
+	int			r_v;
 
 	if (!(*ft_remember_push())->stack_b)
 		return (-1);
+	time_exe(__func__);
 	stack = (*ft_remember_push())->stack_b;
-	return (*(int*)ft_tab_dirth(stack, 0, i)->content);
+	if (i >= 0)
+		r_v = *(int*)ft_tab_dirth(stack, 0, i)->content;
+	else
+		r_v = *(int*)ft_tab_dirth(stack, 2, -i)->content;
+	return (r_v);
 }
