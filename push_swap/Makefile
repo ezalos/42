@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/05 17:24:37 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/05 18:45:40 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME = Push_swap
 
 CC = gcc
 
-CFLAGS = #-Wall -Wextra -Werror
-CFLAGS =
+CFLAGS = -Wall -Wextra -Werror
 
 DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 -O2 -Wchar-subscripts -Wcomment -Wformat=2 -Wimplicit-int\
@@ -28,7 +27,7 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 -Wno-deprecated-declarations -Wpacked -Wredundant-decls -Wnested-externs\
 -Winline -Wlong-long -Wunreachable-code
 
-#CFLAGS = $(DFLAGS)
+# CFLAGS = $(DFLAGS)
 
 ##############################################################################
 ##############################################################################
