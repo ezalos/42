@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 17:55:47 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 14:35:55 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-int		execute_order_66(t_push_swap *push)
+int				execute_order_66(t_push_swap *push)
 {
 	if (!ft_strcmp(push->instruction, "sa"))
 		return (execute_swap(&push->stack_a));
@@ -39,7 +39,22 @@ int		execute_order_66(t_push_swap *push)
 	return (0);
 }
 
-int		write_it_yourself(t_push_swap *push)
+void			visual_checker(t_push_swap *push)
+{
+	int		i;
+
+	ft_place_cursor(0, 0);
+	print_header(push);
+	print_stacks(push);
+	if (SLOW)
+	{
+		i = -1;
+		while (++i < SLOW)
+			ft_wait_pls(0);
+	}
+}
+
+int				write_it_yourself(t_push_swap *push)
 {
 	print_push_swap(push);
 	if (0 >= get_next_line(0, &push->instruction))
@@ -49,7 +64,9 @@ int		write_it_yourself(t_push_swap *push)
 		if (!(execute_order_66(push)))
 			return (-1);
 		push->count++;
-		print_push_swap(push);
+		if (VISUAL_CHECKER == 1
+		|| (VISUAL_CHECKER == 2 && !(push->count % JUMP)))
+			visual_checker(push);
 		ft_strdel(&push->instruction);
 		if (0 >= get_next_line(0, &push->instruction))
 			return (-1);

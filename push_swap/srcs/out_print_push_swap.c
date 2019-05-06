@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 17:24:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 18:01:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 14:28:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-static void			print_header(t_push_swap *push)
+void				print_header(t_push_swap *push)
 {
 	ft_printf("%~{101;78;163}ACTUAL COUNT: %~{100;100;255}%-15d", push->count);
 	ft_printf("%~{220;50;150}Instruction: %~{239;100;100}%7s%~{}\n",
@@ -23,7 +23,7 @@ static void			print_header(t_push_swap *push)
 	ft_printf("%50s", " ");
 }
 
-static void			special_color(int in, int now)
+void				special_color(int in, int now)
 {
 	if (now == (int)in)
 		_C_GREEN;
@@ -33,7 +33,7 @@ static void			special_color(int in, int now)
 		_C_RED;
 }
 
-static int			print_one_stack(t_push_swap *push, int in, int good, int a)
+int					print_one_stack(t_push_swap *push, int in, int good, int a)
 {
 	int		now;
 
@@ -59,14 +59,15 @@ static int			print_one_stack(t_push_swap *push, int in, int good, int a)
 	return (now);
 }
 
-static void			print_stacks(t_push_swap *push)
+void				print_stacks(t_push_swap *push)
 {
 	int		good_a;
 	int		good_b;
 	size_t	in;
 
 	in = 0;
-	while (in < push->all || (in < push->size_a || in < push->size_b))
+	while ((in < push->all || (in < push->size_a || in < push->size_b))
+	&& (in < IN_SCREEN))
 	{
 		ft_putstr("\n\t\t\t");
 		if (in < push->size_a)

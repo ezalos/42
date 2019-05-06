@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:56:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 17:19:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 13:25:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ static void		ft_update_placement(t_tab **action, int *i, int save)
 	}
 }
 
+void			ft_print_solution(void)
+{
+	t_tab	*action;
+
+	action = (*ft_remember_push())->actions;
+	while (action)
+	{
+		ft_printf("%s\n", *(char**)action->content);
+		action = action->dir[0];
+	}
+}
+
 int				traduction(void)
 {
 	t_tab	*action;
@@ -68,5 +80,8 @@ int				traduction(void)
 	}
 	if (PROGRESS)
 		ft_progress(__func__, 1, 1);
+	print_push_swap((*ft_remember_push()));
+	if (PRINT_INSTRUCTIONS)
+		ft_print_solution();
 	return (1);
 }

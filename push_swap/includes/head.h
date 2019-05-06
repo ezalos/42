@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 18:35:35 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 14:36:43 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,22 @@
 */
 
 # ifndef VISUAL_MODE
-#  define VISUAL_MODE	1
+#  define VISUAL_MODE		0
 # endif
-# define STEP_BY_STEP	0
-# define SLOW			3
-# define CHOOSE_ALG		0
-# define COUNT			1
-# define PROGRESS		1
-# define INSERT_SWITCH	16
-# define HITCHHIKER		1
+# define VISUAL_CHECKER		2
+# define STEP_BY_STEP		0
+# define SLOW				3
+# define CHOOSE_ALG			0
+# define COUNT				0
+# define PROGRESS			0
+# define INSERT_SWITCH		16
+# define HITCHHIKER			1
+# define FILE_OUTPUT		1
+# define PRINT_INSTRUCTIONS	1
+# define CHECKER			0
+# define JUMP				1
+# define IN_SCREEN			75
+
 
 /*
 ** for 500 switch should be 16~24
@@ -154,6 +161,11 @@ int				print_push_swap(t_push_swap *push);
 int				ft_save_file_exit_ko(int ac, char **av);
 int				ft_save_file_exit_ok(t_push_swap *push, int ac, char **av);
 int				ft_save_arguments(char *path, int ac, char **av);
+void			print_header(t_push_swap *push);
+void			special_color(int in, int now);
+int				print_one_stack(t_push_swap *push, int in, int good, int a);
+void			print_stacks(t_push_swap *push);
+void			visual_checker(t_push_swap *push);
 
 /*
 **************

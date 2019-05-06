@@ -6,11 +6,12 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/05 18:45:40 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/06 14:25:25 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Push_swap
+NAME 	= push_swap
+CHECKER = checker
 
 CC = gcc
 
@@ -39,7 +40,7 @@ DFLAGS = -Wall -Wextra -Werror -fsanitize=address,undefined -g3 -pedantic\
 ##############################################################################
 ##############################################################################
 
-SRCS		=	main\
+SRCS_PS		=	push_swap\
 				alg_bubble_sort\
 				alg_insertion_sort\
 				alg_quick_sort\
@@ -67,6 +68,16 @@ SRCS		=	main\
 				zip_action\
 				zip_recognize
 
+SRCS_CK		=	checker\
+				init\
+				db_global\
+				lvl_memory\
+				lvl_movements\
+				tool_stack_check\
+				alg_write_it_yourself\
+				out_print_push_swap\
+				check
+
 SRC_PATH	= ./srcs
 
 DIR_OBJ 	= ./objs/
@@ -77,10 +88,13 @@ DIR_OBJ 	= ./objs/
 ##						##
 ##########################
 
-A_SRC 		= $(patsubst %,$(SRC_PATH)/%.c,$(SRCS))
-A_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS))
+A_SRC 		= $(patsubst %,$(SRC_PATH)/%.c,$(SRCS_PS))
+A_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS_PS))
 
-OBJ 		= $(patsubst %,%.o,$(SRCS))
+B_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS_CK))
+
+
+OBJ 		= $(patsubst %,%.o,$(SRCS_PS))
 
 LIB_DIR		= ./../libft
 HEAD		= head.h
@@ -127,6 +141,8 @@ MSG ?= Makefile automated push
 nb ?= 10
 
 ARG=`ruby -e "puts (0..$(nb) - 1).to_a.shuffle.join(' ')"`
+MYST=$(shell ruby -e "puts (0..$(nb) - 1).to_a.shuffle.join(' ')")
+toto=$(strip $(MYST))
 
 define run_and_test
 printf "%b" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@F)$(NO_COLOR)\r"; \
@@ -160,10 +176,13 @@ endef
 ##						##
 ##########################
 
-all :	$(NAME)
+all :	$(NAME) $(CHECKER)
 
 $(NAME): $(LIB) Makefile $(A_OBJ)
 		@$(call run_and_test, $(CC) $(CFLAGS) -I./$(HEAD_DIR) $(A_OBJ) $(LIB) -o $(NAME))
+
+$(CHECKER): $(LIB) Makefile $(B_OBJ)
+		@$(call run_and_test, $(CC) $(CFLAGS) -I./$(HEAD_DIR) $(B_OBJ) $(LIB) -o $(CHECKER))
 
 $(DIR_OBJ)%.o:$(SRC_PATH)/%.c $(HEAD_PATH)
 		@$(call run_and_test, $(CC) $(CFLAGS) -o $@ -c $<)
@@ -207,26 +226,22 @@ stat :
 last :	all
 		@./$(NAME) $(shell cat tests/last)
 
+c	:	all GENERATE
+		@./$(NAME) $(shell cat tests/double) | ./$(CHECKER) $(shell cat tests/double)
+
+GENERATE :
+			@echo $(MYST) > tests/double
+
 ten :
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
-		@rm -rf tests/last
 		@./$(NAME) $(ARG)
 
 hund :	all
