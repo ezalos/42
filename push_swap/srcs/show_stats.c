@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 16:32:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 18:38:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 14:39:26 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-int		print_header(char *name, int *tab, int size, int step)
+int		print_header_stat(char *name, int *tab, int size, int step)
 {
 	int		quant;
 
@@ -53,7 +53,7 @@ void	print_tab(char *name, int *tab, int step, int size)
 	len = ft_nb_len(tab[size - 1], 0);
 	seuil = tab[i];
 	x = 0;
-	quant = print_header(name, tab, size, step);
+	quant = print_header_stat(name, tab, size, step);
 	ft_printf("\n%~{255;150;150}%*d%~{}|%~{150;255;150}", len, seuil);
 	while (i < size)
 	{

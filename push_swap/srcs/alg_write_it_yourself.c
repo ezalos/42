@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 14:35:55 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 16:03:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int				write_it_yourself(t_push_swap *push)
 			return (-1);
 		push->count++;
 		if (VISUAL_CHECKER == 1
-		|| (VISUAL_CHECKER == 2 && !(push->count % JUMP)))
+		|| (VISUAL_CHECKER == 2 && (JUMP && !(push->count % JUMP))))
 			visual_checker(push);
 		ft_strdel(&push->instruction);
 		if (0 >= get_next_line(0, &push->instruction))

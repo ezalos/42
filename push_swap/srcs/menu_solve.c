@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 18:03:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 15:48:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,19 @@ int				lets_solve(t_push_swap *push)
 	*ft_remember_push() = push;
 	if (VISUAL_MODE)
 		print_push_swap(push);
-	if (CHOOSE_ALG && VISUAL_MODE)
-	{
-		print_menu();
-		_C_CYAN;
-		if (-1 == get_next_line(0, &instructions))
-			return (-1);
-		_C_RESET;
-		_CLEAR_SCREEN;
-		choice = ft_atoi(instructions);
-		ft_strdel(&instructions);
-	}
-	else
-		choice = 0;
+	choice = 0;
+	if (CHOOSE_ALG)
+		if (VISUAL_MODE)
+			{
+				print_menu();
+				_C_CYAN;
+				if (-1 == get_next_line(0, &instructions))
+					return (-1);
+				_C_RESET;
+				_CLEAR_SCREEN;
+				choice = ft_atoi(instructions);
+				ft_strdel(&instructions);
+			}
 	choose_solve(choice);
 	return (push->count);
 }

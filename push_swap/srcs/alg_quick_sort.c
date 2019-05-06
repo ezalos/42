@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/04 14:59:18 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 15:45:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ int					master_ba(int size)
 	master_ba(size - sent);
 	return (sent);
 }
+
+/*
+** //MASTER_BA(sent total)
+** 		sent = ba(size);
+** 		master_ab(sent);
+** 		master_ba(size - sent);
+**
+** //MASTER_AB(sent total)
+** 		sent = ab(size);
+** 		master_ab(size - sent);
+** 		master_ba(sent);
+*/
 
 int					master_ab(int size)
 {

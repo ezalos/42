@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 14:36:43 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 16:06:33 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,69 @@
 ** #  define CHOOSE_ALG		0
 ** #  define CHOOSE_ALG		1
 */
+# define MODE				0
 
+
+# if MODE == 0				//CORREC	SILENT
+# define VISUAL_MODE		0
+# define COUNT				0
+# define PRINT_INSTRUCTIONS	1
+# define CHECKER			0
+# define JUMP				50
+# elif MODE == 1			//CORREC	VERBAL
+# define VISUAL_CHECKER		1
+# define COUNT				1
+# define SLOW				0
+# define PRINT_INSTRUCTIONS	1
+# define CHECKER			0
+# define JUMP				50
+# elif MODE == 2			//SOLO		SILENT
+# define COUNT				1
+# define JUMP				50
+# elif MODE == 3			//SOLO		VERBAL
+# define VISUAL_MODE		1
+# define SLOW				3
+# define COUNT				1
+# define PROGRESS			1
+# elif MODE == 4			//SOLO		PLAY
+# define VISUAL_MODE		1
+# define CHOOSE_ALG			1
+# define COUNT				1
+# else
+#  define SIZE_WIDTH 600
+#  define SIZE_HEIGTH 600
+# endif
+
+# ifndef CHOOSE_ALG
+#  define CHOOSE_ALG		0
+# endif
+# ifndef VISUAL_CHECKER
+#  define VISUAL_CHECKER	0
+# endif
 # ifndef VISUAL_MODE
 #  define VISUAL_MODE		0
 # endif
-# define VISUAL_CHECKER		2
-# define STEP_BY_STEP		0
-# define SLOW				3
-# define CHOOSE_ALG			0
-# define COUNT				0
-# define PROGRESS			0
+# ifndef PROGRESS
+#  define PROGRESS			0
+# endif
+# ifndef JUMP
+#  define JUMP				0
+# endif
+# ifndef SLOW
+#  define SLOW				0
+# endif
+# ifndef CHECKER
+#  define CHECKER			1
+# endif
+# ifndef PRINT_INSTRUCTIONS
+#  define PRINT_INSTRUCTIONS	0
+# endif
+
+# define IN_SCREEN			75
 # define INSERT_SWITCH		16
 # define HITCHHIKER			1
+# define STEP_BY_STEP		0
 # define FILE_OUTPUT		1
-# define PRINT_INSTRUCTIONS	1
-# define CHECKER			0
-# define JUMP				1
-# define IN_SCREEN			75
 
 
 /*
