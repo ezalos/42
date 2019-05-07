@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/06 14:25:25 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/07 11:01:21 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,8 @@ B_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS_CK))
 
 OBJ 		= $(patsubst %,%.o,$(SRCS_PS))
 
-LIB_DIR		= ./../libft
+LIB_DIR		= ./../../libft
+LIB_DIR		= ./libft
 HEAD		= head.h
 HEAD_DIR	= ./includes
 HEAD_PATH	= $(HEAD_DIR)/$(HEAD)
@@ -226,8 +227,14 @@ stat :
 last :	all
 		@./$(NAME) $(shell cat tests/last)
 
+vc	:	all GENERATE
+		@$(VALGRIND) ./$(NAME) $(shell cat tests/double) | ./$(CHECKER) $(shell cat tests/double)
+
 c	:	all GENERATE
 		@./$(NAME) $(shell cat tests/double) | ./$(CHECKER) $(shell cat tests/double)
+
+cast	:	all
+			@./$(NAME) $(shell cat tests/last) | ./$(CHECKER) $(shell cat tests/last)
 
 GENERATE :
 			@echo $(MYST) > tests/double

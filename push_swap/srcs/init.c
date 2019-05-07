@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:56:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/02 18:25:37 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:24:23 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,28 @@ static int	scrap_ac(t_push_swap *push, int ac, char **av)
 				return (0);
 		j = ft_atoi(av[i + 1]);
 		if (!push->stack_a)
-			push->stack_a = ft_tabnew_ptr((int*)cnalloc(&j, sizeof(int)),
-			sizeof(int*));
+			push->stack_a = ft_tabnew_ptr((int*)&j, sizeof(int));
 		else
-			ft_tabadd_end(push->stack_a, ft_tabnew_ptr((int*)cnalloc(&j,
-			sizeof(int)), sizeof(int*)), 0);
+			ft_tabadd_end(push->stack_a,
+				ft_tabnew_ptr((int*)&j, sizeof(int)), 0);
 	}
 	return (1);
+}
+
+int			check_for_double(t_push_swap *push)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	while (++i < (int)push->size_a)
+	{
+		j = -1;
+		while (++j < i)
+			if (stack_a(i) == stack_a(j))
+				return (1);
+	}
+	return (0);
 }
 
 t_push_swap	*setup_tab(int ac, char **av)
@@ -45,9 +60,9 @@ t_push_swap	*setup_tab(int ac, char **av)
 	push->all = ac;
 	push->size_a = push->all;
 	push->stack_b = NULL;
-	if (!scrap_ac(push, ac, av))
+	*ft_remember_push() = push;
+	if (!scrap_ac(push, ac, av) || (check_for_double(push)))
 		return (NULL);
 	ft_tabloop_it(push->stack_a, 0);
-	*ft_remember_push() = push;
 	return (push);
 }

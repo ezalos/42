@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:57:08 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/04 14:37:00 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 11:52:08 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			pb(void)
 	t_push_swap		*push;
 
 	push = *ft_remember_push();
-	push->instruction = ft_strdup(__func__);
+	push->instruction = ft_strdup("pb");
 	if (extra_push(push, 0))
 	{
 		(*ft_sent_count())++;

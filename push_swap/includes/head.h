@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 16:06:33 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 11:01:28 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,40 @@
 ** #  define CHOOSE_ALG		0
 ** #  define CHOOSE_ALG		1
 */
-# define MODE				0
 
+/*
+** # define MODE				0	CORREC	SILENT
+** # define MODE				1	CORREC	VERBAL
+** # define MODE				2	SOLO	SILENT
+** # define MODE				3	SOLO	VERBAL
+** # define MODE				4	SOLO	PLAY
+*/
 
-# if MODE == 0				//CORREC	SILENT
-# define VISUAL_MODE		0
-# define COUNT				0
-# define PRINT_INSTRUCTIONS	1
-# define CHECKER			0
-# define JUMP				50
-# elif MODE == 1			//CORREC	VERBAL
-# define VISUAL_CHECKER		1
-# define COUNT				1
-# define SLOW				0
-# define PRINT_INSTRUCTIONS	1
-# define CHECKER			0
-# define JUMP				50
-# elif MODE == 2			//SOLO		SILENT
-# define COUNT				1
-# define JUMP				50
-# elif MODE == 3			//SOLO		VERBAL
-# define VISUAL_MODE		1
-# define SLOW				3
-# define COUNT				1
-# define PROGRESS			1
-# elif MODE == 4			//SOLO		PLAY
-# define VISUAL_MODE		1
-# define CHOOSE_ALG			1
-# define COUNT				1
-# else
-#  define SIZE_WIDTH 600
-#  define SIZE_HEIGTH 600
+# define MODE					2
+
+# if MODE == 0
+#  define COUNT					0
+#  define PRINT_INSTRUCTIONS	1
+#  define CHECKER				0
+# elif MODE == 1
+#  define VISUAL_CHECKER		2
+#  define COUNT					1
+#  define SLOW					0
+#  define PRINT_INSTRUCTIONS	1
+#  define CHECKER				0
+#  define JUMP					5
+# elif MODE == 2
+#  define PROGRESS				1
+#  define COUNT					1
+# elif MODE == 3
+#  define VISUAL_MODE			1
+#  define SLOW					1
+#  define COUNT					1
+#  define PROGRESS				1
+# elif MODE == 4
+#  define VISUAL_MODE			1
+#  define CHOOSE_ALG			1
+#  define COUNT					1
 # endif
 
 # ifndef CHOOSE_ALG
@@ -87,7 +90,6 @@
 # define HITCHHIKER			1
 # define STEP_BY_STEP		0
 # define FILE_OUTPUT		1
-
 
 /*
 ** for 500 switch should be 16~24

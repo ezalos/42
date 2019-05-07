@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 15:25:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 16:03:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 11:52:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int				execute_order_66(t_push_swap *push)
 		return (execute_swap(&push->stack_b));
 	else if (!ft_strcmp(push->instruction, "ss"))
 		return (execute_double(push, 0));
-	else if (!ft_strcmp(push->instruction, "pa"))
-		return (extra_push(push, 1));
 	else if (!ft_strcmp(push->instruction, "pb"))
+		return (extra_push(push, 1));
+	else if (!ft_strcmp(push->instruction, "pa"))
 		return (extra_push(push, 0));
 	else if (!ft_strcmp(push->instruction, "ra"))
 		return (execute_rotation(&push->stack_a, 0));
@@ -36,7 +36,7 @@ int				execute_order_66(t_push_swap *push)
 		return (execute_rotation(&push->stack_b, 2));
 	else if (!ft_strcmp(push->instruction, "rrr"))
 		return (execute_double(push, 2));
-	return (0);
+	return (-1);
 }
 
 void			visual_checker(t_push_swap *push)
@@ -56,17 +56,22 @@ void			visual_checker(t_push_swap *push)
 
 int				write_it_yourself(t_push_swap *push)
 {
+	int			r_v;
+
 	print_push_swap(push);
 	if (0 >= get_next_line(0, &push->instruction))
 		return (-1);
 	while (push->instruction[0] != '\0')
 	{
-		if (!(execute_order_66(push)))
+		if (-1 == (r_v = execute_order_66(push)))
 			return (-1);
-		push->count++;
+		if (r_v)
+			push->count++;
 		if (VISUAL_CHECKER == 1
 		|| (VISUAL_CHECKER == 2 && (JUMP && !(push->count % JUMP))))
 			visual_checker(push);
+		else if (VISUAL_MODE)
+			print_push_swap(push);
 		ft_strdel(&push->instruction);
 		if (0 >= get_next_line(0, &push->instruction))
 			return (-1);
