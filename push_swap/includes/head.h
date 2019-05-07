@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/07 11:01:28 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 15:58:38 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 ** # define MODE				4	SOLO	PLAY
 */
 
-# define MODE					2
+# define MODE					0
 
 # if MODE == 0
 #  define COUNT					0
@@ -165,6 +165,8 @@ int				*ft_sent_count(void);
 **************
 */
 
+int				execute_order_66(t_push_swap *push);
+int				exe_actions(t_push_swap *push);
 /*
 **   ACTION	**
 */

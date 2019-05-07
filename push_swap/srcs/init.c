@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:56:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 19:24:23 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 16:25:58 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ static int	scrap_ac(t_push_swap *push, int ac, char **av)
 		if (PROGRESS)
 			ft_progress(__func__, i, ac - 1);
 		j = -1;
+		if (av[i + 1][0] == '-')
+			j++;
 		while (av[i + 1][++j])
 			if (!ft_isdigit(av[i + 1][j]))
 				return (0);
+		if (ft_is_str_bigger_than_int(av[i + 1]))
+			return (0);
 		j = ft_atoi(av[i + 1]);
 		if (!push->stack_a)
 			push->stack_a = ft_tabnew_ptr((int*)&j, sizeof(int));

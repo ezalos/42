@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:53:07 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 16:05:19 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/07 15:59:34 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ int		extra_push(t_push_swap *push, int a)
 			}
 	}
 	return (0);
+}
+
+int				execute_order_66(t_push_swap *push)
+{
+	if (!ft_strcmp(push->instruction, "sa"))
+		return (execute_swap(&push->stack_a));
+	else if (!ft_strcmp(push->instruction, "sb"))
+		return (execute_swap(&push->stack_b));
+	else if (!ft_strcmp(push->instruction, "ss"))
+		return (execute_double(push, 0));
+	else if (!ft_strcmp(push->instruction, "pb"))
+		return (extra_push(push, 1));
+	else if (!ft_strcmp(push->instruction, "pa"))
+		return (extra_push(push, 0));
+	else if (!ft_strcmp(push->instruction, "ra"))
+		return (execute_rotation(&push->stack_a, 0));
+	else if (!ft_strcmp(push->instruction, "rb"))
+		return (execute_rotation(&push->stack_b, 0));
+	else if (!ft_strcmp(push->instruction, "rr"))
+		return (execute_double(push, 1));
+	else if (!ft_strcmp(push->instruction, "rra"))
+		return (execute_rotation(&(push->stack_a), 2));
+	else if (!ft_strcmp(push->instruction, "rrb"))
+		return (execute_rotation(&push->stack_b, 2));
+	else if (!ft_strcmp(push->instruction, "rrr"))
+		return (execute_double(push, 2));
+	return (-1);
 }

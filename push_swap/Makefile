@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/07 11:01:21 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/07 15:53:57 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ SRCS_CK		=	checker\
 				lvl_memory\
 				lvl_movements\
 				tool_stack_check\
-				alg_write_it_yourself\
+				exe_actions\
 				out_print_push_swap\
 				check
 
@@ -97,7 +97,7 @@ B_OBJ		= $(patsubst %,$(DIR_OBJ)%.o,$(SRCS_CK))
 OBJ 		= $(patsubst %,%.o,$(SRCS_PS))
 
 LIB_DIR		= ./../../libft
-LIB_DIR		= ./libft
+LIB_DIR		= ./../libft
 HEAD		= head.h
 HEAD_DIR	= ./includes
 HEAD_PATH	= $(HEAD_DIR)/$(HEAD)
@@ -194,23 +194,23 @@ $(LIB): FORCE
 $(HEAD_PATH):
 	@$(MAKE) -C $(LIB_DIR)
 
-clean :
-		@echo "\$(YELLOW)fill_objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
-		@rm -f $(A_OBJ)
+clean : libclean
+		@echo "\$(YELLOW)$(NAME) objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
+		@echo "\$(YELLOW)$(CHECKER) objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
+		@rm -f $(A_OBJ) $(B_OBJ)
 
-fclean : clean
+fclean : libfclean clean
 		@echo "\$(YELLOW)$(NAME) \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
-		@rm -rf $(NAME)
+		@echo "\$(YELLOW)$(CHECKER) \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
+		@rm -rf $(NAME) $(CHECKER)
 
-aclean : clean
-		@$(MAKE) clean -C $(LIB_DIR)
+libclean :
+			@$(MAKE) clean -C $(LIB_DIR)
 
-afclean : aclean fclean
-		@$(MAKE) fclean -C $(LIB_DIR)
+libfclean : libclean
+			@$(MAKE) fclean -C $(LIB_DIR)
 
 re :	fclean all
-
-are :	afclean all
 
 git :
 		@git add -A
@@ -286,9 +286,6 @@ tho :
 		@echo "100%"
 		@$(MAKE) stat
 
-echooo :
-		@echo $(ARG)
-
 vt	:	all
 		@ $(VALGRIND) ./$(NAME) $(ARG)
 
@@ -300,4 +297,5 @@ FORCE:
 ##						##
 ##########################
 
-.PHONY : clean fclean re all git aclean afclean are
+.PHONY : clean fclean re all git libclean libfclean t vt c vc GENERATE ten hund\
+tho stat cast last FORCE
