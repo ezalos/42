@@ -6,11 +6,24 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:56:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/08 15:42:53 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:49:19 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
+
+static void	get_mix(int i, int j, int *mix)
+{
+	if (i == 0)
+	{
+		mix[0] = j;
+		mix[1] = j;
+	}
+	else if (j < mix[0])
+		mix[0] = j;
+	else if (j > mix[1])
+		mix[1] = j;
+}
 
 static int	scrap_ac(t_push_swap *push, int ac, char **av, int *mix)
 {
@@ -21,7 +34,7 @@ static int	scrap_ac(t_push_swap *push, int ac, char **av, int *mix)
 	while (++i < ac)
 	{
 		if (PROGRESS)
-			ft_progress("Init", i, ac * ac * 2);
+			ft_progress("Init", i, ac * 2);
 		j = -1;
 		if (av[i + 1][0] == '-')
 			j++;
@@ -31,15 +44,7 @@ static int	scrap_ac(t_push_swap *push, int ac, char **av, int *mix)
 		if (ft_is_str_bigger_than_int(av[i + 1]))
 			return (0);
 		j = ft_atoi(av[i + 1]);
-		if (i == 0)
-		{
-			mix[0] = j;
-			mix[1] = j;
-		}
-		else if (j < mix[0])
-			mix[0] = j;
-		else if (j > mix[1])
-			mix[1] = j;
+		get_mix(i, j, mix);
 		if (!push->stack_a)
 			push->stack_a = ft_tabnew_ptr((int*)&j, sizeof(int));
 		else
@@ -78,7 +83,7 @@ t_push_swap	*setup_tab(int ac, char **av)
 	int				mix[2];
 
 	if (PROGRESS)
-		ft_progress("Init", 0, ft_sum_to_nb(ac) + ac);
+		ft_progress("Init", 0, ac * 2);
 	push = (t_push_swap*)cnalloc(NULL, sizeof(t_push_swap));
 	push->all = ac;
 	push->size_a = push->all;

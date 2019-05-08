@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/08 15:44:22 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/08 16:13:27 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 ** # define MODE				4	SOLO	PLAY
 */
 
-# define MODE					0
+# define MODE					2
 
 # if MODE == 0
 #  define COUNT					0
@@ -47,7 +47,7 @@
 #  define CHECKER				0
 #  define JUMP					5
 # elif MODE == 2
-#  define PROGRESS				1
+#  define PROGRESS				0
 #  define COUNT					1
 # elif MODE == 3
 #  define VISUAL_MODE			1

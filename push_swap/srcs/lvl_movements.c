@@ -6,13 +6,13 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:53:07 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/07 15:59:34 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:48:10 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/head.h"
 
-int		execute_double(t_push_swap *push, int mode)
+int				execute_double(t_push_swap *push, int mode)
 {
 	int		r_val;
 
@@ -35,7 +35,7 @@ int		execute_double(t_push_swap *push, int mode)
 	return (r_val);
 }
 
-int		extra_push(t_push_swap *push, int a)
+int				extra_push(t_push_swap *push, int a)
 {
 	if (a)
 	{

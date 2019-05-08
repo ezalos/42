@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/07 15:53:57 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/08 17:25:22 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -284,7 +284,18 @@ tho :
 		@echo "90%"
 		@$(MAKE) hund
 		@echo "100%"
-		@$(MAKE) stat
+big :
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+		@$(MAKE) tho
+
 
 vt	:	all
 		@ $(VALGRIND) ./$(NAME) $(ARG)
