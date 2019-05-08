@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 14:10:07 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 18:35:07 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:25:25 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int					ft_insert_push_ba(int size)
 		print_push_swap((*ft_remember_push()));
 		size--;
 		if (PROGRESS)
-			ft_progress(__func__, (*ft_remember_push())->size_a,
+			ft_progress("AB_BA", (*ft_remember_push())->size_a,
 			(*ft_remember_push())->all);
 	}
 	return (1);

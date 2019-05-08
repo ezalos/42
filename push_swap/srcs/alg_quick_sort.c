@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 18:32:01 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 15:45:58 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/08 15:29:30 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int					master_ba(int size)
 	if (size <= 1)
 		return (size);
 	master_ab(sent);
+	if (PROGRESS)
+		ft_progress("AB_BA",
+			(*ft_remember_push())->size_a, (*ft_remember_push())->all);
 	master_ba(size - sent);
 	return (sent);
 }
@@ -47,8 +50,8 @@ int					master_ab(int size)
 		master_ab(size + sent);
 		master_ba(-sent);
 	}
-	else if (size && PROGRESS)
-		ft_progress(__func__,
+	else if (PROGRESS)
+		ft_progress("AB_BA",
 			(*ft_remember_push())->size_a, (*ft_remember_push())->all);
 	return (0);
 }
@@ -62,5 +65,8 @@ int					the_choosen_alg(t_push_swap *push)
 	if (PROGRESS)
 		ft_progress("AB_BA", 0, (*ft_remember_push())->all);
 	master_ab((*ft_remember_push())->size_a);
+	if (PROGRESS)
+		ft_progress("AB_BA", (*ft_remember_push())->all,
+		(*ft_remember_push())->all);
 	return (1);
 }
