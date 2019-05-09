@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:29:58 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 18:24:58 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:45:55 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,15 @@ static int	perfect_ab(size_t size)
 
 int			ab(size_t size)
 {
-	int		r_v;
-
 	(*ft_sent_count()) = 0;
 	if (size < 4)
 	{
-		r_v = perfect_ab(size);
+		perfect_ab(size);
 		if (VISUAL_MODE == 1)
 			print_push_swap((*ft_remember_push()));
 		return ((*ft_sent_count()));
 	}
-	r_v = ft_mv(*ft_remember_push(), size, 1);
+	ft_mv(*ft_remember_push(), size, 1);
 	if (VISUAL_MODE == 1)
 		print_push_swap((*ft_remember_push()));
 	return ((*ft_sent_count()));

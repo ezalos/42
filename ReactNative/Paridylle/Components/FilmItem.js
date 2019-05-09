@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 18:57:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/01 18:07:44 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/09 17:09:53 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class FilmItem extends React.Component {
 		        />
 				<Image
 				  style={styles.heart}
-		          source={require('/Users/ldevelle/42/ReactNative/Paridylle/assets/heart.png')}
+		          source={require('/home/ezalos/42/ReactNative/Paridylle/assets/heart.png')}
 		        />
 			</View>
 			<View style={styles.info}>

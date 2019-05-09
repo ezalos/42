@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:56:51 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 13:25:19 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:46:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int				ft_tab_change_two(t_tab *act, char *action)
 {
-	t_tab	*tab;
 	t_tab	*del;
 	char	*lec;
 
-	tab = (*ft_remember_push())->actions;
 	del = ft_tab_cutone(act->dir[0]);
 	ft_memdel((void**)&del);
 	del = ft_tab_cutone(act->dir[0]);

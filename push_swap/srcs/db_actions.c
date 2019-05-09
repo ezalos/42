@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 16:51:46 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/05 16:13:24 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/09 14:45:24 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 int		add_action(char *str)
 {
-	t_tab	*actions;
 	char	*lec;
 
 	if (!str)
 		return (-1);
 	time_exe(__func__);
-	actions = (*ft_remember_push())->actions;
 	lec = str;
 	if (!(*ft_remember_push())->actions)
 		(*ft_remember_push())->actions = ft_tabnew_ptr(&lec, sizeof(char**));
