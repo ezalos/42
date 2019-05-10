@@ -6,19 +6,22 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 18:57:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/09 17:09:53 by root             ###   ########.fr       */
+/*   Updated: 2019/05/10 17:28:38 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Components/FilmItem.js
 import React from 'react'
-import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity, Shadow } from 'react-native'
 import { getImageFromApi } from '../API/TMDBApi' // import { } from ... car c'est un export nommé dans TMDBApi.js
 
 class FilmItem extends React.Component {
   render() {
     // console.log(this.props)
 	const { film, displayDetailForFilm } = this.props
+	const shadowStyle ={
+		shadowOpacity:1
+	}
 	//ligne du dessus similaire a ces deux lignes :
 	//	const film = this.props.film
 	//	const displayDetailForFilm = this.props.displayDetailForFilm
@@ -52,27 +55,28 @@ class FilmItem extends React.Component {
 const styles = StyleSheet.create({
 	card: {
 		width: 150,
-		height: 250,
+		height: 220,
 		flexDirection: 'column',
-		marginVertical: 5,
+		marginVertical: 7,
 		marginHorizontal: 7,
 		borderRadius:10,
-		borderWidth: 1,
-		borderColor: '#fff'
+		shadowOpacity:1,
+		shadowRadius: 20,
+		elevation: 3,
+		shadowColor: 'red',
+		backgroundColor: '#ffffff'
 	},
 		pic_content: {
-			width: 150,
-			height: 150,
 			borderRadius:10,
-			borderWidth: 1,
-			borderColor: '#fff'
+			shadowOpacity:1,
+			shadowRadius: 20,
+  		elevation: 3,
+			shadowColor: 'red'
 		},
 			image: {
 				width: 150,
 				height: 150,
 				borderRadius:10,
-				borderWidth: 1,
-				borderColor: '#fff',
 				resizeMode: 'cover'
 			},
 			heart: {

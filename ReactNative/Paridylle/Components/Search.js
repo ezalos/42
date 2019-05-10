@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 13:29:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/01 14:32:51 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/10 17:44:48 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 import React from 'react'
 import FilmItem from './FilmItem'
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
-import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, TextInput, Button, Text, FlatList, ActivityIndicator, ScrollView } from 'react-native'
 
 class Search extends React.Component {
 
 	constructor(props) {														//constructors are for: Initializing local state by assigning an object to this.state / Binding event handler methods to an instance.
 		super(props)															//super refers to the parent class constructor. Here : React.Component
-		this.searchedText = ""													//		We need to call super in order to access to this.props. Otherwise, this.props will be undefined
+		this.searchedText = "Star"													//		We need to call super in order to access to this.props. Otherwise, this.props will be undefined
 		this.page = 0
 		this.totalPages = 0
 		this.state = {															//Constructor is the only place where you should assign this.state directly. You should not call setState() in the constructor().
@@ -86,8 +86,10 @@ class Search extends React.Component {
 			/>
 	    	<Button title='Rechercher' onPress={() => this._searchFilms()}/>
 																				{/*Same as onSubmitEditing*/}
+
+<ScrollView style={styles.scrollview_container}>
 			<View style={styles.sideList}>
-				<Text style={styles.bandeau_title}>Par'gougmandise</Text>
+				<Text style={styles.bandeau_title}>Ta mere</Text>
 	    	<FlatList
 				horizontal
 	         	data={this.state.films}
@@ -104,7 +106,65 @@ class Search extends React.Component {
 			{this._displayLoading()}
 																				{/*Cette fonction peut être mise n'importe ou ds le render. Les fonctions appelées dans le render doivent
 																						 obligatoirement retourner des éléments graphiques, c-a-d des components. return "coucou" ne fonctionnera pas*/}
+																						 <View style={styles.spacing}/>
 			</View>
+
+
+			<View style={styles.sideList}>
+				<Text style={styles.bandeau_title}>Ton pere</Text>
+				<FlatList
+				horizontal
+						data={this.state.films}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({item}) => <FilmItem film={item} displayDetailForFilm=
+				{this._displayDetailForFilm} />}
+				onEndReachedThreshold={0.5}
+					onEndReached={() => {
+						if (this.page < this.totalPages) {
+						this._loadFilms()
+					}
+					}}
+			/>
+			<View style={styles.spacing}/>
+			</View>
+
+			<View style={styles.sideList}>
+				<Text style={styles.bandeau_title}>Ton frere</Text>
+				<FlatList
+				horizontal
+						data={this.state.films}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({item}) => <FilmItem film={item} displayDetailForFilm=
+				{this._displayDetailForFilm} />}
+				onEndReachedThreshold={0.5}
+					onEndReached={() => {
+						if (this.page < this.totalPages) {
+						this._loadFilms()
+					}
+					}}
+			/>
+			<View style={styles.spacing}/>
+			</View>
+
+			<View style={styles.sideList}>
+				<Text style={styles.bandeau_title}>Ta soeur</Text>
+				<FlatList
+				horizontal
+						data={this.state.films}
+						keyExtractor={(item) => item.id.toString()}
+						renderItem={({item}) => <FilmItem film={item} displayDetailForFilm=
+				{this._displayDetailForFilm} />}
+				onEndReachedThreshold={0.5}
+					onEndReached={() => {
+						if (this.page < this.totalPages) {
+						this._loadFilms()
+					}
+					}}
+			/>
+			<View style={styles.spacing}/>
+			</View>
+
+			</ScrollView>
      	</View>
 	)
  	}
@@ -114,14 +174,29 @@ const styles = StyleSheet.create({
 	main_container: {															//By default flexDirection is column
 		flex: 1
 	},
+	scrollview_container: {
+	flex: 1
+	},
 	bandeau_title: {
-      	fontSize: 25,
-		color: '#FFFFFF',
-		padding: 7,
-		backgroundColor: '#ffcccc'
+      	fontSize: 45,
+		color: '#606090',
+    fontWeight: 'bold',
+		padding: 5,
+		paddingLeft: 10,
+		backgroundColor: '#fdfdfd'
+	},
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+	spacing: {
+		height: 30
 	},
 	sideList: {
-		flexDirection: 'column'
+		flexDirection: 'column',
+		backgroundColor: '#fafafa'
 	},
 	textinput: {
 		marginLeft: 5,
