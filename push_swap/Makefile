@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/08 17:25:22 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/10 13:34:21 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,16 @@ VALGRIND = valgrind --track-origins=yes --leak-check=full --show-leak-kinds=defi
 ##						##
 ##########################
 
+UNAME := $(shell uname)
+ifeq ($(UNAME),Linux)
+RED     = \e[31m
+GREEN   = \e[32m
+YELLOW  = \e[33m
+BLUE	= \e[34m
+MAGENTA	= \e[35m
+CYAN	= \e[36m
+END     = \e[0m
+else
 RED     = \x1b[31m
 GREEN   = \x1b[32m
 YELLOW  = \x1b[33m
@@ -125,6 +135,7 @@ BLUE	= \x1b[34m
 MAGENTA	= \x1b[35m
 CYAN	= \x1b[36m
 END     = \x1b[0m
+endif
 
 COM_COLOR   = $(BLUE)
 OBJ_COLOR   = $(CYAN)
