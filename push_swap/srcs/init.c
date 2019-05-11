@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:56:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/08 15:49:19 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/11 12:21:17 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			check_for_double(t_push_swap *push, int *mix)
 	int		*tab;
 	int		i;
 
-	tab = ft_memalloc((mix[1] - mix[0]) * sizeof(int));
+	tab = ft_memalloc((mix[1] - mix[0] + 1) * sizeof(int));
 	i = -1;
 	while (++i < (int)push->size_a)
 	{
