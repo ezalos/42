@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 13:29:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/10 17:44:48 by root             ###   ########.fr       */
+/*   Updated: 2019/05/11 14:23:13 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
 	spacing: {
-		height: 30
+		height: 1
 	},
 	sideList: {
 		flexDirection: 'column',

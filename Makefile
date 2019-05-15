@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/03/24 16:20:07 by ldevelle         ###   ########.fr        #
+#    Updated: 2019/05/13 12:15:25 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ srcs =	fill_it\
 		push_swap\
 		graph_theory\
 		FdF\
+		lem-in\
 		Makegenius
 
 

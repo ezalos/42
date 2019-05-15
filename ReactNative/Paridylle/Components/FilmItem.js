@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 18:57:37 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/10 17:28:38 by root             ###   ########.fr       */
+/*   Updated: 2019/05/11 14:28:09 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ class FilmItem extends React.Component {
 
 const styles = StyleSheet.create({
 	card: {
-		width: 150,
-		height: 220,
+		width: 196,
+		height: 240,
 		flexDirection: 'column',
 		marginVertical: 7,
 		marginHorizontal: 7,
-		borderRadius:10,
+		borderRadius:7,
 		shadowOpacity:1,
 		shadowRadius: 20,
 		elevation: 3,
@@ -67,16 +67,14 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ffffff'
 	},
 		pic_content: {
-			borderRadius:10,
-			shadowOpacity:1,
-			shadowRadius: 20,
-  		elevation: 3,
 			shadowColor: 'red'
 		},
 			image: {
-				width: 150,
-				height: 150,
-				borderRadius:10,
+				width: 190,
+				height: 190,
+				marginVertical: 3,
+				marginHorizontal: 3,
+				borderRadius:7,
 				resizeMode: 'cover'
 			},
 			heart: {
