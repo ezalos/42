@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/15 13:24:03 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/15 20:27:34 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 ** # define MODE				4	SOLO	PLAY
 */
 
-# define MODE					0
+# define MODE					2
 
 # if MODE == 0
 #  define COUNT					0

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/06 19:12:10 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/15 17:48:52 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		print_menu(void)
 	ft_putstr("\t1  : WRITE AB_BA\n");
 	ft_putstr("\t2  : WRITE ACTIONS\n");
 	ft_putstr("\t3  : BUBBLE\n");
-	ft_putstr("\t3  : INSERT\n");
+	ft_putstr("\t4  : INSERT\n");
 	_C_BLUE;
 	ft_putstr("\tPlease enter your selection :\t");
 	_C_RESET;
