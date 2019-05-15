@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/10 13:34:21 by root             ###   ########.fr        #
+#    Updated: 2019/05/15 13:20:36 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -208,7 +208,7 @@ $(HEAD_PATH):
 clean : libclean
 		@echo "\$(YELLOW)$(NAME) objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
 		@echo "\$(YELLOW)$(CHECKER) objs \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
-		@rm -f $(A_OBJ) $(B_OBJ)
+		@rm -f $(A_OBJ) $(B_OBJ) ./stats ./objs/show_stats.o
 
 fclean : libfclean clean
 		@echo "\$(YELLOW)$(NAME) \$(END)\\thas been \$(GREEN)\\t\\t\\t  $@\$(END)"
@@ -232,9 +232,10 @@ git :
 t	:	all
 		@./$(NAME) $(ARG)
 
-stat :
+stat :	$(LIB)
 		@$(CC) $(CFLAGS) ./srcs/show_stats.c $(LIB) -o stats
 		@./stats $(nb)
+
 last :	all
 		@./$(NAME) $(shell cat tests/last)
 
