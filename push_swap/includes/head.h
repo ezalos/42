@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:20 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/15 13:17:21 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/15 13:24:03 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,11 @@
 ** for 100 switch should be	16~24
 */
 
-# include "../../libft/includes/libft.h"
+/*
+** # include "../../libft/includes/libft.h"
+*/
+
+# include "../libft/includes/libft.h"
 
 typedef struct	s_push_swap
 {
