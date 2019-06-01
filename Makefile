@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/24 22:37:57 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/13 12:15:25 by root             ###   ########.fr        #
+#    Updated: 2019/05/20 17:36:11 by root             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ srcs =	fill_it\
 		graph_theory\
 		FdF\
 		lem-in\
-		Makegenius
+		Makegenius\
+		Shifumi
 
 
 MSG ?= Makefile automated push

@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 13:43:28 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/07 15:56:35 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/20 23:36:51 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		main(int ac, char **av)
 	t_push_swap		*push;
 
 	if (VISUAL_CHECKER)
-		_CLEAR_SCREEN;
+		_C_CLEAR_SCREEN;
 	if (ac <= 1)
 		return (ft_putstr_r0_fd("Error\n", 2));
 	if (!(push = setup_tab(ac - 1, av)))

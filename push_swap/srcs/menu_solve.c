@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/15 17:48:52 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/05/20 23:36:32 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int				lets_solve(t_push_swap *push)
 			if (-1 == get_next_line(0, &instructions))
 				return (-1);
 			_C_RESET;
-			_CLEAR_SCREEN;
+			_C_CLEAR_SCREEN;
 			choice = ft_atoi(instructions);
 			ft_strdel(&instructions);
 		}
