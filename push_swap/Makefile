@@ -6,7 +6,7 @@
 #    By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/12 15:04:16 by ldevelle          #+#    #+#              #
-#    Updated: 2019/05/20 23:39:45 by root             ###   ########.fr        #
+#    Updated: 2019/05/15 13:23:15 by ldevelle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -230,7 +230,7 @@ git :
 		@git push
 
 t	:	all
-		./$(NAME) $(ARG)
+		@./$(NAME) $(ARG)
 
 stat :	$(LIB)
 		@$(CC) $(CFLAGS) ./srcs/show_stats.c $(LIB) -o stats

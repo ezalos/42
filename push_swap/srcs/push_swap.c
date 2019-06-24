@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:21:29 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/20 23:41:08 by root             ###   ########.fr       */
+/*   Updated: 2019/05/07 15:43:44 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,13 @@ int		main(int ac, char **av)
 	t_push_swap		*push;
 
 	if (VISUAL_MODE)
-		_C_CLEAR_SCREEN;
+		_CLEAR_SCREEN;
 	if (ac <= 1)
 		return (0);
-		ft_printf("const char *format, ...\n");
 	if (!(push = setup_tab(ac - 1, av)))
 		ft_burn_garbage(NULL);
 	if (FILE_OUTPUT)
 		ft_save_arguments("./tests/last", ac, av);
-		ft_printf("const char *format, ...\n");
 	lets_solve(push);
 	traduction();
 	if (COUNT)

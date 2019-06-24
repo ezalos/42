@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/18 19:27:41 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/20 23:36:32 by root             ###   ########.fr       */
+/*   Updated: 2019/05/06 19:12:10 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		print_menu(void)
 	ft_putstr("\t1  : WRITE AB_BA\n");
 	ft_putstr("\t2  : WRITE ACTIONS\n");
 	ft_putstr("\t3  : BUBBLE\n");
-	ft_putstr("\t4  : INSERT\n");
+	ft_putstr("\t3  : INSERT\n");
 	_C_BLUE;
 	ft_putstr("\tPlease enter your selection :\t");
 	_C_RESET;
@@ -81,7 +81,7 @@ int				lets_solve(t_push_swap *push)
 			if (-1 == get_next_line(0, &instructions))
 				return (-1);
 			_C_RESET;
-			_C_CLEAR_SCREEN;
+			_CLEAR_SCREEN;
 			choice = ft_atoi(instructions);
 			ft_strdel(&instructions);
 		}

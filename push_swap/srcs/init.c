@@ -6,7 +6,7 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:56:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/05/20 23:42:18 by root             ###   ########.fr       */
+/*   Updated: 2019/05/15 14:40:31 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ static int	scrap_ac(t_push_swap *push, int ac, char **av, int *mix)
 		j = ft_atoi(av[i + 1]);
 		get_mix(i, j, mix);
 		if (!push->stack_a)
-			push->stack_a = ft_tabnew_ptr((int*)j, sizeof(int));
+			push->stack_a = ft_tabnew_ptr((int*)&j, sizeof(int));
 		else
 			ft_tabadd_end(push->stack_a,
-				ft_tabnew_ptr((int*)j, sizeof(int)), 0);
+				ft_tabnew_ptr((int*)&j, sizeof(int)), 0);
 	}
 	return (1);
 }
@@ -65,8 +65,8 @@ int			check_for_double(t_push_swap *push, int *mix)
 	{
 		if (PROGRESS)
 			ft_progress("Init", i, push->size_a);
-		if (tab[stack_a(i)] == 0)
-			tab[stack_a(i)] = 1;
+		if (tab[stack_a(i) - mix[0]] == 0)
+			tab[stack_a(i) - mix[0]] = 1;
 		else
 		{
 			ft_memdel((void**)&tab);
