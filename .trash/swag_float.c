@@ -6,13 +6,14 @@
 /*   By: ldevelle <ldevelle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:45:40 by ldevelle          #+#    #+#             */
-/*   Updated: 2019/02/22 14:45:50 by ldevelle         ###   ########.fr       */
+/*   Updated: 2019/07/02 18:49:32 by ldevelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./../includes/head.h"
 
-unsigned char	*s_to_bin(unsigned char *str, int length)
+#include "ft_printf.h"
+
+unsigned char	*s_to_bino(unsigned char *str, int length)
 {
 	unsigned char	*binary;
 	int		actual_char;
@@ -33,7 +34,7 @@ unsigned char	*s_to_bin(unsigned char *str, int length)
 	return (binary);
 }
 
-unsigned char	*ft_strrev(unsigned char *str, size_t size)
+unsigned char	*ft_strrevo(unsigned char *str, size_t size)
 {
 	unsigned char	tmp;
 	int		i;
@@ -92,12 +93,12 @@ void	print_string_to_u_char(unsigned char* converter, size_t size_thing)
 	C_RESET
 }
 
-unsigned char	*print_string_to_binary(unsigned char *converter, size_t size_thing)
+unsigned char	*print_string_to_binaryo(unsigned char *converter, size_t size_thing)
 {
 	int i;
 
-	converter = s_to_bin(converter, size_thing);
-	ft_strrev(converter, (size_thing * 8));
+	converter = s_to_bino(converter, size_thing);
+	ft_strrevo(converter, (size_thing * 8));
 	i = -1;
 	while (++i < (int)size_thing)
 	{
@@ -148,8 +149,8 @@ void			float_out(unsigned char *converter, size_t size_thing)
 {
 	t_float			info;
 
-	converter = s_to_bin(converter, size_thing);
-	ft_strrev(converter, (size_thing * 8));
+	converter = s_to_bino(converter, size_thing);
+	ft_strrevo(converter, (size_thing * 8));
 	ft_bzero(&info, sizeof(info));
 	ft_memmove(info.sign, converter + 8 * 6, 1);
 	ft_memmove(info.exposant, converter + 8 * 6 + 1, 15);
@@ -166,7 +167,7 @@ void	print_thing_to_binary_and_unsigned_char(void* thing, size_t size_thing)
 	ft_putstr("\n");
 	print_string_to_u_char((unsigned char*)thing, size_thing);
 	ft_putstr("\n");
-	print_string_to_binary((unsigned char*)thing, size_thing);
+	print_string_to_binaryo((unsigned char*)thing, size_thing);
 	ft_putstr("\n");
 	float_out((unsigned char*)thing, size_thing);
 	ft_putstr("\n");
@@ -174,7 +175,7 @@ void	print_thing_to_binary_and_unsigned_char(void* thing, size_t size_thing)
 
 
 
-int			print_float(t_printf *print, double nb)
+int			print_float(t_printf *print, long double nb)
 {
 	long double conv;
 
@@ -184,7 +185,7 @@ int			print_float(t_printf *print, double nb)
 	conv = -nb;
 	print_thing_to_binary_and_unsigned_char((void*)&conv, sizeof(conv));
 
-	get_int_from_float(db);
+	// get_int_from_float(nb);
 	paste_int_in_printf(print, ft_strjoin(ft_strjoin(ft_nb_to_a((int)nb, 10), "."), ft_nb_to_a((long long)((nb - (int)nb) * 1000000), 10)));
 	return (0);
 
